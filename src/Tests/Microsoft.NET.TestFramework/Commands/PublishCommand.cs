@@ -3,6 +3,7 @@
 
 using System.ComponentModel;
 using System.IO;
+using Microsoft.NET.TestFramework.Utilities;
 using Xunit.Abstractions;
 
 namespace Microsoft.NET.TestFramework.Commands
@@ -26,8 +27,8 @@ namespace Microsoft.NET.TestFramework.Commands
 
         public override DirectoryInfo GetOutputDirectory(string targetFramework = "netcoreapp1.1", string configuration = "Debug", string runtimeIdentifier = "")
         {
-            DirectoryInfo baseDirectory = base.GetOutputDirectory(targetFramework, configuration, runtimeIdentifier); 
-            return new DirectoryInfo(Path.Combine(baseDirectory.FullName, PublishSubfolderName));
+            DirectoryInfo baseDirectory = base.GetOutputDirectory(targetFramework, configuration, runtimeIdentifier);
+            return baseDirectory.Sub(PublishSubfolderName);
         }
 
         public string GetPublishedAppPath(string appName)

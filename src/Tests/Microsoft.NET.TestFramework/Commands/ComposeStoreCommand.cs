@@ -3,10 +3,11 @@
 
 #if NETCOREAPP
 
-using Microsoft.DotNet.Cli.Utils;
 using System.IO;
 using System.Runtime.InteropServices;
 using Xunit.Abstractions;
+using Microsoft.DotNet.Cli.Utils;
+using Microsoft.NET.TestFramework.Utilities;
 
 namespace Microsoft.NET.TestFramework.Commands
 {
@@ -21,23 +22,22 @@ namespace Microsoft.NET.TestFramework.Commands
 
         public override DirectoryInfo GetOutputDirectory(string targetFramework = "netcoreapp1.0", string configuration = "Debug", string runtimeIdentifier = "")
         {
-            string output = Path.Combine(ProjectRootPath, "bin", BuildRelativeOutputPath(targetFramework, configuration, runtimeIdentifier));
-            return new DirectoryInfo(output);
-        }
-
-        public string GetPublishedAppPath(string appName)
-        {
-            return Path.Combine(GetOutputDirectory().FullName, $"{appName}.dll");
-        }
-
-        private string BuildRelativeOutputPath(string targetFramework, string configuration, string runtimeIdentifier)
-        {
             if (runtimeIdentifier.Length == 0)
             {
                 runtimeIdentifier = RuntimeInformation.RuntimeIdentifier;
             }
             string arch = runtimeIdentifier.Substring(runtimeIdentifier.LastIndexOf("-") + 1);
-            return Path.Combine(configuration, arch, targetFramework, PublishSubfolderName);
+            string relativeToBaseOutputPath = Path.Combine(configuration, arch, targetFramework, runtimeIdentifier, PublishSubfolderName);
+            return base.GetBaseOutputDirectory().Sub(relativeToBaseOutputPath);
+
+            // TODO: SDK-Style projects must not contain arch in the platform. Replace the above logic with the following once it's fixed.
+            // DirectoryInfo baseDirectory = base.GetBaseOutputDirectory(targetFramework, configuration, runtimeIdentifier);
+            // return baseDirectory.Sub(PublishSubfolderName);
+        }
+
+        public string GetPublishedAppPath(string appName)
+        {
+            return Path.Combine(GetOutputDirectory().FullName, $"{appName}.dll");
         }
     }
 }
