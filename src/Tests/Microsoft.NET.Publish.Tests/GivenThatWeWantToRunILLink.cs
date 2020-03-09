@@ -17,6 +17,7 @@ using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
 using Microsoft.NET.TestFramework.Commands;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -781,7 +782,7 @@ namespace Microsoft.NET.Publish.Tests
 
         [Fact(Skip = "https://github.com/aspnet/AspNetCore/issues/12064")]
         public void ILLink_and_crossgen_process_razor_assembly()
-        { 
+        {
             var targetFramework = "netcoreapp3.0";
             var rid = EnvironmentInfo.GetCompatibleRid(targetFramework);
 
@@ -819,7 +820,7 @@ namespace Microsoft.NET.Publish.Tests
 
             var publishDir = publishCommand.GetOutputDirectory(targetFramework, runtimeIdentifier: rid);
             publishDir.Should().HaveFile("System.IO.Compression.ZipFile.dll");
-            GivenThatWeWantToPublishReadyToRun.DoesImageHaveR2RInfo(publishDir.File("TestWeb.Views.dll").FullName);
+            GivenThatWeWantToPublishReadyToRun.DoesImageHaveR2RInfo(publishDir.GetFile("TestWeb.Views.dll").FullName);
         }
 
         private static bool DoesImageHaveMethod(string path, string methodNameToCheck)

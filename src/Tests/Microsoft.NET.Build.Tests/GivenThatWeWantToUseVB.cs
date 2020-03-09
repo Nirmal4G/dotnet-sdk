@@ -14,6 +14,7 @@ using Xunit;
 using System;
 using System.IO;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 using Microsoft.Build.Utilities;
 
 namespace Microsoft.NET.Build.Tests
@@ -96,7 +97,7 @@ namespace Microsoft.NET.Build.Tests
 
             var outputDirectory = buildCommand.GetOutputDirectory(targetFramework);
             var actualVBRuntime = GetVBRuntime(buildCommand.GetValues().FirstOrDefault());
-            File.Delete(outputDirectory.File("VBRuntimeValues.txt").FullName);
+            File.Delete(outputDirectory.GetFile("VBRuntimeValues.txt").FullName);
 
             outputDirectory.Should().OnlyHaveFiles(expectedOutputFiles);
             actualVBRuntime.Should().Be(expectedVBRuntime);

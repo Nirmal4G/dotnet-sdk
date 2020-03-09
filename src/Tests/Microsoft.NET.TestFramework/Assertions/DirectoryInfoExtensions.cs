@@ -15,15 +15,5 @@ namespace Microsoft.NET.TestFramework.Assertions
         {
             return new DirectoryInfoAssertions(dir);
         }
-
-        public static DirectoryInfo Sub(this DirectoryInfo dir, string name)
-        {
-            return new DirectoryInfo(Path.Combine(dir.FullName, name));
-        }
-
-        public static FileInfo File(this DirectoryInfo dir, string name)
-        {
-            return new FileInfo(Path.Combine(dir.FullName, name));
-        }
     }
 }

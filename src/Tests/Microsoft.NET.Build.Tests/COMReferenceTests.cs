@@ -8,6 +8,7 @@ using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
 using Microsoft.NET.TestFramework.Commands;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -62,9 +63,9 @@ namespace Microsoft.NET.Build.Tests
 
             var buildCommand = new BuildCommand(testAsset);
             buildCommand.Execute().Should().Pass();
-            
+
             var outputDirectory = buildCommand.GetOutputDirectory(targetFramework);
-            var runCommand = new RunExeCommand(Log, outputDirectory.File("UseComReferences.exe").FullName);
+            var runCommand = new RunExeCommand(Log, outputDirectory.GetFile("UseComReferences.exe").FullName);
             runCommand.Execute().Should().Pass();
         }
 
@@ -125,8 +126,8 @@ namespace Microsoft.NET.Build.Tests
             var outputDirectory = buildCommand.GetOutputDirectory(targetFramework);
 
             // COM References by default adds the 'Interop.' prefix.
-            Assert.True(outputDirectory.File($"Interop.{vslangProj70ComRef}").Exists);
-            Assert.True(outputDirectory.File($"Interop.{vslangProj80ComRef}").Exists);
+            Assert.True(outputDirectory.GetFile($"Interop.{vslangProj70ComRef}").Exists);
+            Assert.True(outputDirectory.GetFile($"Interop.{vslangProj80ComRef}").Exists);
 
             var publishCommand = new PublishCommand(testAsset);
             publishCommand.Execute().Should().Pass();
@@ -134,8 +135,8 @@ namespace Microsoft.NET.Build.Tests
             outputDirectory = publishCommand.GetOutputDirectory(targetFramework);
 
             // COM References by default adds the 'Interop.' prefix.
-            Assert.True(outputDirectory.File($"Interop.{vslangProj70ComRef}").Exists);
-            Assert.True(outputDirectory.File($"Interop.{vslangProj80ComRef}").Exists);
+            Assert.True(outputDirectory.GetFile($"Interop.{vslangProj70ComRef}").Exists);
+            Assert.True(outputDirectory.GetFile($"Interop.{vslangProj80ComRef}").Exists);
         }
     }
 }
