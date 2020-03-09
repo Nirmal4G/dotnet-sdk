@@ -10,6 +10,7 @@ using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
 using Microsoft.NET.TestFramework.Commands;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -45,7 +46,7 @@ namespace Microsoft.NET.Build.Tests
             command.Execute().Should().Pass();
 
             var outputDirectory = command.GetOutputDirectory(targetFramework);
-            var runtimeConfigFile = outputDirectory.File("HelloWorld.runtimeconfig.json");
+            var runtimeConfigFile = outputDirectory.GetFile("HelloWorld.runtimeconfig.json");
             var (_, metadata) = command.GetValuesWithMetadata().Single(i => i.value == runtimeConfigFile.FullName);
 
             metadata.Count.Should().Be(2);

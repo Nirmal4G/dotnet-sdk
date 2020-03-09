@@ -9,6 +9,7 @@ using Xunit;
 using Xunit.Abstractions;
 using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
+using Microsoft.NET.TestFramework.Utilities;
 using Microsoft.NET.TestFramework.Commands;
 using System.IO;
 using System.Linq;

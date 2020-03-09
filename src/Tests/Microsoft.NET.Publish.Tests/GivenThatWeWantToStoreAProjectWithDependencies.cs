@@ -14,6 +14,7 @@ using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
 using Microsoft.NET.TestFramework.Commands;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 
 using NuGet.Packaging.Core;
 using NuGet.Versioning;

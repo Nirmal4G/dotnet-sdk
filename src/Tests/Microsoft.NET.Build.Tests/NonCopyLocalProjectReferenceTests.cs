@@ -10,6 +10,7 @@ using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
 using Microsoft.NET.TestFramework.Commands;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -56,7 +57,7 @@ namespace Microsoft.NET.Build.Tests
 
             var outputDirectory = buildCommand.GetOutputDirectory(targetFramework);
 
-            using var stream = File.OpenRead(outputDirectory.File("MainProject.deps.json").FullName);
+            using var stream = File.OpenRead(outputDirectory.GetFile("MainProject.deps.json").FullName);
             using var reader = new DependencyContextJsonReader();
 
             reader

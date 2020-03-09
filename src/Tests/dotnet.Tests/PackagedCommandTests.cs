@@ -18,6 +18,7 @@ using Microsoft.Build.Evaluation;
 using System.Xml.Linq;
 using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
+using Microsoft.NET.TestFramework.Utilities;
 using Microsoft.NET.TestFramework.Commands;
 
 namespace Microsoft.DotNet.Tests
@@ -190,10 +191,10 @@ namespace Microsoft.DotNet.Tests
             string randomPackageName = Guid.NewGuid().ToString().Substring(24);
 
             // TODO: This is a workaround for https://github.com/dotnet/cli/issues/5020
-            SetGeneratedPackageName(appWithDepOnToolDir.File("AppWithDepOnTool.csproj"),
+            SetGeneratedPackageName(appWithDepOnToolDir.GetFile("AppWithDepOnTool.csproj"),
                                     randomPackageName);
 
-            SetGeneratedPackageName(toolWithRandPkgNameDir.File("ToolWithRandomPackageName.csproj"),
+            SetGeneratedPackageName(toolWithRandPkgNameDir.GetFile("ToolWithRandomPackageName.csproj"),
                                     randomPackageName);
 
 

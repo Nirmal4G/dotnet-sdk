@@ -9,6 +9,7 @@ using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
 using Microsoft.NET.TestFramework.Commands;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
@@ -212,9 +213,9 @@ namespace Microsoft.NET.Build.Tests
 
             void Assert(DirectoryInfo outputDir)
             {
-                outputDir.File("Microsoft.Windows.SDK.NET.dll").Exists.Should().BeTrue("The output has cswinrt dll");
-                outputDir.File("WinRT.Runtime.dll").Exists.Should().BeTrue("The output has cswinrt dll");
-                var runtimeconfigjson = File.ReadAllText(outputDir.File(ProjectName + ".runtimeconfig.json").FullName);
+                outputDir.GetFile("Microsoft.Windows.SDK.NET.dll").Exists.Should().BeTrue("The output has cswinrt dll");
+                outputDir.GetFile("WinRT.Runtime.dll").Exists.Should().BeTrue("The output has cswinrt dll");
+                var runtimeconfigjson = File.ReadAllText(outputDir.GetFile(ProjectName + ".runtimeconfig.json").FullName);
                 runtimeconfigjson.Contains(@"""name"": ""Microsoft.NETCore.App""").Should().BeTrue("runtimeconfig.json only reference Microsoft.NETCore.App");
                 runtimeconfigjson.Contains("Microsoft.Windows.SDK.NET").Should().BeFalse("runtimeconfig.json does not reference windows SDK");
             }

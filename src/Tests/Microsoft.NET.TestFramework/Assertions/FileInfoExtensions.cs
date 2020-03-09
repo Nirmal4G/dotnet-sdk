@@ -30,10 +30,5 @@ namespace Microsoft.NET.TestFramework.Assertions
         {
             return new FileInfoNuGetLock(subject);
         }
-
-        public static string ReadAllText(this FileInfo subject)
-        {
-            return File.ReadAllText(subject.FullName);
-        }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
 using Microsoft.NET.TestFramework.Commands;
 using Microsoft.NET.TestFramework.ProjectConstruction;
+using Microsoft.NET.TestFramework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -206,7 +207,7 @@ namespace Microsoft.NET.Build.Tests
             var buildCommand = new BuildCommand(testProjectTestAsset);
             buildCommand.Execute().Should().Pass();
 
-            var referencedDll = buildCommand.GetOutputDirectory("netcoreapp3.0").File("net462_net472_pkg.dll").FullName;
+            var referencedDll = buildCommand.GetOutputDirectory("netcoreapp3.0").GetFile("net462_net472_pkg.dll").FullName;
             var referencedTargetFramework = AssemblyInfo.Get(referencedDll)["TargetFrameworkAttribute"];
             referencedTargetFramework.Should().Be(".NETFramework,Version=v4.6.2");
         }

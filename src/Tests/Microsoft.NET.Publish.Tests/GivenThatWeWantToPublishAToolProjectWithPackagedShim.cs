@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.NET.TestFramework;
 using Microsoft.NET.TestFramework.Assertions;
+using Microsoft.NET.TestFramework.Utilities;
 using Microsoft.NET.TestFramework.Commands;
 using FluentAssertions;
 using Xunit;
