@@ -33,7 +33,7 @@ namespace Microsoft.NET.TestFramework.Commands
                 packageId = Path.GetFileNameWithoutExtension(ProjectFile);
             }
 
-            return Path.Combine(GetOutputDirectory(null, configuration).FullName, $"{packageId}.{packageVersion}.nupkg");
+            return Path.Combine(GetBaseOutputDirectory().FullName, configuration, $"{packageId}.{packageVersion}.nupkg");
         }
     }
 }

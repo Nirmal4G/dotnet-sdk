@@ -13,7 +13,7 @@ using Xunit.Abstractions;
 namespace Microsoft.NET.TestFramework.Commands
 {
     public class MSBuildCommand : TestCommand
-    { 
+    {
         public string Target { get;  }
 
         private readonly string _projectRootPath;
@@ -72,14 +72,44 @@ namespace Microsoft.NET.TestFramework.Commands
             return buildProjectFiles[0];
         }
 
+        private DirectoryInfo GetDirectoryRelativeToProjectRoot(params string[] dirs)
+        {
+            string relativePath = Path.Combine(dirs);
+            string output = Path.Combine(ProjectRootPath, relativePath);
+            return new DirectoryInfo(output);
+        }
+
+        public virtual DirectoryInfo GetBaseOutputDirectory()
+        {
+            return GetDirectoryRelativeToProjectRoot("bin");
+        }
+
+        public virtual DirectoryInfo GetBaseIntermediateDirectory()
+        {
+            return GetDirectoryRelativeToProjectRoot("obj");
+        }
+
+        public virtual DirectoryInfo GetNonSDKOutputDirectory(string configuration = "Debug")
+        {
+            configuration = configuration ?? string.Empty;
+
+            return GetDirectoryRelativeToProjectRoot("bin", configuration);
+        }
+
+        public virtual DirectoryInfo GetNonSDKIntermediateDirectory(string configuration = "Debug")
+        {
+            configuration = configuration ?? string.Empty;
+
+            return GetDirectoryRelativeToProjectRoot("obj", configuration);
+        }
+
         public virtual DirectoryInfo GetOutputDirectory(string targetFramework, string configuration = "Debug", string runtimeIdentifier = "")
         {
             targetFramework = targetFramework ?? string.Empty;
             configuration = configuration ?? string.Empty;
             runtimeIdentifier = runtimeIdentifier ?? string.Empty;
 
-            string output = Path.Combine(ProjectRootPath, "bin", configuration, targetFramework, runtimeIdentifier);
-            return new DirectoryInfo(output);
+            return GetDirectoryRelativeToProjectRoot("bin", configuration, targetFramework, runtimeIdentifier);
         }
 
         public virtual DirectoryInfo GetIntermediateDirectory(string targetFramework, string configuration = "Debug", string runtimeIdentifier = "")
@@ -88,22 +118,7 @@ namespace Microsoft.NET.TestFramework.Commands
             configuration = configuration ?? string.Empty;
             runtimeIdentifier = runtimeIdentifier ?? string.Empty;
 
-            string output = Path.Combine(ProjectRootPath, "obj", configuration, targetFramework, runtimeIdentifier);
-            return new DirectoryInfo(output);
-        }
-
-        public virtual DirectoryInfo GetNonSDKOutputDirectory(string configuration = "Debug")
-        {
-            configuration = configuration ?? string.Empty;
-
-            string output = Path.Combine(ProjectRootPath, "bin", configuration);
-            return new DirectoryInfo(output);
-        }
-
-        public DirectoryInfo GetBaseIntermediateDirectory()
-        {
-            string output = Path.Combine(ProjectRootPath, "obj");
-            return new DirectoryInfo(output);
+            return GetDirectoryRelativeToProjectRoot("obj", configuration, targetFramework, runtimeIdentifier);
         }
 
         protected virtual bool ExecuteWithRestoreByDefault => true;

@@ -5,7 +5,7 @@ using Microsoft.DotNet.Cli.Utils;
 using System.Linq;
 using System.IO;
 using FluentAssertions;
-using Microsoft.NET.TestFramework.Assertions;
+using Microsoft.NET.TestFramework.Utilities;
 using Xunit.Abstractions;
 
 namespace Microsoft.NET.TestFramework.Commands
@@ -68,10 +68,9 @@ namespace Microsoft.NET.TestFramework.Commands
             newArgs.AddRange(args);
 
             //  Override build target to write out DefineConstants value to a file in the output directory
-            Directory.CreateDirectory(GetBaseIntermediateDirectory().FullName);
-            string injectTargetPath = Path.Combine(
-                GetBaseIntermediateDirectory().FullName,
-                Path.GetFileName(ProjectFile) + ".WriteValuesToFile.g.targets");
+            DirectoryInfo objDir = GetBaseIntermediateDirectory();
+            if (!objDir.Exists) objDir.Create();
+            FileInfo injectTargetsFile = objDir.GetFile($"{Path.GetFileName(ProjectFile)}.WriteValuesToFile.g.targets");
 
             string linesAttribute;
             if (_valueType == ValueType.Property)
@@ -115,7 +114,7 @@ $@"<Project ToolsVersion=`14.0` xmlns=`http://schemas.microsoft.com/developer/ms
 </Project>";
             injectTargetContents = injectTargetContents.Replace('`', '"');
 
-            File.WriteAllText(injectTargetPath, injectTargetContents);
+            File.WriteAllText(injectTargetsFile.FullName, injectTargetContents);
 
             var outputDirectory = GetOutputDirectory(_targetFramework);
             outputDirectory.Create();
