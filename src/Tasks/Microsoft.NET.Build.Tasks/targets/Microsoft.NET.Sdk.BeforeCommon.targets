@@ -91,17 +91,6 @@ Copyright (c) .NET Foundation. All rights reserved.
     <GenerateDependencyFile Condition="'$(GenerateDependencyFile)' == ''">$(PreserveCompilationContext)</GenerateDependencyFile>
   </PropertyGroup>
 
-  <!-- Set PublishDir here, before Microsoft.Common.targets, to avoid a competing default there. -->
-  <PropertyGroup>
-    <PublishDirName Condition="'$(PublishDirName)' == ''">publish</PublishDirName>
-    <!-- ensure the PublishDir is RID specific-->
-    <PublishDir Condition="'$(PublishDir)' == '' and
-                           '$(AppendRuntimeIdentifierToOutputPath)' != 'true' and
-                           '$(RuntimeIdentifier)' != '' and
-                           '$(_UsingDefaultRuntimeIdentifier)' != 'true'">$(OutputPath)$(RuntimeIdentifier)\$(PublishDirName)\</PublishDir>
-    <PublishDir Condition="'$(PublishDir)' == ''">$(OutputPath)$(PublishDirName)\</PublishDir>
-  </PropertyGroup>
-
   <!--
     Sets RestoreAdditionalProjectSources or RestoreAdditionalProjectFallbackFolders to the SDK Offline Cache based
     on the TargetFramework.
