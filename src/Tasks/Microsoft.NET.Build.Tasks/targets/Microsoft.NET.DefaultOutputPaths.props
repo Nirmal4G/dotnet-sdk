@@ -1,0 +1,57 @@
+<!--
+***********************************************************************************************
+Microsoft.NET.DefaultOutputPaths.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (c) .NET Foundation. All rights reserved.
+***********************************************************************************************
+-->
+<Project>
+
+  <!--
+      The 'Microsoft.Common.props' now uses the same defaults as here.
+      Except here, it prepends the Common directory via 'BuildDir' property.
+
+      The 'BuildDir' enables a common output path across multiple projects in a solution.
+      It also replaces 'BaseIntermediateOutputPath' to initialize 'MSBuildProjectExtensionsPath'.
+      This frees 'BaseIntermediateOutputPath' to be changed freely in the project file body.
+  -->
+  <PropertyGroup>
+    <BuildDirName Condition="'$(BuildDirName)' == ''">build</BuildDirName>
+    <BuildDir Condition="'$(BuildDir)' == ''">$(BuildDirName)\</BuildDir>
+    <BuildDir Condition="!HasTrailingSlash('$(BuildDir)')">$(BuildDir)\</BuildDir>
+    <_InitialBuildDir>$(BuildDir)</_InitialBuildDir>
+  </PropertyGroup>
+
+  <!--
+      Prepare to import project extensions which usually come from packages.  Package management systems will create a file at:
+        '$(MSBuildProjectExtensionsPath)\$(MSBuildProjectFile).<SomethingUnique>.props'
+
+      Each package management system should use a unique moniker to avoid collisions.  It is a wild-card import so the package
+      management system can write out multiple files but the order of the import is alphabetic because MSBuild sorts the list.
+  -->
+  <PropertyGroup>
+    <MSBuildProjectExtensionsPath Condition="'$(MSBuildProjectExtensionsPath)' == ''">$(BuildDir)ext\</MSBuildProjectExtensionsPath>
+    <MSBuildProjectExtensionsPath Condition="!HasTrailingSlash('$(MSBuildProjectExtensionsPath)')">$(MSBuildProjectExtensionsPath)\</MSBuildProjectExtensionsPath>
+    <!--
+        Import paths that are relative default to be relative to the importing file.  However, since 'MSBuildProjectExtensionsPath'
+        defaults to 'BuildDir' we expect it to be relative to the project directory.  So if the path is relative
+        it needs to be made absolute based on the project directory.
+    -->
+    <MSBuildProjectExtensionsPath Condition="!$([System.IO.Path]::IsPathRooted('$(MSBuildProjectExtensionsPath)'))">$([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '$(MSBuildProjectExtensionsPath)'))</MSBuildProjectExtensionsPath>
+    <ImportProjectExtensionProps Condition="'$(ImportProjectExtensionProps)' == ''">true</ImportProjectExtensionProps>
+    <_InitialMSBuildProjectExtensionsPath Condition="'$(ImportProjectExtensionProps)' == 'true'">$(MSBuildProjectExtensionsPath)</_InitialMSBuildProjectExtensionsPath>
+  </PropertyGroup>
+
+  <!--
+      Indicate to other targets whether this file has been imported already.
+      Since, MSBuild does not like it, when duplicate imports happen.
+  -->
+  <PropertyGroup>
+    <_ImportedDefaultOutputPathsProps>true</_ImportedDefaultOutputPathsProps>
+  </PropertyGroup>
+
+</Project>
