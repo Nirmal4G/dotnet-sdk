@@ -19,15 +19,8 @@ Copyright (c) .NET Foundation. All rights reserved.
     <EnableDefaultNoneItems Condition=" '$(EnableDefaultNoneItems)' == '' ">true</EnableDefaultNoneItems>
   </PropertyGroup>
 
+  <!-- Set DefaultItemExcludes property for items that should be excluded by default from the None, Compile, etc items. -->
   <PropertyGroup>
-    <!-- Set DefaultItemExcludes property for items that should be excluded from the default Compile, etc items.
-         This is in the .targets because it needs to come after the final BaseOutputPath has been evaluated. -->
-
-    <!-- bin folder, by default -->
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseOutputPath)/**</DefaultItemExcludes>
-    <!-- obj folder, by default -->
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseIntermediateOutputPath)/**</DefaultItemExcludes>
-
     <!-- Various files that should generally always be ignored -->
     <DefaultItemExcludes>$(DefaultItemExcludes);**/*.user</DefaultItemExcludes>
     <DefaultItemExcludes>$(DefaultItemExcludes);**/*.*proj</DefaultItemExcludes>
