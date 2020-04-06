@@ -37,12 +37,15 @@ Copyright (c) .NET Foundation. All rights reserved.
   <!-- Set 'PublishDir' here, before 'Microsoft.Common.targets', to avoid a competing default there. -->
   <PropertyGroup>
     <PublishDirName Condition="'$(PublishDirName)' == ''">publish</PublishDirName>
-    <PublishDir Condition="'$(PublishDir)' == ''">$(OutputPath)$(PublishDirName)\</PublishDir>
+    <PublishDir Condition="'$(PublishDir)' == ''">$(PublishDirName)\</PublishDir>
     <PublishDir Condition="!HasTrailingSlash('$(PublishDir)')">$(PublishDir)\</PublishDir>
   </PropertyGroup>
 
   <!-- Set 'DefaultItemExcludes' property for items that should be excluded by default from the 'None', 'Compile', etc items. -->
   <PropertyGroup>
+    <!-- Exclude publish folder by default -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(PublishDir)**</DefaultItemExcludes>
+
     <!-- Exclude bin and obj folders by default -->
     <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseOutputPath)**</DefaultItemExcludes>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseIntermediateOutputPath)**</DefaultItemExcludes>

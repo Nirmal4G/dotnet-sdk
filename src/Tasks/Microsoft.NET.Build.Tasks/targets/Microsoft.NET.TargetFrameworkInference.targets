@@ -226,12 +226,13 @@ Copyright (c) .NET Foundation. All rights reserved.
   </PropertyGroup>
 
   <!--
-    Append 'TargetFramework' directory to output and intermediate paths
+    Append 'TargetFramework' directory to publish, output and intermediate paths
     to prevent bin clashes between targets.
   -->
   <PropertyGroup Condition="'$(AppendTargetFrameworkToOutputPath)' == 'true' and '$(TargetFramework)' != '' and '$(_UnsupportedTargetFrameworkError)' != 'true'">
     <IntermediateOutputPath>$(IntermediateOutputPath)$(TargetFramework)\</IntermediateOutputPath>
     <OutputPath>$(OutputPath)$(TargetFramework)\</OutputPath>
+    <PublishDir>$(PublishDir)$(TargetFramework)\</PublishDir>
   </PropertyGroup>
 
   <PropertyGroup>
