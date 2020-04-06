@@ -19,6 +19,7 @@ Copyright (c) .NET Foundation. All rights reserved.
     <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
     <PlatformName Condition="'$(PlatformName)' == ''">$(Platform)</PlatformName>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <ConfigurationName Condition="'$(ConfigurationName)' == ''">$(Configuration)</ConfigurationName>
 
     <BaseOutputPath Condition="'$(BaseOutputPath)' == ''">bin\</BaseOutputPath>
     <BaseOutputPath Condition="!HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
@@ -51,6 +52,7 @@ Copyright (c) .NET Foundation. All rights reserved.
   <!-- Set the NuGet output paths (for nuget pack target) here, before the 'TargetFramework' is appended -->
   <PropertyGroup>
     <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">$(OutputPath)</PackageOutputPath>
+    <NuspecOutputPath Condition="'$(NuspecOutputPath)' == ''">$(IntermediateOutputPath)</NuspecOutputPath>
   </PropertyGroup>
 
 </Project>
