@@ -191,11 +191,18 @@ Copyright (c) .NET Foundation. All rights reserved.
     <ShowPreviewMessage />
   </Target>
 
-  <!-- Projects which don't use Microsoft.NET.Sdk will typically define the OutputPath directly (usually in a
-       Configuration-specific PropertyGroup), so in that case we won't append to it by default. -->
+  <!--
+    Only append 'RuntimeIdentifier' to 'OutputPath' when multiple RIDs are specified.
+    Also append even if the 'RuntimeIdentifiers' contains only one RID. Since, the property
+    is meant to be plural and it uses multi-targeting to dispatch to inner builds.
+
+    Note: Projects which do not use 'Microsoft.NET.Sdk' will typically define the 'OutputPath' directly
+    (usually in a 'Configuration'-specific 'PropertyGroup'), so in that case we won't append to it by default.
+  -->
   <PropertyGroup Condition="'$(UsingNETSdkDefaults)' == 'true'">
     <!-- Projects can opt out of having the RID appended to the output path by setting this to false. -->
-    <AppendRuntimeIdentifierToOutputPath Condition="'$(AppendRuntimeIdentifierToOutputPath)' == ''">true</AppendRuntimeIdentifierToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath Condition="'$(AppendRuntimeIdentifierToOutputPath)' == ''">false</AppendRuntimeIdentifierToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath Condition="'$(RuntimeIdentifiers)' != ''">true</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
 
   <!--

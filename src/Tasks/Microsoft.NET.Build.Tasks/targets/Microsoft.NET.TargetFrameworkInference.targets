@@ -215,10 +215,17 @@ Copyright (c) .NET Foundation. All rights reserved.
                  FormatArguments="$(TargetPlatformVersion);$(TargetPlatformIdentifier);$(_ValidTargetPlatformVersions)" />
   </Target>
 
-  <!-- Projects which don't use Microsoft.NET.Sdk will typically define the OutputPath directly (usually in a
-       Configuration-specific PropertyGroup), so in that case we won't append to it by default. -->
+  <!--
+    Only append 'TargetFramework' to 'OutputPath' when multiple targets are specified.
+    Also append even if 'TargetFrameworks' contains only one. Since, the property
+    is meant to be plural and it uses multi-targeting to dispatch to inner builds.
+
+    Note: Projects which do not use 'Microsoft.NET.Sdk' will typically define the 'OutputPath' directly
+    (usually in a 'Configuration'-specific 'PropertyGroup'), so in that case we won't append to it by default.
+  -->
   <PropertyGroup Condition="'$(UsingNETSdkDefaults)' == 'true'">
-    <AppendTargetFrameworkToOutputPath Condition="'$(AppendTargetFrameworkToOutputPath)' == ''">true</AppendTargetFrameworkToOutputPath>
+    <AppendTargetFrameworkToOutputPath Condition="'$(AppendTargetFrameworkToOutputPath)' == ''">false</AppendTargetFrameworkToOutputPath>
+    <AppendTargetFrameworkToOutputPath Condition="'$(TargetFrameworks)' != ''">true</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
