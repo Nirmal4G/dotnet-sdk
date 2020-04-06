@@ -199,7 +199,7 @@ Copyright (c) .NET Foundation. All rights reserved.
   </PropertyGroup>
 
   <!--
-    Append 'RuntimeIdentifier' directory to output and intermediate paths
+    Append 'RuntimeIdentifier' directory to publish, output and intermediate paths
     to prevent bin clashes between targets.
 
     But do not append the implicit default runtime identifier for .NET Framework apps as that would
@@ -208,6 +208,7 @@ Copyright (c) .NET Foundation. All rights reserved.
   <PropertyGroup Condition="'$(AppendRuntimeIdentifierToOutputPath)' == 'true' and '$(RuntimeIdentifier)' != '' and '$(_UsingDefaultRuntimeIdentifier)' != 'true'">
     <IntermediateOutputPath>$(IntermediateOutputPath)$(RuntimeIdentifier)\</IntermediateOutputPath>
     <OutputPath>$(OutputPath)$(RuntimeIdentifier)\</OutputPath>
+    <PublishDir>$(PublishDir)$(RuntimeIdentifier)\</PublishDir>
   </PropertyGroup>
 
   <UsingTask TaskName="Microsoft.NET.Build.Tasks.GetDefaultPlatformTargetForNetFramework"
