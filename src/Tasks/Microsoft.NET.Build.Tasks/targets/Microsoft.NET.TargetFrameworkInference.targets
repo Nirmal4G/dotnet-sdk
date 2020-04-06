@@ -114,7 +114,7 @@ Copyright (c) .NET Foundation. All rights reserved.
   <UsingTask TaskName="AllowEmptyTelemetry" AssemblyFile="$(MicrosoftNETBuildTasksAssembly)" />
 
   <Target Name="_CollectTargetFrameworkForTelemetry" AfterTargets="_CheckForUnsupportedTargetFramework">
-    <AllowEmptyTelemetry EventName="targetframeworkeval" EventData="TargetFrameworkVersion=$([MSBuild]::Escape('$(TargetFrameworkMoniker)'));RuntimeIdentifier=$(RuntimeIdentifier);SelfContained=$(SelfContained);UseApphost=$(UseApphost);OutputType=$(OutputType)" />
+    <AllowEmptyTelemetry EventName="TargetFrameworkEval" EventData="TargetFrameworkMoniker=$([MSBuild]::Escape('$(TargetFrameworkMoniker)'));RuntimeIdentifier=$(RuntimeIdentifier);SelfContained=$(SelfContained);UseApphost=$(UseApphost);OutputType=$(OutputType)" />
   </Target>
 
   <!--
@@ -234,12 +234,12 @@ Copyright (c) .NET Foundation. All rights reserved.
   </PropertyGroup>
 
   <!--
-    Append $(TargetFramework) directory to output and intermediate paths to prevent bin clashes between
-    targets.
-   -->
+    Append 'TargetFramework' directory to output and intermediate paths
+    to prevent bin clashes between targets.
+  -->
   <PropertyGroup Condition="'$(AppendTargetFrameworkToOutputPath)' == 'true' and '$(TargetFramework)' != '' and '$(_UnsupportedTargetFrameworkError)' != 'true'">
-    <IntermediateOutputPath>$(IntermediateOutputPath)$(TargetFramework.ToLowerInvariant())\</IntermediateOutputPath>
-    <OutputPath>$(OutputPath)$(TargetFramework.ToLowerInvariant())\</OutputPath>
+    <IntermediateOutputPath>$(IntermediateOutputPath)$(TargetFramework)\</IntermediateOutputPath>
+    <OutputPath>$(OutputPath)$(TargetFramework)\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
