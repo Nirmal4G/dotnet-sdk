@@ -9,7 +9,7 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
 Copyright (c) .NET Foundation. All rights reserved.
 ***********************************************************************************************
 -->
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
 
   <!-- Using the same property as Microsoft.CSharp.targets and presumably Microsoft.VisualBasic.targets here -->
   <PropertyGroup Condition="'$(TargetFrameworks)' != '' and '$(TargetFramework)' == ''">
@@ -26,22 +26,31 @@ Copyright (c) .NET Foundation. All rights reserved.
     <LanguageTargets Condition="'$(MSBuildProjectExtension)' == '.vbproj'">$(MSBuildToolsPath)\Microsoft.VisualBasic.targets</LanguageTargets>
     <LanguageTargets Condition="'$(MSBuildProjectExtension)' == '.fsproj'">$(MSBuildThisFileDirectory)..\targets\Microsoft.NET.Sdk.FSharpTargetsShim.targets</LanguageTargets>
 
-    <!-- If LanguageTargets isn't otherwise set, then just import the common targets.  This should allow the restore target to run,
-         which could bring in NuGet packages that set the LanguageTargets to something else.  This means support for different
-         languages could either be supplied via an SDK or via a NuGet package. -->
+    <!--
+      If 'LanguageTargets' isn't otherwise set, then just import the common targets.  This should allow the restore target to run,
+      which could bring in NuGet packages that set the 'LanguageTargets' to something else.  This means support for different
+      languages could either be supplied via an SDK or via a NuGet package.
+    -->
     <LanguageTargets Condition="'$(LanguageTargets)' == ''">$(MSBuildToolsPath)\Microsoft.Common.targets</LanguageTargets>
   </PropertyGroup>
 
-  <!-- REMARK: Dont remove/rename, the LanguageTargets property is used by F# to hook inside the project's sdk
-               using Sdk attribute (from .NET Core Sdk 1.0.0-preview4) -->
+  <!--
+    REMARK: Do not rename, the 'LanguageTargets' property is used by F# to hook inside the project's sdk using the Sdk attribute
+  -->
   <Import Project="$(LanguageTargets)"/>
+
+  <!--
+    The 'BuildDir' replaces 'BaseIntermediateOutputPath' to initialize 'MSBuildProjectExtensionsPath'.
+    Thus we need to replace the initial 'BaseIntermediateOutputPath' check with initial 'BuildDir' check.
+   -->
+  <Import Project="$(MSBuildThisFileDirectory)..\targets\Microsoft.NET.InitialBuildDir.targets" Condition="'$(UseBuildDir)' == 'true'"/>
 
   <Import Project="$(MSBuildThisFileDirectory)..\targets\Microsoft.NET.Sdk.CrossTargeting.targets"
           Condition="'$(IsCrossTargetingBuild)' == 'true'"/>
   <Import Project="$(MSBuildThisFileDirectory)..\targets\Microsoft.NET.Sdk.targets"
           Condition="'$(IsCrossTargetingBuild)' != 'true'"/>
 
-  <!-- Import targets from NuGet.Build.Tasks.Pack package/Sdk -->
+  <!-- Import targets from 'NuGet.Build.Tasks.Pack' package -->
   <PropertyGroup Condition="'$(NuGetBuildTasksPackTargets)' == '' AND '$(ImportNuGetBuildTasksPackTargetsFromSdk)' != 'false'">
     <NuGetBuildTasksPackTargets Condition="'$(IsCrossTargetingBuild)' == 'true'">$(MSBuildThisFileDirectory)..\..\NuGet.Build.Tasks.Pack\buildCrossTargeting\NuGet.Build.Tasks.Pack.targets</NuGetBuildTasksPackTargets>
     <NuGetBuildTasksPackTargets Condition="'$(IsCrossTargetingBuild)' != 'true'">$(MSBuildThisFileDirectory)..\..\NuGet.Build.Tasks.Pack\build\NuGet.Build.Tasks.Pack.targets</NuGetBuildTasksPackTargets>

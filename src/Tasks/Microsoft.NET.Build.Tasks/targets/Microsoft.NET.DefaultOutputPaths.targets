@@ -13,6 +13,7 @@ Copyright (c) .NET Foundation. All rights reserved.
 
   <!--
     Apply the same default output paths as 'Microsoft.Common.targets'.
+    Except it prepends the root directory via the 'BuildDir' property.
     Since we're running before them, we need to adjust them and/or make decisions in terms of them.
   -->
   <PropertyGroup>
@@ -21,13 +22,17 @@ Copyright (c) .NET Foundation. All rights reserved.
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <ConfigurationName Condition="'$(ConfigurationName)' == ''">$(Configuration)</ConfigurationName>
 
-    <BaseOutputPath Condition="'$(BaseOutputPath)' == ''">bin\</BaseOutputPath>
+    <!-- Initialize 'BuildDir' when empty, to ensure build doesn't produce inconsistent paths -->
+    <BuildDir Condition="'$(BuildDir)' == ''">build\</BuildDir>
+    <BuildDir Condition="!HasTrailingSlash('$(BuildDir)')">$(BuildDir)\</BuildDir>
+
+    <BaseOutputPath Condition="'$(BaseOutputPath)' == ''">$(BuildDir)bin\</BaseOutputPath>
     <BaseOutputPath Condition="!HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
     <OutputPath Condition="'$(OutputPath)' == '' and '$(PlatformName)' == 'AnyCPU'">$(BaseOutputPath)$(Configuration)\</OutputPath>
     <OutputPath Condition="'$(OutputPath)' == '' and '$(PlatformName)' != 'AnyCPU'">$(BaseOutputPath)$(PlatformName)\$(Configuration)\</OutputPath>
     <OutputPath Condition="!HasTrailingSlash('$(OutputPath)')">$(OutputPath)\</OutputPath>
 
-    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)' == ''">obj\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)' == ''">$(BuildDir)obj\</BaseIntermediateOutputPath>
     <BaseIntermediateOutputPath Condition="!HasTrailingSlash('$(BaseIntermediateOutputPath)')">$(BaseIntermediateOutputPath)\</BaseIntermediateOutputPath>
     <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == '' and '$(PlatformName)' == 'AnyCPU'">$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
     <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == '' and '$(PlatformName)' != 'AnyCPU'">$(BaseIntermediateOutputPath)$(PlatformName)\$(Configuration)\</IntermediateOutputPath>
@@ -43,12 +48,13 @@ Copyright (c) .NET Foundation. All rights reserved.
 
   <!-- Set 'DefaultItemExcludes' property for items that should be excluded by default from the 'None', 'Compile', etc items. -->
   <PropertyGroup>
-    <!-- Exclude publish folder by default -->
+    <!-- Exclude build and publish folders by default -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(BuildDir)**</DefaultItemExcludes>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(PublishDir)**</DefaultItemExcludes>
 
-    <!-- Exclude bin and obj folders by default -->
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseOutputPath)**</DefaultItemExcludes>
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseIntermediateOutputPath)**</DefaultItemExcludes>
+    <!-- Exclude bin and obj folders by default but only when not under build folder -->
+    <DefaultItemExcludes Condition="!$(BaseOutputPath.StartsWith('$(BuildDir)'))">$(DefaultItemExcludes);$(BaseOutputPath)**</DefaultItemExcludes>
+    <DefaultItemExcludes Condition="!$(BaseIntermediateOutputPath.StartsWith('$(BuildDir)'))">$(DefaultItemExcludes);$(BaseIntermediateOutputPath)**</DefaultItemExcludes>
 
     <!--
       Exclude files from 'OutputPath' and 'IntermediateOutputPath' only if they are not under their Base* paths.

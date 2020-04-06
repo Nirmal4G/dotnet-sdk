@@ -1,0 +1,30 @@
+<Project>
+
+  <Target
+    Name="_CheckForBuildDirMismatch"
+    BeforeTargets="_CheckForInvalidConfigurationAndPlatform">
+
+    <PropertyGroup>
+      <EnableBuildDirMismatchWarning>$(EnableBaseIntermediateOutputPathMismatchWarning)</EnableBuildDirMismatchWarning>
+      <EnableBuildDirMismatchWarning Condition="'$(EnableBuildDirMismatchWarning)' == ''">true</EnableBuildDirMismatchWarning>
+      <EnableBaseIntermediateOutputPathMismatchWarning>false</EnableBaseIntermediateOutputPathMismatchWarning>
+    </PropertyGroup>
+
+    <PropertyGroup>
+      <WarningText_BuildDirMismatch>The value of the property "BuildDir" was modified after it was used by MSBuild which can lead to unexpected build results. Tools such as NuGet will write outputs to the path specified by the "MSBuildProjectExtensionsPath" instead. To override this property safely, you must do so before it is defined, there by using "Directory.Build.props".  For more information, please visit https://go.microsoft.com/fwlink/?linkid=869650</WarningText_BuildDirMismatch>
+    </PropertyGroup>
+
+    <!--
+      Log a warning if:
+        1. 'EnableBuildDirMismatchWarning' is 'true'
+        2. 'BuildDir' was set in the body of a project after its default value was set in 'Microsoft.Common.props'
+        3. 'BuildDir' is not the same as 'MSBuildProjectExtensionsPath'
+
+      Similar to the error above, there are cases when users set 'BuildDir' in the body of their project and things build but only by coincidence.
+      MSBuild does not know if 'BuildDir' changing would cause problems so tools like NuGet must set 'EnableBuildDirMismatchWarning' to 'true'.
+    -->
+    <Warning Code="MSB3539" Text="$(WarningText_BuildDirMismatch)"
+      Condition="'$(EnableBuildDirMismatchWarning)' == 'true' AND '$(_InitialBuildDir)' != '$(BuildDir)' AND '$(BuildDir)' != '$(MSBuildProjectExtensionsPath)'"/>
+  </Target>
+
+</Project>

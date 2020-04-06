@@ -1,0 +1,41 @@
+<!--
+***********************************************************************************************
+Microsoft.NET.DefaultOutputPaths.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (c) .NET Foundation. All rights reserved.
+***********************************************************************************************
+-->
+<Project>
+
+  <!--
+      The 'Microsoft.Common.props' now uses the same defaults as here.
+      Except here, it prepends the Common directory via 'BuildDir' property.
+
+      The 'BuildDir' enables a common output path across multiple projects in a solution.
+  -->
+  <PropertyGroup>
+    <BuildDirName Condition="'$(BuildDirName)' == ''">build</BuildDirName>
+    <BuildDir Condition="'$(BuildDir)' == ''">$(BuildDirName)\</BuildDir>
+    <BuildDir Condition="!HasTrailingSlash('$(BuildDir)')">$(BuildDir)\</BuildDir>
+    <_InitialBuildDir>$(BuildDir)</_InitialBuildDir>
+  </PropertyGroup>
+
+  <!-- Restore to Legacy output path behaviour -->
+  <PropertyGroup>
+    <BuildDir Condition="'$(UseBuildDir)' != 'true'" />
+  </PropertyGroup>
+
+  <!--
+      The 'BuildDir' also replaces 'BaseIntermediateOutputPath' to initialize 'MSBuildProjectExtensionsPath'.
+      We now have a separate folder 'ext' for Project Extensions that is different from the default 'obj'.
+      This frees 'BaseIntermediateOutputPath' to be changed freely in the project file body.
+  -->
+  <PropertyGroup>
+    <MSBuildProjectExtensionsPath Condition="'$(MSBuildProjectExtensionsPath)' == ''">$(BuildDir)ext\</MSBuildProjectExtensionsPath>
+  </PropertyGroup>
+
+</Project>
