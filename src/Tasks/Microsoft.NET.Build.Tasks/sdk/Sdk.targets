@@ -50,4 +50,5 @@ Copyright (c) .NET Foundation. All rights reserved.
 
   <Import Project="$(NuGetBuildTasksPackTargets)"
           Condition="Exists('$(NuGetBuildTasksPackTargets)') AND '$(ImportNuGetBuildTasksPackTargetsFromSdk)' == 'true'"/>
+
 </Project>
