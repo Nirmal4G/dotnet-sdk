@@ -9,24 +9,16 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
 Copyright (c) .NET Foundation. All rights reserved.
 ***********************************************************************************************
 -->
-<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
 
-   <!--
-    Apply the same default output paths as Microsoft.Common.targets now since we're running before them,
-    but need to adjust them and/or make decisions in terms of them.
-
-    Also note that common targets only set a default OutputPath if neither configuration nor
-    platform were set by the user. This was used to validate that a valid configuration is passed,
-    assuming the convention maintained by VS that every Configuration|Platform combination had
-    an explicit OutputPath. Since we now want to support leaner project files with less
-    duplication and more automatic defaults, we always set a default OutputPath and can no
-    longer depend on that convention for validation. Getting validation re-enabled with a
-    different mechanism is tracked by https://github.com/dotnet/sdk/issues/350
-   -->
+  <!--
+    Apply the same default output paths as 'Microsoft.Common.targets'.
+    Since we're running before them, we need to adjust them and/or make decisions in terms of them.
+  -->
   <PropertyGroup>
-    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
-    <Platform Condition="'$(Platform)'==''">AnyCPU</Platform>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
     <PlatformName Condition="'$(PlatformName)' == ''">$(Platform)</PlatformName>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
 
     <BaseOutputPath Condition="'$(BaseOutputPath)' == ''">bin\</BaseOutputPath>
     <BaseOutputPath Condition="!HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
@@ -36,12 +28,27 @@ Copyright (c) .NET Foundation. All rights reserved.
 
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)' == ''">obj\</BaseIntermediateOutputPath>
     <BaseIntermediateOutputPath Condition="!HasTrailingSlash('$(BaseIntermediateOutputPath)')">$(BaseIntermediateOutputPath)\</BaseIntermediateOutputPath>
-    <IntermediateOutputPath Condition=" $(IntermediateOutputPath) == '' and '$(PlatformName)' == 'AnyCPU' ">$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
-    <IntermediateOutputPath Condition=" $(IntermediateOutputPath) == '' and '$(PlatformName)' != 'AnyCPU' ">$(BaseIntermediateOutputPath)$(PlatformName)\$(Configuration)\</IntermediateOutputPath>
+    <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == '' and '$(PlatformName)' == 'AnyCPU'">$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
+    <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == '' and '$(PlatformName)' != 'AnyCPU'">$(BaseIntermediateOutputPath)$(PlatformName)\$(Configuration)\</IntermediateOutputPath>
     <IntermediateOutputPath Condition="!HasTrailingSlash('$(IntermediateOutputPath)')">$(IntermediateOutputPath)\</IntermediateOutputPath>
   </PropertyGroup>
 
-  <!-- Set the package output path (for nuget pack target) now, before the TargetFramework is appended -->
+  <!-- Set 'DefaultItemExcludes' property for items that should be excluded by default from the 'None', 'Compile', etc items. -->
+  <PropertyGroup>
+    <!-- Exclude bin and obj folders by default -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseOutputPath)**</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(BaseIntermediateOutputPath)**</DefaultItemExcludes>
+
+    <!--
+      Exclude files from 'OutputPath' and 'IntermediateOutputPath' only if they are not under their Base* paths.
+      Use their value before any value is appended later (example: 'TargetFramework', 'RuntimeIdentifier'),
+      so that if these values are specified in the project file, the specified value will be used for the exclude.
+    -->
+    <DefaultItemExcludes Condition="!$(OutputPath.StartsWith('$(BaseOutputPath)'))">$(DefaultItemExcludes);$(OutputPath)**</DefaultItemExcludes>
+    <DefaultItemExcludes Condition="!$(IntermediateOutputPath.StartsWith('$(BaseIntermediateOutputPath)'))">$(DefaultItemExcludes);$(IntermediateOutputPath)**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <!-- Set the NuGet output paths (for nuget pack target) here, before the 'TargetFramework' is appended -->
   <PropertyGroup>
     <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">$(OutputPath)</PackageOutputPath>
   </PropertyGroup>

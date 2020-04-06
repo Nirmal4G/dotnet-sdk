@@ -215,14 +215,6 @@ Copyright (c) .NET Foundation. All rights reserved.
                  FormatArguments="$(TargetPlatformVersion);$(TargetPlatformIdentifier);$(_ValidTargetPlatformVersions)" />
   </Target>
 
-  <!-- Exclude files from OutputPath and IntermediateOutputPath from default item globs.  Use the value
-       of these properties before the TargetFramework is appended, so that if these values are specified
-       in the project file, the specified value will be used for the exclude. -->
-  <PropertyGroup>
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(OutputPath)/**</DefaultItemExcludes>
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(IntermediateOutputPath)/**</DefaultItemExcludes>
-  </PropertyGroup>
-
   <!-- Projects which don't use Microsoft.NET.Sdk will typically define the OutputPath directly (usually in a
        Configuration-specific PropertyGroup), so in that case we won't append to it by default. -->
   <PropertyGroup Condition="'$(UsingNETSdkDefaults)' == 'true'">
