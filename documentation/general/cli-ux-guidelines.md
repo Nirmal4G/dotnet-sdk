@@ -1,12 +1,12 @@
 .NET Core Command-Line Tools UX Guidelines
 -------------------------------------------
 
-This document outlines the User Experience (UX) of the .NET Core command line tools (CLI). These guidelines are intended for anyone that wants to add a new command to the CLI. 
+This document outlines the User Experience (UX) of the .NET Core command line tools (CLI). These guidelines are intended for anyone that wants to add a new command to the CLI.
 
-The guidelines presented in this document have been adopted to provide a clear and concise 
-command line syntax that is easy to learn, remember and work with, and that has an added benefit 
-of being familiar to people who have used other command-line interfaces as well as existing 
-Visual Studio users. 
+The guidelines presented in this document have been adopted to provide a clear and concise
+command line syntax that is easy to learn, remember and work with, and that has an added benefit
+of being familiar to people who have used other command-line interfaces as well as existing
+Visual Studio users.
 
 ## Naming the commands
 
@@ -51,7 +51,7 @@ All the existing CRUD commands have this argument defined and it will be passed
 to the sub-command as part of the overall options. The sub-command is expected
 to consider this optional argument.
 
-## Options 
+## Options
 CLI follows the [GNU convention](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html) for options’ format, which is based on the POSIX
 standard. The summary is:
 
@@ -123,7 +123,7 @@ Help messages are automatically generated based on the arguments, options and
 command name. No other work should be required here apart from setting up the
 above mentioned and their descriptions.
 
-## Output 
+## Output
 For commands that are invoking MSBuild, the output will be controlled by MSBuild
 itself.
 
@@ -131,8 +131,8 @@ In case of a long running operation, the command needs to provide a feedback
 mechanism to the user to help the user reason about whether the command has
 crashed or is just waiting for I/O. The feedback mechanism guidelines are below:
 
-1. Feedback should not require fonts with special glyphs for display. 
-2. Pure text is acceptable (e.g. `Running background process...`) as a feedback mechanism. 
+1. Feedback should not require fonts with special glyphs for display.
+2. Pure text is acceptable (e.g. `Running background process...`) as a feedback mechanism.
 3. Spinners that conform to rule \#1 above are also acceptable.
 
 

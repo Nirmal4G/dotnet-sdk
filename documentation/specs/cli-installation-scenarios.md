@@ -1,4 +1,4 @@
-Obtaining .NET CLI 
+Obtaining .NET CLI
 ==================
 
 ## Contents
@@ -24,17 +24,17 @@ Obtaining .NET CLI
   * [NuGet Packages](#nuget-packages)
 * [Acquiring through other products](#acquiring-through-other-products)
   * [IDEs and editors](#ides-and-editors)
-  
+
 
 ## Overview
-This document/spec outlines the CLI install experience. This covers the technologies being used for install, the principles that are driving the installation experience, the ways users are coming to the installs and what each of the installs contains, in terms of stability and similar. 
+This document/spec outlines the CLI install experience. This covers the technologies being used for install, the principles that are driving the installation experience, the ways users are coming to the installs and what each of the installs contains, in terms of stability and similar.
 
 ## General principles
 
 - Upgrades using the native installers Just Work(tm)
 - All user facing materials point to the getting started page
 - Defaults are stable bits; users need extra effort to install Future builds
-- Only HTTPS links are allowed in any online property 
+- Only HTTPS links are allowed in any online property
 - Provide native installers for each supported platform
 - Provide automation-ready installers for each target platform
 
@@ -42,7 +42,7 @@ This document/spec outlines the CLI install experience. This covers the technolo
 Overall, there are two significant installable components:
 
 1. The .NET Core SDK
-2. Shared runtime redistributable 
+2. Shared runtime redistributable
 
 The .NET Core SDK contains the following items:
 
@@ -59,23 +59,23 @@ Each of the components listed in the previous section will have an installer/pac
 | redist    	| muxer      	|
 | muxer     	| -          	|
 
-The installation process will depend on the platform and the way of the install. For those installers that don't have automatic dependency resolution (Windows installer, OS X PKG) the installers will chain the installers of the components they depend on. DEB, RPM and similar will declare proper dependencies and the package manager will do the Right Thing(tm) by default. 
+The installation process will depend on the platform and the way of the install. For those installers that don't have automatic dependency resolution (Windows installer, OS X PKG) the installers will chain the installers of the components they depend on. DEB, RPM and similar will declare proper dependencies and the package manager will do the Right Thing(tm) by default.
 
-From the table, we can see that if you install the SDK using `apt-get` for instance, you will get also a redist and a muxer. They will be separate packages, but will be declared as dependencies (similar for `yum`). Similar for the redist package. 
+From the table, we can see that if you install the SDK using `apt-get` for instance, you will get also a redist and a muxer. They will be separate packages, but will be declared as dependencies (similar for `yum`). Similar for the redist package.
 
-The muxer is slightly a special case. Though there will be an installer, as mentioned in the previous section, it is an implementation detail. That means that acquiring the muxer should be done through either the SDK or the shared runtime installers. The only situation where this rule would not be true is if there was a major servicing event (e.g. a security update); in that case, the users would use the installer for the muxer directly, as we would rev its version accordingly. 
+The muxer is slightly a special case. Though there will be an installer, as mentioned in the previous section, it is an implementation detail. That means that acquiring the muxer should be done through either the SDK or the shared runtime installers. The only situation where this rule would not be true is if there was a major servicing event (e.g. a security update); in that case, the users would use the installer for the muxer directly, as we would rev its version accordingly.
 
 The script installers are slightly different as they operate on zips/tarballs. The zip/tarball for the SDK will contain the entire set of things needed to be put on the disk.
 
 ## Removal process
-Removing the bits from the machine **must** follow the order outlined above in installation. If the SDK is installed, it needs to be removed first and then the Redist and only then the muxer. Similar for the Redist.  
+Removing the bits from the machine **must** follow the order outlined above in installation. If the SDK is installed, it needs to be removed first and then the Redist and only then the muxer. Similar for the Redist.
 
-## Upgrading the CLI 
+## Upgrading the CLI
 The semantics of installing the CLI will be side-by-side by default. This means that each new version will get installed besides any existing versions on disk. The [layout section](#layout-on-disk) covers how that will look like on disk.
 
-Since this is the case, there is no special "upgrade". When the user needs a new version, the user just installs the new version using any of the installers specified in this document. The installer will just drop a new version at the predefined location. 
+Since this is the case, there is no special "upgrade". When the user needs a new version, the user just installs the new version using any of the installers specified in this document. The installer will just drop a new version at the predefined location.
 
-This, however, does have one specific constraint: **newer versions must be installed in the same location the previous version was in**. This constraint is due to the fact that the "muxer" uses convention to figure out how to find the actual driver that the user requested. 
+This, however, does have one specific constraint: **newer versions must be installed in the same location the previous version was in**. This constraint is due to the fact that the "muxer" uses convention to figure out how to find the actual driver that the user requested.
 
 ## Layout on disk
 ```
@@ -97,7 +97,7 @@ This, however, does have one specific constraint: **newer versions must be insta
 ```
 
 ## Native dependencies
-.NET Core CLI is built on top of CoreFX and CoreCLR and as such its' dependencies set is defined by the platform that those two combine. Whether or not those dependencies will be installed depends on the installer being used. The table below lists out the installers and whether or not they bring in dependencies. 
+.NET Core CLI is built on top of CoreFX and CoreCLR and as such its' dependencies set is defined by the platform that those two combine. Whether or not those dependencies will be installed depends on the installer being used. The table below lists out the installers and whether or not they bring in dependencies.
 
 | Installer  	| Dependencies Y/N                   |
 |------------	|----------------------------------- |
@@ -108,10 +108,10 @@ This, however, does have one specific constraint: **newer versions must be insta
 
 `*` PKG cannot specify and automatically install native dependencies
 
-A list of dependencies can be found on [dependency list](TBD). 
+A list of dependencies can be found on [dependency list](TBD).
 
 ## Channels
-Channels represent a way for users who are getting the CLI to reason about the stability and quality of the bits they are getting. This is one more way for the user to be fully aware of the state the bits that are being installed are in and to set proper expectations on first use. 
+Channels represent a way for users who are getting the CLI to reason about the stability and quality of the bits they are getting. This is one more way for the user to be fully aware of the state the bits that are being installed are in and to set proper expectations on first use.
 
 | Channel         	| Description                                                                                                                                                                                                                                                       	|
 |------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -127,15 +127,15 @@ There are multiple ways that we will funnel users towards the installers for the
 3. Package repositories for platforms (`apt-get`, `brew` etc.)
 4. IDEs and editors that integrate with CLI (e.g. Visual Studio, VS Code, Sublime etc.)
 
-Out of the above, the first two funnels are under the control of the CLI team so we will go into slightly more details. The rest of the funnels will use a prescribed way to get to the bits and will have guidance on what bits to use.  
+Out of the above, the first two funnels are under the control of the CLI team so we will go into slightly more details. The rest of the funnels will use a prescribed way to get to the bits and will have guidance on what bits to use.
 
 ### Getting Started page
-The page can be found on https://aka.ms/dotnetcoregs. This is the main curated first-run funnel for the dotnet CLI. The intent of the page is to help users test out the CLI quickly and become familiar with what the platform offers. This should be the most stable and curated experience we can offer. 
+The page can be found on https://aka.ms/dotnetcoregs. This is the main curated first-run funnel for the dotnet CLI. The intent of the page is to help users test out the CLI quickly and become familiar with what the platform offers. This should be the most stable and curated experience we can offer.
 
-The Getting Started page should only point users to curated install experiences that can contain only stable or LKG bits. 
+The Getting Started page should only point users to curated install experiences that can contain only stable or LKG bits.
 
-The below table shows other pertinent information for installs on the "Getting started" page. 
- 
+The below table shows other pertinent information for installs on the "Getting started" page.
+
 | Property              	| Description                                                  	 |
 |-----------------------	|--------------------------------------------------------------- |
 | Debian feed           	| Development                                                  	 |
@@ -144,9 +144,9 @@ The below table shows other pertinent information for installs on the "Getting s
 
 
 ### Repo landing page
-The repo landing page can be found on: [Repo landing page](../../README.md). Download links on the landing page should be decreased in importance. First thing for "you want to get started" section should link to the getting started page on the marketing site. The Repo Landing Page should be used primarily by contributors to the CLI. There should be a separate page that has instructions on how to install both the latest stable as well as latest development with proper warnings around it. The separate page is to really avoid the situation from people accidentally installing unstable bits (since search engines can drop them in the repo first). 
+The repo landing page can be found on: [Repo landing page](../../README.md). Download links on the landing page should be decreased in importance. First thing for "you want to get started" section should link to the getting started page on the marketing site. The Repo Landing Page should be used primarily by contributors to the CLI. There should be a separate page that has instructions on how to install both the latest stable as well as latest development with proper warnings around it. The separate page is to really avoid the situation from people accidentally installing unstable bits (since search engines can drop them in the repo first).
 
-The source branches and other items are actually branch specific for the repo landing page. As the user switches branches, the links and badges on the page will change to reflect the builds from that branch.  
+The source branches and other items are actually branch specific for the repo landing page. As the user switches branches, the links and badges on the page will change to reflect the builds from that branch.
 
 ## Acquisition modes
 There are multiple acquisition modes that the CLI will have:
@@ -156,12 +156,12 @@ There are multiple acquisition modes that the CLI will have:
 3. NuGet packages (for use in other people's commands/code)
 4. Docker
 
-Let's dig into some details. 
+Let's dig into some details.
 
 ### Native installers
 These installation experiences are the primary way new users are getting the bits. The primary way to get information about this mode of installation is the [Getting Started page](#getting-started-page). The native installers are considered to be stable by default; this does not imply lack of bugs, but it does imply predictable behavior. They are generated from the stable branches and are never used to get the Future bits.
 
-There are three main components that will be installed  
+There are three main components that will be installed
 
 The native installers are:
 
@@ -178,12 +178,12 @@ The native installers are:
 ### Installation script
 This approach is a shell one-liner that downloads an installation script and runs it. The installation script will download the latest zip/tarball (depending on the script used) and will unpack it to a given location. After that, the script will print out what needs to be set for the entire CLI to work (env variables, $PATH modification etc.).
 
-This install covers the following main scenario: 
+This install covers the following main scenario:
 
 * Local installation on a dev machine
 * Acquiring tools on a CI build server
 
-  
+
 The features the script needs to support/have are:
 * Support for specifying the channel
 * Support for specifying the version
@@ -270,24 +270,24 @@ OSX/Linux:
 curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin <additional installation-script args>
 ```
 
-### Docker 
-[Docker](https://docs.docker.com/) has become a pretty good way to use developer tools, from trying them out in an interactive image use to using it for deployment. We have Docker images on DockerHub already. 
+### Docker
+[Docker](https://docs.docker.com/) has become a pretty good way to use developer tools, from trying them out in an interactive image use to using it for deployment. We have Docker images on DockerHub already.
 
-Docker images should always be updated as we make new releases. We should have Docker images of stable releases, built from the release branches. 
+Docker images should always be updated as we make new releases. We should have Docker images of stable releases, built from the release branches.
 
 ### NuGet packages
-NuGet packages of the CLI bits that make sense are published to relevant feeds. The developer who wishes to use these needs to specify a version. The actual "installation" here is restoring the package as a dependency for a certain project (i.e. `ProjectServer` or similar). 
+NuGet packages of the CLI bits that make sense are published to relevant feeds. The developer who wishes to use these needs to specify a version. The actual "installation" here is restoring the package as a dependency for a certain project (i.e. `ProjectServer` or similar).
 
 ## Acquiring through other products
 
 ### IDEs and editors
-Anything that goes into the higher-level tools should always use a stable build of CLI coming frol release branches as required. 
+Anything that goes into the higher-level tools should always use a stable build of CLI coming frol release branches as required.
 
-If there exist any mechanism that notifies users of updates of the CLI, it should ideally point users to the Getting Started page to acquire the installers, or, if that is deemed too heavy-handed, it should point people to the last stable release. If there is a need of the URL to be "baked in" to the higher-level tool, that URL should be an aka.ms URL because it needs to be stable on that end.  
+If there exist any mechanism that notifies users of updates of the CLI, it should ideally point users to the Getting Started page to acquire the installers, or, if that is deemed too heavy-handed, it should point people to the last stable release. If there is a need of the URL to be "baked in" to the higher-level tool, that URL should be an aka.ms URL because it needs to be stable on that end.
 
-Cross-platform IDEs/editors will work in similar way as above. The notification should also point people to the Getting Started page. The reason is simple: it is the one page where users can pick and choose their installation experience. 
+Cross-platform IDEs/editors will work in similar way as above. The notification should also point people to the Getting Started page. The reason is simple: it is the one page where users can pick and choose their installation experience.
 
-### Visual Studio 
+### Visual Studio
 Visual Studio will not be shipping CLI in-box. However, it will use CLI when installed. The install will be tied into other installs like WET and similar. The URL that is baked in VS should be an aka.ms URL or other stable URL/location.
 
 # Detecting dotnet/cli installation

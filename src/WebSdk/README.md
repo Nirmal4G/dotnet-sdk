@@ -100,7 +100,7 @@ Using dotnet (with a profile)
 ```
 dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackage>
 ```
- 
+
 Sample Folder Profile:
 ---------------------
 ```xml
@@ -113,7 +113,7 @@ Sample Folder Profile:
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <publishUrl>bin\Release\PublishOutput</publishUrl>
     <DeleteExistingFiles>False</DeleteExistingFiles>
-  </PropertyGroup>  
+  </PropertyGroup>
 </Project>
 ```
 
@@ -203,7 +203,7 @@ Sample to skip specific folders and files during Web Deploy Publish:
       <ObjectName>dirPath</ObjectName>
       <AbsolutePath>wwwroot</AbsolutePath>
     </MsDeploySkipRules>
-	
+
     <MsDeploySkipRules Include="CustomSkipFolder2">
       <ObjectName>dirPath</ObjectName>
       <AbsolutePath>wwwroot\\Content$</AbsolutePath>
@@ -214,7 +214,7 @@ Sample to skip specific folders and files during Web Deploy Publish:
       <ObjectName>filePath</ObjectName>
       <AbsolutePath>Views\\Home\\About.cshtml</AbsolutePath>
     </MsDeploySkipRules>
-    
+
      <MsDeploySkipRules Include="CustomSkipFile2">
       <ObjectName>filePath</ObjectName>
       <AbsolutePath>Views\\Home\\About2.cshtml</AbsolutePath>
@@ -224,11 +224,11 @@ Sample to skip specific folders and files during Web Deploy Publish:
 
 Sample to Add Pre-Publish and Post-Publish extensibility:
 
-```xml  
+```xml
   <Target Name="CustomActionsBeforePublish" BeforeTargets="BeforePublish">
     <Message Text="Actions BeforePublish" Importance="high" />
   </Target>
-  
+
   <Target Name="CustomActionsAfterPublish" AfterTargets="AfterPublish">
     <Message Text="Actions AfterPublish" Importance="high" />
   </Target>

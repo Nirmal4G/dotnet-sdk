@@ -17,7 +17,7 @@ The team is feature complete to the plan above. The transition to msbuild is don
 Until we are ready to call the `preview3+` CLI ready for prime-time we find ourselves in a world where it is interesting to work on csproj, project.json, or both. How can we make that work?
 
 ## How do I keep working with project.json?
-Developers who are waiting for the new CLI to ship will continue using the `preview2` CLI. As long as they don't install any `preview3` or later bits on their machine they will be able to continue using Visual Studio 2015 preview tooling and maintain their existing developer experience. 
+Developers who are waiting for the new CLI to ship will continue using the `preview2` CLI. As long as they don't install any `preview3` or later bits on their machine they will be able to continue using Visual Studio 2015 preview tooling and maintain their existing developer experience.
 
 The `preview3` CLI does not offer any benefits for developers that want to keep using `project.json` for the time being.
 
@@ -59,5 +59,4 @@ When `preview2` shipped the Visual Studio new project templates included both a 
 
 We included this file by default as a future-proofing tactic. When the CLI launches it looks for this file in the current directory, or the nearest parent directory, and tries to find a matching version of itself. If an exact match is found then it is used. Otherwise, `dotnet.exe` picks the latest installed CLI. When there is no exact match AND preview3 is installed then we get into trouble because preview3 cannot reason about project.json files.
 
-When working with `preview2` and `preview3` on the same machine we need to be sure that `preview2` projects have a global.json present and that the `version` property is set to an installed preview2 version. This will typically be `1.0.0-preview2-003121` or `1.0.0-preview2-003131`. You can check what is installed by looking in `%PROGRAM FILES%\dotnet\sdk` and checking the folder names. 
-
+When working with `preview2` and `preview3` on the same machine we need to be sure that `preview2` projects have a global.json present and that the `version` property is set to an installed preview2 version. This will typically be `1.0.0-preview2-003121` or `1.0.0-preview2-003131`. You can check what is installed by looking in `%PROGRAM FILES%\dotnet\sdk` and checking the folder names.

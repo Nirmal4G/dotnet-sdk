@@ -24,4 +24,3 @@ Documents Index
 
 - [CLI installation scenarios](specs/cli-installation-scenarios.md)
 - [Runtime configuration file specification](specs/runtime-configuration-file.md)
-

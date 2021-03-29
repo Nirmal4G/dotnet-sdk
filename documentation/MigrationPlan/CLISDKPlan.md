@@ -4,7 +4,7 @@ Given the list from the main migration status page:
 3.	Engineering dependency flow
 4.	Internal builds from dnceng
 
-CLI 
+CLI
 2.	Beginning Nov. (Under way)
 3.	Mid Nov.
 4.	Eng Nov.

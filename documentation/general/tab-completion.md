@@ -1,6 +1,6 @@
 # .NET CLI Tab Completion
 
-In version 2.0 of the .NET Core CLI, we have added support for providing suggestions when you press `tab`. While it's not yet enabled by default, you can try it out in PowerShell, bash, or zsh by following the instructions below. 
+In version 2.0 of the .NET Core CLI, we have added support for providing suggestions when you press `tab`. While it's not yet enabled by default, you can try it out in PowerShell, bash, or zsh by following the instructions below.
 
 Here are some examples of what it provides:
 
@@ -8,7 +8,7 @@ Input                                | becomes                                  
 :------------------------------------|:----------------------------------------------------------------------------|:--------------------------------
 `dotnet a⇥`                          | `dotnet add`                                                                 | `add` is the first subcommand, alphabetically.
 `dotnet add p⇥`                      | `dotnet add --help`                                                          | it matches substrings and `--help` comes first alphabetically.
-`dotnet add p⇥⇥`                    | `dotnet add package`                                                          | pressing tab a second time brings up the next suggestion.      
+`dotnet add p⇥⇥`                    | `dotnet add package`                                                          | pressing tab a second time brings up the next suggestion.
 `dotnet add package Microsoft⇥`      | `dotnet add package Microsoft.ApplicationInsights.Web`                      | results are returned alphabetically.
 `dotnet remove reference ⇥`          | `dotnet remove reference ..\..\src\OmniSharp.DotNet\OmniSharp.DotNet.csproj` | it is project file aware.
 
@@ -46,16 +46,16 @@ To enable tab completion in PowerShell, edit your PowerShell profile:
 notepad $PROFILE
 ```
 
-Add the contents of [register-completions.ps1](https://github.com/dotnet/cli/blob/master/scripts/register-completions.ps1) to this file and save. 
+Add the contents of [register-completions.ps1](https://github.com/dotnet/cli/blob/master/scripts/register-completions.ps1) to this file and save.
 
 ### bash
 
 To enable tab completion in bash, edit your `.bashrc` file to add the contents of [register-completions.bash](https://github.com/dotnet/cli/blob/master/scripts/register-completions.bash).
 
-### zsh 
+### zsh
 
 To enable tab completion in zsh, edit your `.zshrc` file to add the contents of [register-completions.zsh](https://github.com/dotnet/cli/blob/master/scripts/register-completions.zsh).
 
 ## How it works
 
-Each of these scripts provides a hook for completions for its respective shell. The logic that determines which suggestions to provide is in the CLI itself, configured using [our new parser](https://github.com/dotnet/CliCommandLineParser). You can see a code example [here](https://github.com/dotnet/cli/blob/master/src/dotnet/commands/dotnet-add/dotnet-add-package/AddPackageParser.cs). 
+Each of these scripts provides a hook for completions for its respective shell. The logic that determines which suggestions to provide is in the CLI itself, configured using [our new parser](https://github.com/dotnet/CliCommandLineParser). You can see a code example [here](https://github.com/dotnet/cli/blob/master/src/dotnet/commands/dotnet-add/dotnet-add-package/AddPackageParser.cs).
