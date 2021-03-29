@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -186,7 +186,7 @@ The specified directory will be created if it does not exist.</value>
     <value>
 
 RunSettings arguments:
-  Arguments to pass as RunSettings configurations. Arguments are specified as '[name]=[value]' pairs after "-- " (note the space after --). 
+  Arguments to pass as RunSettings configurations. Arguments are specified as '[name]=[value]' pairs after "-- " (note the space after --).
   Use a space to separate multiple '[name]=[value]' pairs.
   See https://aka.ms/vstest-runsettings-arguments for more information on RunSettings arguments.
   Example: dotnet test -- MSTest.DeploymentEnabled=false MSTest.MapInconclusiveToFailed=True</value>
@@ -199,15 +199,15 @@ RunSettings arguments:
                                         More info here: https://aka.ms/vstest-collect</value>
   </data>
   <data name="CmdBlameDescription" xml:space="preserve">
-    <value>Runs the tests in blame mode. This option is helpful in isolating problematic tests that cause the test host to crash or hang. 
+    <value>Runs the tests in blame mode. This option is helpful in isolating problematic tests that cause the test host to crash or hang.
 When a crash is detected, it creates an sequence file in TestResults/guid/guid_Sequence.xml that captures the order of tests that were run before the crash.
 Based on the additional settings, hang dump or crash dump can also be collected.
-Example: 
-  Timeout the test run when test takes more than the default timeout of 1 hour, and collect crash dump when the test host exits unexpectedly. 
+Example:
+  Timeout the test run when test takes more than the default timeout of 1 hour, and collect crash dump when the test host exits unexpectedly.
   (Crash dumps require additional setup, see below.)
   dotnet test --blame-hang --blame-crash
-Example: 
-  Timeout the test run when a test takes more than 20 minutes and collect hang dump. 
+Example:
+  Timeout the test run when a test takes more than 20 minutes and collect hang dump.
   dotnet test --blame-hang-timeout 20min
 </value>
   </data>
@@ -230,10 +230,10 @@ Example:
     <value>Enables collecting crash dump on expected as well as unexpected testhost exit.</value>
   </data>
   <data name="CmdBlameCrashDescription" xml:space="preserve">
-    <value>Runs the tests in blame mode and enables collecting crash dump when testhost exits unexpectedly. 
+    <value>Runs the tests in blame mode and enables collecting crash dump when testhost exits unexpectedly.
 This option is currently only supported on Windows, and requires procdump.exe and procdump64.exe to be available in PATH.
-Or PROCDUMP_PATH environment variable to be set, and point to a directory that contains procdump.exe and procdump64.exe. 
-The tools can be downloaded here: https://docs.microsoft.com/sysinternals/downloads/procdump 
+Or PROCDUMP_PATH environment variable to be set, and point to a directory that contains procdump.exe and procdump64.exe.
+The tools can be downloaded here: https://docs.microsoft.com/sysinternals/downloads/procdump
 Implies --blame.</value>
   </data>
   <data name="CmdBlameCrashDumpTypeDescription" xml:space="preserve">
@@ -246,7 +246,7 @@ Implies --blame.</value>
     <value>The type of crash dump to be collected. When None, is used then test host is terminated on timeout, but no dump is collected. Implies --blame-hang.</value>
   </data>
   <data name="CmdBlameHangTimeoutDescription" xml:space="preserve">
-    <value>Per-test timeout, after which hang dump is triggered and the testhost process is terminated. 
+    <value>Per-test timeout, after which hang dump is triggered and the testhost process is terminated.
 The timeout value is specified in the following format: 1.5h / 90m / 5400s / 5400000ms. When no unit is used (e.g. 5400000), the value is assumed to be in milliseconds.
 When used together with data driven tests, the timeout behavior depends on the test adapter used. For xUnit and NUnit the timeout is renewed after every test case,
 For MSTest, the timeout is used for all testcases.
