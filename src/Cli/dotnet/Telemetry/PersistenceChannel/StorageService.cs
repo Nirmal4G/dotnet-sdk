@@ -123,7 +123,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
                 {
                     try
                     {
-                        // if a file was peeked before, skip it (wait until it is disposed).  
+                        // if a file was peeked before, skip it (wait until it is disposed).
                         if (PeekedTransmissions.ContainsKey(file) == false &&
                             _deletedFilesQueue.Contains(file) == false)
                         {
@@ -161,7 +161,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
                     return;
                 }
 
-                // Initial storage size calculation. 
+                // Initial storage size calculation.
                 CalculateSize();
 
                 long fileSize = GetSize(item.FileName);
@@ -169,7 +169,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
 
                 _deletedFilesQueue.Enqueue(item.FileName);
 
-                // calculate size                
+                // calculate size
                 Interlocked.Add(ref _storageSize, -fileSize);
                 Interlocked.Decrement(ref _storageCountFiles);
             }
@@ -188,12 +188,12 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
                     return;
                 }
 
-                // Initial storage size calculation. 
+                // Initial storage size calculation.
                 CalculateSize();
 
                 if ((ulong)_storageSize >= CapacityInBytes || _storageCountFiles >= MaxFiles)
                 {
-                    // if max storage capacity has reached, drop the transmission (but log every 100 lost transmissions). 
+                    // if max storage capacity has reached, drop the transmission (but log every 100 lost transmissions).
                     if (_transmissionsDropped++ % 100 == 0)
                     {
                         PersistenceChannelDebugLog.WriteLine("Total transmissions dropped: " + _transmissionsDropped);
@@ -212,7 +212,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
                 // Saves transmission to the temp file
                 await SaveTransmissionToFileAsync(transmission, tempFileName).ConfigureAwait(false);
 
-                // Now that the file is written increase storage size. 
+                // Now that the file is written increase storage size.
                 long temporaryFileSize = GetSize(tempFileName);
                 Interlocked.Add(ref _storageSize, temporaryFileSize);
 

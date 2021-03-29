@@ -12,7 +12,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests
         [Fact]
         public void GenerateDefaultAppSettingsJsonFile_CreatesCorrectDefaultFile()
         {
-            // Act 
+            // Act
             string resultFile = AppSettingsTransform.GenerateDefaultAppSettingsJsonFile();
 
             // Assert
@@ -36,7 +36,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests
 
             string appsettingsFile = AppSettingsTransform.GenerateDefaultAppSettingsJsonFile();
 
-            // Act 
+            // Act
             AppSettingsTransform.UpdateDestinationConnectionStringEntries(appsettingsFile, taskItemArray);
 
             // Assert
@@ -64,7 +64,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests
             string appsettingsFile = AppSettingsTransform.GenerateDefaultAppSettingsJsonFile();
             File.WriteAllText(appsettingsFile, "{}");
 
-            // Act 
+            // Act
             bool succeed = AppSettingsTransform.UpdateDestinationConnectionStringEntries(appsettingsFile, taskItemArray);
 
             // Assert
@@ -130,7 +130,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests
             var appsettingsFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             File.WriteAllText(appsettingsFile, "{}");
 
-            // Act 
+            // Act
             AppSettingsTransform.UpdateDestinationConnectionStringEntries(appsettingsFile, taskItemArray);
 
             // Assert

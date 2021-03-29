@@ -56,7 +56,7 @@ namespace Microsoft.NET.Publish.Tests
 
             var testProject = CreateTestProjectForR2RTesting(
                 targetFramework,
-                projectName, 
+                projectName,
                 "ClassLib");
 
             testProject.AdditionalProperties["PublishReadyToRun"] = "True";
@@ -68,7 +68,7 @@ namespace Microsoft.NET.Publish.Tests
             publishCommand.Execute().Should().Pass();
 
             DirectoryInfo publishDirectory = publishCommand.GetOutputDirectory(
-                targetFramework, 
+                targetFramework,
                 "Debug",
                 testProject.RuntimeIdentifier);
 

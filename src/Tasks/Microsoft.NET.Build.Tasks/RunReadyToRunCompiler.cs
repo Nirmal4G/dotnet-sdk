@@ -201,7 +201,7 @@ namespace Microsoft.NET.Build.Tasks
                     result.AppendLine(Crossgen2ExtraCommandLineArgs);
                 }
 
-                // Note: do not add double quotes around the input assembly, even if the file path contains spaces. The command line 
+                // Note: do not add double quotes around the input assembly, even if the file path contains spaces. The command line
                 // parsing logic will append this string to the working directory if it's a relative path, so any double quotes will result in errors.
                 foreach (var reference in ImplementationAssemblyReferences)
                 {
@@ -216,7 +216,7 @@ namespace Microsoft.NET.Build.Tasks
                 {
                     result.AppendLine(Crossgen2ExtraCommandLineArgs);
                 }
-                // Note: do not add double quotes around the input assembly, even if the file path contains spaces. The command line 
+                // Note: do not add double quotes around the input assembly, even if the file path contains spaces. The command line
                 // parsing logic will append this string to the working directory if it's a relative path, so any double quotes will result in errors.
                 result.AppendLine($"{_inputAssembly}");
             }
@@ -226,7 +226,7 @@ namespace Microsoft.NET.Build.Tasks
 
         protected override int ExecuteTool(string pathToTool, string responseFileCommands, string commandLineCommands)
         {
-            // Ensure output sub-directories exists - Crossgen does not create directories for output files. Any relative path used with the 
+            // Ensure output sub-directories exists - Crossgen does not create directories for output files. Any relative path used with the
             // '/out' parameter has to have an existing directory.
             Directory.CreateDirectory(Path.GetDirectoryName(_outputR2RImage));
 

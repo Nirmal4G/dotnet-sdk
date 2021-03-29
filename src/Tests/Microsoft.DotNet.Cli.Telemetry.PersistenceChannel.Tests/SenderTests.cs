@@ -51,7 +51,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
                     }
                 });
 
-            // Act 
+            // Act
             Sender.SendLoop();
             _deleteCount.Should().Be(0,
                 "delete is not expected to be called on 503, request is expected to be send forever.");
@@ -82,7 +82,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
             TimeSpan intervalOnSixIteration = TimeSpan.Zero;
             Sender.OnSend = interval => intervalOnSixIteration = interval;
 
-            // Act 
+            // Act
             Sender.SendLoop();
 
             intervalOnSixIteration.TotalSeconds.Should().Be(5);
@@ -124,7 +124,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
                     }
                 });
 
-            // Act 
+            // Act
             Sender.SendLoop();
 
             _deleteCount.Should().Be(0,

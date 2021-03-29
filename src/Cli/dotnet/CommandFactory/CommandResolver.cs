@@ -54,4 +54,3 @@ namespace Microsoft.DotNet.CommandFactory
         }
     }
 }
-

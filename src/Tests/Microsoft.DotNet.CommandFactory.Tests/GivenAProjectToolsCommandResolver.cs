@@ -401,7 +401,7 @@ namespace Microsoft.DotNet.Tests
         private string UseNuGetConfigWithFallbackFolder(TestAsset testInstance, string fallbackFolder, string testPackagesSource)
         {
             var nugetConfig = Path.Combine(testInstance.Path, "NuGet.Config");
-            
+
             File.WriteAllText(
                 nugetConfig,
                 $@"<?xml version=""1.0"" encoding=""utf-8""?>

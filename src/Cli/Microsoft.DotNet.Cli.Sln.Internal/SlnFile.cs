@@ -406,8 +406,8 @@ namespace Microsoft.DotNet.Cli.Sln.Internal
         {
             get
             {
-                return (_properties == null || _properties.Count == 0) && 
-                    (_nestedPropertySets == null || _nestedPropertySets.All(t => t.IsEmpty)) && 
+                return (_properties == null || _properties.Count == 0) &&
+                    (_nestedPropertySets == null || _nestedPropertySets.All(t => t.IsEmpty)) &&
                     (_sectionLines == null || _sectionLines.Count == 0);
             }
         }
@@ -505,7 +505,7 @@ namespace Microsoft.DotNet.Cli.Sln.Internal
                 return SlnSectionType.PostProcess;
             }
             throw new InvalidSolutionFormatException(
-                curLineNum, 
+                curLineNum,
                 String.Format(LocalizableStrings.InvalidSectionTypeError, s));
         }
 
@@ -1191,4 +1191,3 @@ namespace Microsoft.DotNet.Cli.Sln.Internal
         PostProcess
     }
 }
-

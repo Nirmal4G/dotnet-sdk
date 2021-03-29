@@ -147,7 +147,7 @@ namespace Microsoft.NET.Build.Tasks
         }
 
         #region Interop
-        
+
         [ComImport]
         [Guid("E5CB7A31-7512-11d2-89CE-0080C792E5D8")]
         [TypeLibType(TypeLibTypeFlags.FCanCreate)]
@@ -171,7 +171,7 @@ namespace Microsoft.NET.Build.Tasks
             [return: MarshalAs(UnmanagedType.Interface)]
             object OpenScopeOnMemory([In] IntPtr pData, [In] UInt32 cbData, [In] UInt32 dwOpenFlags, [In] ref Guid riid);
         }
-        
+
         [ComImport]
         [Guid("EE62470B-E94B-424e-9B7C-2F00C9249F93")]
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -189,7 +189,7 @@ namespace Microsoft.NET.Build.Tasks
             void GetAssemblyFromScope(out UInt32 mdAsm);
             void FindExportedTypeByName();
             void FindManifestResourceByName();
-            // PreserveSig because this method is an exception that 
+            // PreserveSig because this method is an exception that
             // actually returns void, not HRESULT.
             [PreserveSig]
             void CloseEnum([In] IntPtr phEnum);

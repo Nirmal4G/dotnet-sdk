@@ -113,7 +113,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         protected VSMSDeployObject _dest;
         protected VSMSDeployObject _src;
         protected IVSMSDeployHost _host;
-        
+
         protected /*VSMSDeploySyncOption*/ dynamic _option;
         protected bool _isCancelOperation = false;
         protected string _cancelMessage;
@@ -140,7 +140,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         public bool IsCancelOperation
         {
             get { return _isCancelOperation; }
-            set { 
+            set {
                 _isCancelOperation = value;
                 if (!_isCancelOperation)
                     CancelMessage = null; // reset error age
@@ -152,7 +152,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             get { return _cancelMessage; }
             set { _cancelMessage = value; }
         }
-        
+
         /// <summary>
         /// called by the msdeploy to cancel the operation
         /// </summary>
@@ -242,10 +242,10 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
             _host.PopulateOptions(option);
 
-            // you can reuse traceEventHandler if you know the function signuture is the same 
+            // you can reuse traceEventHandler if you know the function signuture is the same
             System.Delegate traceEventHandler = DynamicAssembly.AddEventDeferHandler(
-                _src.BaseOptions, 
-                "Trace", 
+                _src.BaseOptions,
+                "Trace",
                 new DynamicAssembly.EventHandlerDynamicDelegate(TraceEventHandlerDynamic));
             DynamicAssembly.AddEventHandler(_dest.BaseOptions, "Trace", traceEventHandler);
 
@@ -260,7 +260,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
             _src.ResetBaseOptions();
             _dest.ResetBaseOptions();
-            
+
         }
 
         /// <summary>
@@ -340,9 +340,9 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             : base(msg, keyword, senderName)
         {
         }
-        
+
         Collections.Specialized.HybridDictionary m_hybridDictionary = new System.Collections.Specialized.HybridDictionary(10);
-#region IDictionary Members 
+#region IDictionary Members
         // Delegate everything to m_hybridDictionary
 
         public void Add(object key, object value)
@@ -445,7 +445,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         }
 
 
-        // Utility function to log all public instance property to CustomerBuildEventArgs 
+        // Utility function to log all public instance property to CustomerBuildEventArgs
         private static void AddAllPropertiesToCustomBuildWithPropertyEventArgs(CustomBuildWithPropertiesEventArgs cbpEventArg,System.Object obj)
         {
 #if NET472
@@ -575,7 +575,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         }
 
         /// <summary>
-        /// Wait foreve if we are in the command line 
+        /// Wait foreve if we are in the command line
         /// </summary>
         protected override void WaitForDone() { }
 
@@ -612,7 +612,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         string _enableLink;
         private string _disableSkipDirective;
         private string _enableSkipDirective;
-        
+
         bool _result = false;
         bool _whatIf = false;
         string _deploymentTraceLevel;
@@ -630,7 +630,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         private Framework.ITaskItem[] m_declareParameterItems = null;
         private Framework.ITaskItem[] m_importDeclareParametersItems = null;
         private Framework.ITaskItem[] m_simpleSetParamterItems = null;
-        private Framework.ITaskItem[] m_importSetParametersItems = null; 
+        private Framework.ITaskItem[] m_importSetParametersItems = null;
         private Framework.ITaskItem[] m_setParamterItems = null;
 
         private BaseMSDeployDriver m_msdeployDriver = null;
@@ -823,7 +823,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         private void SetupPublishRelatedProperties(ref VSMSDeployObject dest)
         {
 #if NET472
-            if (AllowUntrustedCertificate) 
+            if (AllowUntrustedCertificate)
             {
                 System.Net.ServicePointManager.ServerCertificateValidationCallback
                          += new System.Net.Security.RemoteCertificateValidationCallback(AllowUntrustedCertCallback);
@@ -898,7 +898,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
             SetupPublishRelatedProperties(ref dest);
 
-            // change to use when we have MSDeploy implement the dispose method 
+            // change to use when we have MSDeploy implement the dispose method
             BaseMSDeployDriver driver = BaseMSDeployDriver.CreateBaseMSDeployDriver(src, dest, this);
             m_msdeployDriver = driver;
             try
@@ -1002,7 +1002,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                 destVsMsDeployobject.BaseOptions.TraceLevel = deploymentTraceEventLevel;
             }
 
-            Utility.AddSetParametersFilesVsMsDeployObject(srcVsMsDeployobject, ImportSetParametersItems); 
+            Utility.AddSetParametersFilesVsMsDeployObject(srcVsMsDeployobject, ImportSetParametersItems);
             Utility.AddSimpleSetParametersVsMsDeployObject(srcVsMsDeployobject, SimpleSetParameterItems, OptimisticParameterDefaultValue);
             Utility.AddSetParametersVsMsDeployObject(srcVsMsDeployobject, SetParameterItems, OptimisticParameterDefaultValue);
 
@@ -1060,7 +1060,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             MsDeploy.Utility.AddReplaceRulesToOptions(option.Rules, ReplaceRuleItems);
             MsDeploy.Utility.AddImportDeclareParametersFileOptions(option, ImportDeclareParametersItems);
             MsDeploy.Utility.AddDeclareParametersToOptions(option, DeclareParameterItems, OptimisticParameterDefaultValue);
-            
+
             option.UseChecksum = UseChecksum;
             option.DoNotDelete = SkipExtraFilesOnServer;
             if(EnableMSDeployBackup == false)
@@ -1097,11 +1097,11 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                 if (m_msdeployDriver != null)
                 {
                     //[TODO: in RTM make sure we can cancel even "m_msdeployDriver" can be null, meaning vsmsdeploy task has not initialized the deploy driver to sync]
-                    //Currently there is a very slim chance that users can't cancel it if the cancel action falls into this time frame 
+                    //Currently there is a very slim chance that users can't cancel it if the cancel action falls into this time frame
                     m_msdeployDriver.IsCancelOperation = true;
                 }
             }
-            catch (System.Exception ex) 
+            catch (System.Exception ex)
             {
                 Diagnostics.Debug.Fail("Exception on ICancelableTask.Cancel being invoked:" + ex.Message);
             }

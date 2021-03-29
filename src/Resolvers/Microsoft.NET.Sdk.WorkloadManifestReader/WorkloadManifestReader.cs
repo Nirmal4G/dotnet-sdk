@@ -183,7 +183,7 @@ namespace Microsoft.NET.Sdk.WorkloadManifestReader
             {
                 return true;
             }
-            
+
             var depth = reader.CurrentDepth;
             do
             {

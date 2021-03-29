@@ -16,6 +16,6 @@ namespace TestLibrary
 
 #if NETCOREAPP
         static void Main() => SayHi();
-#endif		
+#endif
     }
 }

@@ -24,9 +24,9 @@ namespace TestApp
             {
                 Console.WriteLine($"Native code failed ({GetCurrentAssemblyProcessorArchitecture()})");
             }
-#else      
+#else
             Console.WriteLine($"Native code was not used ({GetCurrentAssemblyProcessorArchitecture()})");
-#endif  
+#endif
         }
 
 #if USE_NATIVE_CODE

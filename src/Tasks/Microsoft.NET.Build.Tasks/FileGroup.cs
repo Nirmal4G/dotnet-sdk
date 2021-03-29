@@ -29,7 +29,7 @@ namespace Microsoft.NET.Build.Tasks
         private static readonly IDictionary<string, string> _emptyProperties = new Dictionary<string, string>();
 
         /// <summary>
-        /// Return Type metadata that should be applied to files in the target library group 
+        /// Return Type metadata that should be applied to files in the target library group
         /// </summary>
         public static string GetTypeMetadata(this FileGroup fileGroup)
         {
@@ -87,7 +87,7 @@ namespace Microsoft.NET.Build.Tasks
             }
         }
 
-        private static IEnumerable<PathAndPropertiesTuple> SelectPath<T>(IList<T> fileItemList) 
+        private static IEnumerable<PathAndPropertiesTuple> SelectPath<T>(IList<T> fileItemList)
             where T : LockFileItem
             => fileItemList.Select(c => Tuple.Create(c.Path, c.Properties));
     }

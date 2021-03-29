@@ -21,7 +21,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks
             }
 
             XElement rootElement = null;
-            
+
             // Find the first aspNetCore element. If it is null use the default logic. Else use the root containing the aspNetCore element.
             var firstAspNetCoreElement = webConfig.Root.Descendants(aspNetCoreElementName).FirstOrDefault();
             if (firstAspNetCoreElement == null)

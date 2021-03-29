@@ -12,7 +12,7 @@ namespace Microsoft.DotNet.Tests
         public static string CreateNonRunnableTestCommand(string directory, string filename, string extension=".dll")
         {
             Directory.CreateDirectory(directory);
-            
+
             var filePath = Path.Combine(directory, filename + extension);
 
             File.WriteAllText(filePath, "test command that does nothing.");

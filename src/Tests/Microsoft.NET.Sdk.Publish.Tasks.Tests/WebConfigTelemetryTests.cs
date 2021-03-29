@@ -20,7 +20,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests
             XDocument transformedWebConfig = WebConfigTransform.Transform(null, "test.exe", configureForAzure: false, useAppHost: true, extension: ".exe", aspNetCoreModuleName: null, aspNetCoreHostingModel:null, environmentName: null, projectFullPath: null);
             Assert.True(XNode.DeepEquals(WebConfigTransformTemplates.WebConfigTemplate, transformedWebConfig));
 
-            //Act 
+            //Act
             XDocument output= WebConfigTelemetry.AddTelemetry(transformedWebConfig, projectGuid, true, null, null);
 
             // Assert

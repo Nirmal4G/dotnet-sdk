@@ -61,8 +61,8 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
             // Act
             StorageTransmission firstPeekedTransmission;
 
-            // if item is not disposed,peek will not return it (regardless of the call to delete). 
-            // So for this test to actually test something, using 'using' is required.  
+            // if item is not disposed,peek will not return it (regardless of the call to delete).
+            // So for this test to actually test something, using 'using' is required.
             using (firstPeekedTransmission = storage.Peek())
             {
                 storage.Delete(firstPeekedTransmission);
@@ -70,7 +70,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
 
             StorageTransmission secondPeekedTransmission = storage.Peek();
 
-            // Asserts            
+            // Asserts
             firstPeekedTransmission.Should().NotBeNull();
             secondPeekedTransmission.Should().BeNull();
         }
@@ -88,7 +88,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
             StorageTransmission firstPeekedTransmission = storage.Peek();
             StorageTransmission secondPeekedTransmission = storage.Peek();
 
-            // Asserts            
+            // Asserts
             firstPeekedTransmission.Should().NotBeNull();
             secondPeekedTransmission.Should().BeNull();
         }
@@ -111,7 +111,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
 
             StorageTransmission secondPeekedTransmission = storage.Peek();
 
-            // Asserts            
+            // Asserts
             firstPeekedTransmission.Should().NotBeNull();
             secondPeekedTransmission.Should().NotBeNull();
         }
@@ -130,7 +130,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
             StorageTransmission firstPeekedTransmission = storage.Peek();
             StorageTransmission secondPeekedTransmission = storage.Peek();
 
-            // Asserts            
+            // Asserts
             firstPeekedTransmission.Should().NotBeNull();
             secondPeekedTransmission.Should().NotBeNull();
 
@@ -154,7 +154,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
             CreateTransmissionAndEnqueueIt(storage);
             CreateTransmissionAndEnqueueIt(storage);
 
-            // Asserts - Second Peek should be null 
+            // Asserts - Second Peek should be null
             storage.Peek().Should().NotBeNull();
             storage.Peek().Should().BeNull();
         }
@@ -172,7 +172,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel.Tests
             CreateTransmissionAndEnqueueIt(storage);
             CreateTransmissionAndEnqueueIt(storage);
 
-            // Asserts - Second Peek should be null 
+            // Asserts - Second Peek should be null
             storage.Peek().Should().NotBeNull();
             storage.Peek().Should().BeNull();
         }

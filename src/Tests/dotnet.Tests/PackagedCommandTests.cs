@@ -133,7 +133,7 @@ namespace Microsoft.DotNet.Tests
                 .Execute()
                 .Should()
                 .Pass();
-            
+
             var result = new DotnetCommand(Log)
                     .WithWorkingDirectory(testInstance.Path)
                     .Execute("portable-v1");
@@ -247,8 +247,8 @@ namespace Microsoft.DotNet.Tests
                 .Execute();
 
             result.StdErr.Should().Contain(string.Format(LocalizableStrings.NoExecutableFoundMatchingCommand, "dotnet-hello"));
-            
-            result.Should().Fail();        
+
+            result.Should().Fail();
         }
 
         private void SetGeneratedPackageName(FileInfo project, string packageName)

@@ -174,7 +174,7 @@ namespace Microsoft.DotNet.Tests.Commands.Tool
             _defaultToolUninstallLocalCommand.Execute();
 
             _fileSystem.File.ReadAllText(parentManifestFilePath).Should().Be(
-                _entryRemovedJsonContent, 
+                _entryRemovedJsonContent,
                 "First invoke remove the one in current dir, the second invoke remove the one in parent dir.");
         }
 

@@ -24,7 +24,7 @@ namespace Microsoft.DotNet.CommandFactory
         }
 
         /// <summary>
-        /// Create a command with the specified arg array. Args will be 
+        /// Create a command with the specified arg array. Args will be
         /// escaped properly to ensure that exactly the strings in this
         /// array will be present in the corresponding argument array
         /// in the command's process.

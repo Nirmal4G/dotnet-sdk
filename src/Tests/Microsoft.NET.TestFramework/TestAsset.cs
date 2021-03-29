@@ -78,7 +78,7 @@ namespace Microsoft.NET.TestFramework
             foreach (string srcFile in sourceFiles)
             {
                 string destFile = srcFile.Replace(_testAssetRoot, Path);
-                
+
                 if (System.IO.Path.GetFileName(srcFile).EndsWith("proj"))
                 {
                     _projectFiles.Add(destFile);
@@ -173,7 +173,7 @@ namespace Microsoft.NET.TestFramework
                 }
             }
             return this;
-            
+
         }
 
         public RestoreCommand GetRestoreCommand(ITestOutputHelper log, string relativePath = "")

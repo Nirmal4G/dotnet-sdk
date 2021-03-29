@@ -71,7 +71,7 @@ namespace Microsoft.NET.Build.Tasks
             //   3. Any other exception whatsoever is logged by its Message property
             //      alone, and an empty, non-null lock file is returned.
             //
-            // This wrapper will never return null or empty lock file and instead throw 
+            // This wrapper will never return null or empty lock file and instead throw
             // if the assets file is not found  or cannot be read for any other reason.
 
             LockFile lockFile;
@@ -94,7 +94,7 @@ namespace Microsoft.NET.Build.Tasks
             {
                 // Case 2
                 // NB: Cannot be moved to our own up-front File.Exists check or else there would be
-                // a race where we still need to handle null for delete between our check and 
+                // a race where we still need to handle null for delete between our check and
                 // NuGet's.
                 throw new BuildErrorException(Strings.AssetsFileNotFound, path);
             }

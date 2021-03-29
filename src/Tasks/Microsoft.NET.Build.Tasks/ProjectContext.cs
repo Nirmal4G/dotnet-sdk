@@ -67,7 +67,7 @@ namespace Microsoft.NET.Build.Tasks
             Debug.Assert(lockFileTarget != null);
             if (isFrameworkDependent)
             {
-                Debug.Assert(platformLibrary != null || 
+                Debug.Assert(platformLibrary != null ||
                     (runtimeFrameworks != null && runtimeFrameworks.Any()));
             }
 

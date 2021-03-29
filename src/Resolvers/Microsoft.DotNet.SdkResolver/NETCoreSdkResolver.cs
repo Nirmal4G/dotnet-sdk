@@ -142,7 +142,7 @@ namespace Microsoft.DotNet.DotNetSdkResolver
                     if (!File.Exists(minimumVersionFilePath))
                     {
                         // smallest version that had resolver support and also
-                        // greater than or equal to the version required by any 
+                        // greater than or equal to the version required by any
                         // .NET Core SDK that did not have this file.
                         return new Version(15, 3, 0);
                     }

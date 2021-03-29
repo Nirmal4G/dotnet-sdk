@@ -23,7 +23,7 @@ namespace Microsoft.NET.Build.Tasks
         /// while the SDK ships with 5.0.0.0 versions. This will fail to resolve SRM/SCI at runtime. We can add this
         /// hook to load whatever version is shipping with the SDK, which should always be higher than the HostModel
         /// reference.
-        /// 
+        ///
         /// DELETE THIS when/if HostModel is updated to have an SRM dependency that's coherent with .NET.
         /// </remarks>
         private static Assembly ResolverForBindingRedirects(object sender, ResolveEventArgs args)

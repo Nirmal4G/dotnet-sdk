@@ -41,7 +41,7 @@ namespace Microsoft.DotNet.Cli
                 // aka.ms target: https://docs.microsoft.com/dotnet/articles/core/tools/dotnet-build
                 DocLink = "https://aka.ms/dotnet-build"
             },
-            ["clean"] = new BuiltInCommandMetadata 
+            ["clean"] = new BuiltInCommandMetadata
             {
                 Command = CleanCommand.Run,
                 // aka.ms target: https://docs.microsoft.com/dotnet/articles/core/tools/dotnet-clean

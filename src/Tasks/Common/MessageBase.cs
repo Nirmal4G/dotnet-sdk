@@ -62,7 +62,7 @@ namespace Microsoft.NET.Build.Tasks
             {
                 message = FormattedText;
             }
-            
+
 
             LogMessage(message);
         }

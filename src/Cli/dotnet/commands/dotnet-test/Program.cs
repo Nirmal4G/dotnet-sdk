@@ -129,7 +129,7 @@ namespace Microsoft.DotNet.Tools.Test
         private static bool ContainsBuiltTestSources(string[] args)
         {
             foreach (var arg in args)
-            {               
+            {
                 if (!arg.StartsWith("-") &&
                     (arg.EndsWith("dll", StringComparison.OrdinalIgnoreCase) || arg.EndsWith("exe", StringComparison.OrdinalIgnoreCase)))
                 {

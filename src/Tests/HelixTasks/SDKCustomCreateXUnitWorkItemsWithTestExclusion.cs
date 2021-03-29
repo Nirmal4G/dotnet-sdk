@@ -27,7 +27,7 @@ namespace Microsoft.DotNet.SdkCustomHelix.Sdk
         public ITaskItem[] XUnitProjects { get; set; }
 
         /// <summary>
-        /// The path of a list of test projects partial name that cannot be run in Helix. 
+        /// The path of a list of test projects partial name that cannot be run in Helix.
         /// </summary>
         [Required]
         public string TestProjectExclusionListPath { get; set; }
@@ -72,7 +72,7 @@ namespace Microsoft.DotNet.SdkCustomHelix.Sdk
 
         /// <summary>
         /// The asynchronous execution method for this MSBuild task which verifies the integrity of required properties
-        /// and validates their formatting, specifically determining whether the provided xUnit project data have a 
+        /// and validates their formatting, specifically determining whether the provided xUnit project data have a
         /// one-to-one mapping. It then creates this mapping before asynchronously preparing the HelixWorkItem TaskItem
         /// objects via the PrepareWorkItem method.
         /// </summary>

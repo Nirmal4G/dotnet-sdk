@@ -36,7 +36,7 @@ namespace Microsoft.NET.Build.Tests
             testProject.AdditionalProperties.Add("PreserveCompilationContext", "true");
 
             if (withoutCopyingRefs)
-            { 
+            {
                 testProject.AdditionalProperties.Add("PreserveCompilationReferences", "false");
             }
 

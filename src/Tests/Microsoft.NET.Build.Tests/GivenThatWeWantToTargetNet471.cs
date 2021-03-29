@@ -146,7 +146,7 @@ namespace Microsoft.NET.Build.Tests
                 $"{testProject.Name}.exe",
                 $"{testProject.Name}.exe.config",
                 $"{testProject.Name}.pdb",
-                
+
                 // These two will be included because Netstandard1.x has a higher version of these two contracts than net4.7.1 which is why they will be added.
                 "System.Net.Http.dll",
                 "System.IO.Compression.dll",
@@ -281,7 +281,7 @@ namespace Microsoft.NET.Build.Tests
             }.Concat(net471Shims));
         }
 
-        
+
         [WindowsOnlyFact]
         public void Aliases_are_preserved_for_replaced_references()
         {

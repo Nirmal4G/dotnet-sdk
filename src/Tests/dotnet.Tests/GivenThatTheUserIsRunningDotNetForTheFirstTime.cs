@@ -80,7 +80,7 @@ namespace Microsoft.DotNet.Tests
 
         public void Dispose()
         {
-            
+
         }
     }
 

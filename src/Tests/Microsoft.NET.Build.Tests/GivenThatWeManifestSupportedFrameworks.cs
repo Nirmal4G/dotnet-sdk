@@ -37,9 +37,9 @@ namespace Microsoft.NET.Build.Tests
             string testDirectory = Path.Combine(asset.TestRoot, project.Name);
 
             var getMaximumVersion = new GetValuesCommand(
-                Log, 
-                testDirectory, 
-                project.TargetFrameworks, 
+                Log,
+                testDirectory,
+                project.TargetFrameworks,
                 targetFrameworkIdentifier.Substring(1) + "MaximumVersion",
                 GetValuesCommand.ValueType.Property);
 

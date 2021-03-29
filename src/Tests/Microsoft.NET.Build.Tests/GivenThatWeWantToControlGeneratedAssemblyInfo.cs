@@ -344,7 +344,7 @@ namespace Microsoft.NET.Build.Tests
                 return command;
             }
         }
-        
+
         [Fact]
         public void It_includes_internals_visible_to()
         {
@@ -382,7 +382,7 @@ namespace Microsoft.NET.Build.Tests
                     var ns = project.Root.Name.Namespace;
 
                     project.Root.Add(
-                        new XElement(ns + "PropertyGroup", 
+                        new XElement(ns + "PropertyGroup",
                             new XElement(ns + "GenerateInternalsVisibleToAttributes", "false")),
                         new XElement(ns + "ItemGroup",
                             new XElement(ns + "InternalsVisibleTo",
@@ -651,7 +651,7 @@ namespace Microsoft.NET.Build.Tests
             else
             {
                 AssemblyInfo.Get(assemblyPath).ContainsKey("AssemblyMetadataAttribute").Should().Be(false);
-            } 
+            }
         }
     }
 }

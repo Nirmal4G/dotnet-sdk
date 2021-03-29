@@ -111,7 +111,7 @@ EndGlobal
             using (new FileStream(filename, FileMode.CreateNew)) { }
             return filename;
         }
-        
+
 
         [Fact]
         public void WhenGivenAValidSlnFileItReadsAndVerifiesContents()
@@ -269,7 +269,7 @@ EndGlobal
             var attr = File.GetAttributes(tmpFile);
             attr = attr | FileAttributes.ReadOnly;
             File.SetAttributes(tmpFile, attr);
-        
+
             Action act = () => SlnFile.Read(tmpFile);
             act.ShouldNotThrow("Because readonly file is not being modified.");
         }

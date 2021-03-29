@@ -188,7 +188,7 @@ namespace ManifestReaderTests
             GetManifestContents(sdkDirectoryWorkloadManifestProvider)
                 .Should()
                 .BeEquivalentTo("AndroidContent1", "iOSContent", "TestContent2");
-         
+
         }
 
         [Fact]
@@ -197,7 +197,7 @@ namespace ManifestReaderTests
             Initialize();
 
             var additionalManifestDirectory = Path.Combine(_testDirectory, "AdditionalManifests");
-                
+
             var environmentMock = new EnvironmentMock();
             environmentMock.Add("DOTNETSDK_WORKLOAD_MANIFEST_ROOTS", additionalManifestDirectory);
 
@@ -211,7 +211,7 @@ namespace ManifestReaderTests
             GetManifestContents(sdkDirectoryWorkloadManifestProvider)
                 .Should()
                 .BeEquivalentTo("AndroidContent");
-         
+
         }
 
         private IEnumerable<string> GetManifestContents(SdkDirectoryWorkloadManifestProvider manifestProvider)

@@ -26,7 +26,7 @@ namespace Microsoft.NET.Build.Tests
             TestProject testProject = new TestProject()
             {
                 Name = "CopyPPToOutputTest",
-                IsExe = true, 
+                IsExe = true,
                 TargetFrameworks = "netcoreapp3.0"
             };
             testProject.PackageReferences.Add(packageReference);

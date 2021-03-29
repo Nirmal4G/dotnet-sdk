@@ -124,7 +124,7 @@ namespace Microsoft.NET.Build.Tests
                 .Should()
                 .Pass();
 
-            var outputDirectory = isSdk ? 
+            var outputDirectory = isSdk ?
                 buildCommand.GetOutputDirectory("net461") :
                 buildCommand.GetNonSDKOutputDirectory();
 
@@ -363,7 +363,7 @@ namespace Microsoft.NET.Build.Tests
                 .Execute()
                 .Should()
                 .Pass();
-            
+
             var outputDirectory = isSdk ?
                 buildCommand.GetOutputDirectory("net461") :
                 buildCommand.GetNonSDKOutputDirectory();

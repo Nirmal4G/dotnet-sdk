@@ -26,7 +26,7 @@ namespace Microsoft.NET.Build.Tests
             TestProject testProject = new TestProject()
             {
                 Name = "CustomTFMProject",
-                IsExe = true, 
+                IsExe = true,
                 TargetFrameworks = $"{ targetFramework }-{ runtimeIdentifier }"
             };
 

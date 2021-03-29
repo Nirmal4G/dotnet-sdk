@@ -19,7 +19,7 @@ namespace Microsoft.DotNet.DotNetSdkResolver
         public string GlobalJsonPath;
 
         /// <summary>
-        /// True if a global.json was found but there was no compatible SDK, so it was ignored. 
+        /// True if a global.json was found but there was no compatible SDK, so it was ignored.
         /// </summary>
         public bool FailedToResolveSDKSpecifiedInGlobalJson;
 

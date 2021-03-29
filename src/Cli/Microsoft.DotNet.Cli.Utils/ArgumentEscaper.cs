@@ -13,14 +13,14 @@ namespace Microsoft.DotNet.Cli.Utils
         /// <summary>
         /// Undo the processing which took place to create string[] args in Main,
         /// so that the next process will receive the same string[] args
-        /// 
+        ///
         /// See here for more info:
         /// http://blogs.msdn.com/b/twistylittlepassagesallalike/archive/2011/04/23/everyone-quotes-arguments-the-wrong-way.aspx
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
         public static string EscapeAndConcatenateArgArrayForProcessStart(IEnumerable<string> args)
-        { 
+        {
             var escaped = EscapeArgArray(args);
 #if NET35
             return string.Join(" ", escaped.ToArray());
@@ -32,7 +32,7 @@ namespace Microsoft.DotNet.Cli.Utils
         /// <summary>
         /// Undo the processing which took place to create string[] args in Main,
         /// so that the next process will receive the same string[] args
-        /// 
+        ///
         /// See here for more info:
         /// http://blogs.msdn.com/b/twistylittlepassagesallalike/archive/2011/04/23/everyone-quotes-arguments-the-wrong-way.aspx
         /// </summary>
@@ -51,7 +51,7 @@ namespace Microsoft.DotNet.Cli.Utils
         /// <summary>
         /// Undo the processing which took place to create string[] args in Main,
         /// so that the next process will receive the same string[] args
-        /// 
+        ///
         /// See here for more info:
         /// http://blogs.msdn.com/b/twistylittlepassagesallalike/archive/2011/04/23/everyone-quotes-arguments-the-wrong-way.aspx
         /// </summary>
@@ -71,9 +71,9 @@ namespace Microsoft.DotNet.Cli.Utils
 
         /// <summary>
         /// This prefixes every character with the '^' character to force cmd to
-        /// interpret the argument string literally. An alternative option would 
+        /// interpret the argument string literally. An alternative option would
         /// be to do this only for cmd metacharacters.
-        /// 
+        ///
         /// See here for more info:
         /// http://blogs.msdn.com/b/twistylittlepassagesallalike/archive/2011/04/23/everyone-quotes-arguments-the-wrong-way.aspx
         /// </summary>
@@ -142,20 +142,20 @@ namespace Microsoft.DotNet.Cli.Utils
                     sb.Append(arg[i]);
                 }
             }
-            
+
             if (needsQuotes) sb.Append("\"");
 
             return sb.ToString();
         }
 
         /// <summary>
-        /// Prepare as single argument to 
+        /// Prepare as single argument to
         /// roundtrip properly through cmd.
-        /// 
+        ///
         /// This prefixes every character with the '^' character to force cmd to
-        /// interpret the argument string literally. An alternative option would 
+        /// interpret the argument string literally. An alternative option would
         /// be to do this only for cmd metacharacters.
-        /// 
+        ///
         /// See here for more info:
         /// http://blogs.msdn.com/b/twistylittlepassagesallalike/archive/2011/04/23/everyone-quotes-arguments-the-wrong-way.aspx
         /// </summary>

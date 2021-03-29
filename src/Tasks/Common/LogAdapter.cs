@@ -50,7 +50,7 @@ namespace Microsoft.NET.Build.Tasks
                 case MessageLevel.LowImportance:
                     if (message.Code == null && message.File == null)
                     {
-                        // use shorter overload when there is no code and no file. Otherwise, msbuild 
+                        // use shorter overload when there is no code and no file. Otherwise, msbuild
                         // will display:
                         //
                         // <project file>(<line>,<colunmn>): message : <text>

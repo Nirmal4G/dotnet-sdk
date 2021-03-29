@@ -195,7 +195,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                             }
                             if (fIdentical)
                             {
-                                // same ParameterEntry, skip this item 
+                                // same ParameterEntry, skip this item
                                 continue;
                             }
                         }
@@ -221,7 +221,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                 }
             }
 
-            // Save the UTF8 and Indented 
+            // Save the UTF8 and Indented
             Utility.SaveDocument(document, outputFileName, System.Text.Encoding.UTF8);
         }
 
@@ -260,7 +260,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                 }
             }
 
-            // Save the UTF8 and Indented 
+            // Save the UTF8 and Indented
             Utility.SaveDocument(document, outputFileName, System.Text.Encoding.UTF8);
         }
 

@@ -190,7 +190,7 @@ namespace Microsoft.NET.Build.Tests
 
             getValuesCommand.GetValues()
                 .Should()
-                .BeEquivalentTo("10.0.18362.0");                
+                .BeEquivalentTo("10.0.18362.0");
         }
 
         [WindowsOnlyFact]
@@ -266,7 +266,7 @@ namespace Microsoft.NET.Build.Tests
 
             return expected;
         }
-  
+
         private static string SupportedOSPlatformAttribute(string supportedOSPlatform)
         {
             string expected = string.IsNullOrEmpty(supportedOSPlatform) ?

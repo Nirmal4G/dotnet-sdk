@@ -260,7 +260,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
                 runtimeFrameworks: null,
                 isSelfContained: false);
 
-            CompilationOptions compilationOptions = 
+            CompilationOptions compilationOptions =
                 useCompilationOptions ? CreateCompilationOptions() :
                 null;
 

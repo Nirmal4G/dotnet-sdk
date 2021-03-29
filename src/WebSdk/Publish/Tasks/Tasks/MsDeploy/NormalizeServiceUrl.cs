@@ -166,9 +166,9 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         {
             System.Text.StringBuilder url = new System.Text.StringBuilder("http://");
             int iSpot = 0;
-            // It needs to start with http:// 
+            // It needs to start with http://
             // It needs to then have the computer name
-            // It should then be "/MSDEPLOYAGENTSERVICE" 
+            // It should then be "/MSDEPLOYAGENTSERVICE"
             if (serviceUrl.StartsWith("http://", System.StringComparison.OrdinalIgnoreCase))
             {
                 iSpot = "http://".Length;

@@ -264,7 +264,7 @@ namespace Microsoft.NET.Build.Tests
                 TargetFrameworks = TFM,
                 IsExe = true,
             };
-            
+
             // enable generating apphost even on macOS
             testProject.AdditionalProperties.Add("UseApphost", "true");
 

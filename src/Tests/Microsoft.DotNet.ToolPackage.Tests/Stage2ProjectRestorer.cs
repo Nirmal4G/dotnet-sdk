@@ -14,9 +14,9 @@ using Microsoft.NET.TestFramework.Commands;
 namespace Microsoft.DotNet.Tools.Tool.Install
 {
     /// <summary>
-    /// Use stage 2 (the build result) to run restore instead of stage 0 (the last version of SDK) 
+    /// Use stage 2 (the build result) to run restore instead of stage 0 (the last version of SDK)
     /// to have more coverage
-    /// 
+    ///
     /// ProjectRestorer will stage0, so cannot be covered in tests. Try to hit the same code path of ProjectRestorer as possible.
     /// </summary>
     internal class Stage2ProjectRestorer : IProjectRestorer

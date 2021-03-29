@@ -81,7 +81,7 @@ namespace Microsoft.DotNet.CommandFactory
             {
                 return Enumerable.Empty<NuGetVersion>();
             }
-            
+
             var versionDirectories = Directory.EnumerateDirectories(toolBase);
 
             foreach (var versionDirectory in versionDirectories)

@@ -11,7 +11,7 @@ namespace Microsoft.NET.Build.Tasks
     class MSBuildUtilities
     {
         /// <summary>
-        /// Converts a string to a bool.  We consider "true/false", "on/off", and 
+        /// Converts a string to a bool.  We consider "true/false", "on/off", and
         /// "yes/no" to be valid boolean representations in the XML.
         /// Modified from its original version to not throw, but return a default value.
         /// </summary>

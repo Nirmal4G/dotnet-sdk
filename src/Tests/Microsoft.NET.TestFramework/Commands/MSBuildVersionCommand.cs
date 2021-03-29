@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 namespace Microsoft.NET.TestFramework.Commands
 {
     public class MSBuildVersionCommand : TestCommand
-    { 
+    {
         public MSBuildVersionCommand(ITestOutputHelper log) : base(log) {}
 
         protected override SdkCommandSpec CreateCommand(IEnumerable<string> args)

@@ -102,7 +102,7 @@ namespace dotnet.Tests.ToolSearchTests
             _reporter.Lines.Count.Should().Be(1);
             _reporter.Lines.Should().Contain(LocalizableStrings.NoResult);
         }
-        
+
         [Fact]
         public void WhenInputIsEmptyDetailIsTrueItShouldPrintNoResultMessage()
         {

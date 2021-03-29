@@ -7,8 +7,8 @@ namespace Microsoft.DotNet.Cli.Utils
 {
     internal static class ExceptionExtensions
     {
-        public static TException DisplayAsError<TException>(this TException exception)  
-        where TException : Exception 
+        public static TException DisplayAsError<TException>(this TException exception)
+        where TException : Exception
         {
              exception.Data.Add(CLI_User_Displayed_Exception, true);
              return exception;

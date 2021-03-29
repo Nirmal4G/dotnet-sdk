@@ -39,7 +39,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             get { return m_generateFileEvenIfEmpty; }
             set { m_generateFileEvenIfEmpty = value; }
         }
-        
+
         /// <summary>
         /// utility function to write the simple setParameter.xml file
         /// </summary>
@@ -77,7 +77,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                 }
             }
 
-            // Save the UTF8 and Indented 
+            // Save the UTF8 and Indented
             Utility.SaveDocument(document, outputFileName, System.Text.Encoding.UTF8);
         }
 
@@ -130,6 +130,6 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         }
     }
 
-    
+
 
 }

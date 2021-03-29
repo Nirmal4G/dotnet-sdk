@@ -29,7 +29,7 @@ namespace Microsoft.NET.ToolPack.Tests
 
         private string SetupNuGetPackage(bool multiTarget, [CallerMemberName] string callingMethod = "")
         {
-            
+
             TestAsset helloWorldAsset = _testAssetsManager
                 .CopyTestAsset("PortableTool", callingMethod + multiTarget)
                 .WithSource()

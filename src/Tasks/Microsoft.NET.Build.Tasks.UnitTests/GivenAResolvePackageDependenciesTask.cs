@@ -282,8 +282,8 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
         public void ItAssignsPackageDefinitionMetadata()
         {
             // project lib
-            string classLibPDefn = CreateProjectLibrary("ClassLibP/1.2.3", 
-                path: "../ClassLibP/project.json", 
+            string classLibPDefn = CreateProjectLibrary("ClassLibP/1.2.3",
+                path: "../ClassLibP/project.json",
                 msbuildProject: "../ClassLibP/ClassLibP.csproj");
 
             string lockFileContent = CreateLockFileSnippet(
@@ -382,7 +382,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
                 { "lib/file/R2.resources.dll",      "assembly" }, // resource
                 { "runtimes/osx/native/R3.dylib",   "assembly" }, // runtime target
                 { "System.Some.Lib",                "frameworkAssembly" },
-                { "contentFiles/any/images/C2.png", "content" }, 
+                { "contentFiles/any/images/C2.png", "content" },
             };
 
             string libBAllAssetsDefn = CreateLibrary("LibB/1.2.3", "package", expectedTypes.Keys.ToArray());
@@ -412,7 +412,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
                 fileDefns.First().GetMetadata(MetadataKeys.NuGetPackageId).Should().Be("LibB");
                 fileDefns.First().GetMetadata(MetadataKeys.NuGetPackageVersion).Should().Be("1.2.3");
                 fileDefns.First().GetMetadata(MetadataKeys.ResolvedPath)
-                    .Should().Be(Path.Combine(_packageRoot, "LibB", "1.2.3", "path", 
+                    .Should().Be(Path.Combine(_packageRoot, "LibB", "1.2.3", "path",
                         pair.Key.Replace('/', Path.DirectorySeparatorChar)));
             }
         }
@@ -424,10 +424,10 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
             {
                 { "lib/file/U1.dll",                null },
                 { "lib/file/C1.dll",                FileGroup.CompileTimeAssembly.ToString() },
-                { "lib/file/R1.dll",                FileGroup.RuntimeAssembly.ToString() }, 
-                { "lib/file/N1.dll",                FileGroup.NativeLibrary.ToString() }, 
-                { "lib/file/R2.resources.dll",      FileGroup.ResourceAssembly.ToString() }, 
-                { "runtimes/osx/native/R3.dylib",   FileGroup.RuntimeTarget.ToString() }, 
+                { "lib/file/R1.dll",                FileGroup.RuntimeAssembly.ToString() },
+                { "lib/file/N1.dll",                FileGroup.NativeLibrary.ToString() },
+                { "lib/file/R2.resources.dll",      FileGroup.ResourceAssembly.ToString() },
+                { "runtimes/osx/native/R3.dylib",   FileGroup.RuntimeTarget.ToString() },
                 { "System.Some.Lib",                FileGroup.FrameworkAssembly.ToString() },
                 { "contentFiles/any/images/C2.png", FileGroup.ContentFile.ToString() },
             };
@@ -490,13 +490,13 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
 
             IEnumerable<ITaskItem> fileDeps;
 
-            // Assert asset properties are raised as metadata            
+            // Assert asset properties are raised as metadata
             // Resource Assemblies
             fileDeps = task.FileDependencies
                 .Where(t => t.ItemSpec == "LibB/1.2.3/lib/file/R2.resources.dll");
             fileDeps.Count().Should().Be(1);
             fileDeps.First().GetMetadata("locale").Should().Be("de");
-            
+
             // Runtime Targets
             fileDeps = task.FileDependencies
                 .Where(t => t.ItemSpec == "LibB/1.2.3/runtimes/osx/native/R3.dylib");
@@ -558,7 +558,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
         {
             string projectLanguage = "VB";
 
-            string libCDefn = CreateLibrary("LibC/1.2.3", "package", 
+            string libCDefn = CreateLibrary("LibC/1.2.3", "package",
                 "lib/file/G.dll", "lib/file/H.dll", "lib/file/I.dll",
                 "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
                 "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
@@ -746,7 +746,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
 
             chiDeps.Count().Should().Be(2);
 
-            // Dep.Lib.Chi has version range [4.0.0, 5.0.0), but the version assigned 
+            // Dep.Lib.Chi has version range [4.0.0, 5.0.0), but the version assigned
             // is that of the library in the same target
 
             chiDeps.Where(t => t.GetMetadata(MetadataKeys.ParentTarget) == "netcoreapp1.0")
@@ -762,14 +762,14 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
         public void ItMarksTransitiveProjectReferences()
         {
             // --------------------------------------------------------------------------
-            // Given the following layout, only ProjC and ProjE are transitive references 
+            // Given the following layout, only ProjC and ProjE are transitive references
             // (ProjB and ProjD are direct references, and ProjF is declared private in ProjC):
             //
             //     TestProject (i.e. current project assets file)
-            //        -> ProjB 
+            //        -> ProjB
             //           -> ProjC
-            //              -> ProjD 
-            //              -> ProjE 
+            //              -> ProjD
+            //              -> ProjE
             //              -> ProjF (PrivateAssets=Compile)
             //        -> ProjD
             // --------------------------------------------------------------------------
@@ -805,7 +805,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
             string lockFileContent = CreateLockFileSnippet(
                 targets: new string[] { target },
                 libraries: libraries,
-                projectFileDependencyGroups: new string[] 
+                projectFileDependencyGroups: new string[]
                 {
                     CreateProjectFileDependencyGroup(".NETCoreApp,Version=v1.0", "ProjB", "ProjD")
                 }

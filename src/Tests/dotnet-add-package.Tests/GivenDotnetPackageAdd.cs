@@ -64,7 +64,7 @@ namespace Microsoft.DotNet.Cli.Package.Add.Tests
                 TargetFrameworks = targetFramework,
             };
 
-            var packages = inputVersions.Select(e => GetPackagePath(targetFramework, "A", e, identifier: expectedVersion + e +  inputVersions.GetHashCode().ToString())).ToArray(); 
+            var packages = inputVersions.Select(e => GetPackagePath(targetFramework, "A", e, identifier: expectedVersion + e +  inputVersions.GetHashCode().ToString())).ToArray();
 
             testProject.AdditionalProperties.Add("RestoreSources",
                                      "$(RestoreSources);" + string.Join(";", packages.Select(package => Path.GetDirectoryName(package))));
@@ -96,7 +96,7 @@ namespace Microsoft.DotNet.Cli.Package.Add.Tests
         }
 
         [Fact]
-        public void 
+        public void
             WhenValidProjectAndPackageArePassedItGetsAdded()
         {
             var testAsset = "TestAppSimple";
@@ -127,7 +127,7 @@ namespace Microsoft.DotNet.Cli.Package.Add.Tests
                 .WithSource()
                 .Path;
 
-            var packageDirectory = Path.Combine(projectDirectory, "local packages"); 
+            var packageDirectory = Path.Combine(projectDirectory, "local packages");
 
             var csproj = $"{projectDirectory + Path.DirectorySeparatorChar + testAsset}.csproj";
             var packageName = "Newtonsoft.Json";
@@ -265,4 +265,3 @@ namespace Microsoft.DotNet.Cli.Package.Add.Tests
         }
     }
 }
-

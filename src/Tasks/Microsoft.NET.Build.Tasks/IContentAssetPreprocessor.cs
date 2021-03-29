@@ -11,7 +11,7 @@ namespace Microsoft.NET.Build.Tasks
     internal interface IContentAssetPreprocessor
     {
         /// <summary>
-        /// Configure the preprocessor with a base outputDirectory and the tokens/value 
+        /// Configure the preprocessor with a base outputDirectory and the tokens/value
         /// pairs used during preprocessing
         /// </summary>
         void ConfigurePreprocessor(string outputDirectoryBase, Dictionary<string, string> preprocessorValues);

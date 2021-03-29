@@ -54,13 +54,13 @@ namespace Microsoft.NET.Build.Tasks
                 //   eg: System, v1.0.0.0 in global will not conflict with System, v2.0.0.0 in `private` alias
                 // We could model each alias scope and try to check for conflicts within that scope,
                 // but this is a ton of complexity for a fringe feature.
-                // Instead, we'll treat an alias as an indication that the developer has opted out of 
+                // Instead, we'll treat an alias as an indication that the developer has opted out of
                 // conflict resolution.
                 return null;
             }
 
             // We only handle references that have path information since we're only concerned
-            // with resolving conflicts between file references.  If conflicts exist between 
+            // with resolving conflicts between file references.  If conflicts exist between
             // named references that are found from AssemblySearchPaths we'll leave those to
             // RAR to handle or not as it sees fit.
             var sourcePath = GetSourcePath(item);
@@ -83,8 +83,8 @@ namespace Microsoft.NET.Build.Tasks
 
         public static string GetReferenceTargetPath(ITaskItem item)
         {
-            // Determine if the reference will be copied local.  
-            // We're only dealing with primary file references.  For these RAR will 
+            // Determine if the reference will be copied local.
+            // We're only dealing with primary file references.  For these RAR will
             // copy local if Private is true or unset.
 
             var isPrivate = MSBuildUtilities.ConvertStringToBool(item.GetMetadata(MetadataNames.Private), defaultValue: true);

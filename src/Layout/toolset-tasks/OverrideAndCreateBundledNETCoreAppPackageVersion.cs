@@ -19,7 +19,7 @@ namespace Microsoft.DotNet.Build.Tasks
     /// If there is a change depended on the latest runtime. Without override the runtime version in BundledNETCoreAppPackageVersion
     /// we would need to somehow get this change in without the test, and then insertion dotnet/installer
     /// and then update the stage 0 back.
-    /// 
+    ///
     /// Use a task to override since it was generated as a string literal replace anyway.
     /// And using C# can have better error when anything goes wrong.
     /// </summary>

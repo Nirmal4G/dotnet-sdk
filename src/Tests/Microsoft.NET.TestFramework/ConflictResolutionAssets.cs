@@ -11,7 +11,7 @@ namespace Microsoft.NET.TestFramework
         {
             get
             {
-                string netstandardDependenciesXml = @" 
+                string netstandardDependenciesXml = @"
     <group targetFramework="".NETStandard1.3"">
         <!--dependency id=""Microsoft.NETCore.Platforms"" version=""1.1.0"" /-->
         <dependency id=""Microsoft.Win32.Primitives"" version=""4.3.0"" />

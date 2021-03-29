@@ -36,7 +36,7 @@ namespace Microsoft.NET.Build.Tasks
                         if (item.GetMetadata(MetadataKeys.IsImplicitlyDefined).Equals("true", StringComparison.OrdinalIgnoreCase))
                         {
                             itemsToRemove.Add(item);
-  
+
                             Log.LogWarning(Strings.PackageReferenceOverrideWarning, item.ItemSpec, MoreInformationLink);
                         }
                         else

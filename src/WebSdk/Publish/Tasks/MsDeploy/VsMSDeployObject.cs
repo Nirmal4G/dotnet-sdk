@@ -46,7 +46,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
     /// <summary>
     /// Utility class to abstract the multiple MSDeploy object for various secnario
-    /// It also make sure the Dispose is called properly for MSDeploy object 
+    /// It also make sure the Dispose is called properly for MSDeploy object
     /// </summary>
     internal static class MSDeployUtility
     {
@@ -132,7 +132,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             }
             else
                 return new System.Collections.Generic.List<string>(0);
-            
+
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
             // our code path should only take a well known provider
             Diagnostics.Debug.Assert(MsDeploy.Utility.IsDeploymentWellKnownProvider(m_provider));
-            
+
             // maybe we should show the "secure data to display"
             // for now just supress it.
             if (0 == string.Compare(m_provider, MSWebDeploymentAssembly.DynamicAssembly.GetEnumValue(MSDeploy.TypeName.DeploymentWellKnownProvider, MSDeploy.Provider.DBFullSql).ToString(), System.StringComparison.OrdinalIgnoreCase))
@@ -284,7 +284,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
                 }
             }
-            
+
         }
 
         public VSMSDeployObject(Build.Framework.ITaskItem taskItem, bool fNoDisplayRoot)
@@ -322,14 +322,14 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         protected bool m_fNoDisplayRoot = false;
         protected int m_retryInterval = -1;
         protected int m_retryAttempts = -1;
-        
+
         Generic.IList<MsDeploy.ParameterInfo> m_iListParameter = new Generic.List<MsDeploy.ParameterInfo>();
         Generic.IList<MsDeploy.ProviderOption> m_iListProviderOption = new Generic.List<MsDeploy.ProviderOption>();
         Generic.IList<MsDeploy.ParameterInfoWithEntry> m_iListParameterWithEntry = new Generic.List<MsDeploy.ParameterInfoWithEntry>();
         Generic.IList<string> m_iListSetParametersFiles = new Generic.List<string>();
-        
+
         private System.Collections.Generic.Dictionary<string, string> m_NameValueDictionary = new System.Collections.Generic.Dictionary<string, string>(10, System.StringComparer.OrdinalIgnoreCase);
-        
+
         protected /*Deployment.DeploymentBaseOptions*/ dynamic m_deploymentBaseOptions = null;
 
         public override string ToString()
@@ -337,7 +337,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             string root = m_fNoDisplayRoot ? "******" : m_root;
             return string.Format(System.Globalization.CultureInfo.CurrentCulture,Resources.VSMSDEPLOY_ObjectIdentity, m_provider.ToString(), root);
         }
-        
+
 
         // property used to call Deployment.DeploymentManager.CreateObject
         public virtual string Root
@@ -356,14 +356,14 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         public virtual bool IsLocal
         {
             get { return string.IsNullOrEmpty(this.ComputerName) && string.IsNullOrEmpty(this.MSDeployServiceUrl); }
-            
+
         }
         public virtual bool UseSeparatedCredential
         {
             get { return !string.IsNullOrEmpty(this.UserName); }
         }
 
-        
+
         public virtual string DisableLinks
         {
             get { return this.m_disableLinks; }
@@ -415,7 +415,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             }
             set {
                 Diagnostics.Debug.Assert(false, "Not yet implement");
-                SetDictionaryValue("wmsvc", value); 
+                SetDictionaryValue("wmsvc", value);
             }
         }
 
@@ -474,7 +474,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         }
 
 
-        
+
         public int RetryAttempts
         {
             get { return this.m_retryAttempts; }
@@ -489,7 +489,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
         public string UserAgent {get;set;}
 
-        
+
 
         public Generic.IList<MsDeploy.ParameterInfo> Parameters
         {
@@ -570,7 +570,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                 MsDeploy.Utility.AddSetParametersFilesToObject(srcObj, this.SetParametersFiles, _host);
                 MsDeploy.Utility.AddSimpleSetParametersToObject(srcObj, this.Parameters, _host);
                 MsDeploy.Utility.AddSetParametersToObject(srcObj, this.EntryParameters, _host);
-                
+
                 /*Deployment.DeploymentProviderOptions*/ dynamic destProviderConfig = MSWebDeploymentAssembly.DynamicAssembly.CreateObject("Microsoft.Web.Deployment.DeploymentProviderOptions", new object[]{destObject.Provider.ToString()});
                 destProviderConfig.Path = destObject.Root;
 

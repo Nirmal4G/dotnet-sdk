@@ -530,7 +530,7 @@ namespace DefaultReferences
 
             testProject.PackageReferences.Add(new TestPackageReference("System.Net.Http", httpPackageVersion));
 
-            testProject.SourceFiles["Program.cs"] = 
+            testProject.SourceFiles["Program.cs"] =
                 (useAlias ? "extern alias snh;" + Environment.NewLine : "") +
 
                 @"using System;

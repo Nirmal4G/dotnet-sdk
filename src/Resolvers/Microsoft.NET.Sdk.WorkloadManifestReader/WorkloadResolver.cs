@@ -204,7 +204,7 @@ namespace Microsoft.NET.Sdk.WorkloadManifestReader
                 {
                     break;
                 }
-                
+
             }
             return packPath;
         }

@@ -42,5 +42,3 @@ namespace Microsoft.NET.Build.Tasks
     }
 
 }
-
-

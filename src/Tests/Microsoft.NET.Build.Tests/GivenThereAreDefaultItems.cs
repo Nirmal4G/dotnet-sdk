@@ -465,7 +465,7 @@ namespace Microsoft.NET.Build.Tests
                 "wwwroot/wwwsubfolder/wwwsubfolder.txt",
             });
         }
- 
+
         [Fact]
         public void Compile_items_can_be_explicitly_specified_while_default_EmbeddedResource_items_are_used()
         {
@@ -683,7 +683,7 @@ namespace Microsoft.NET.Build.Tests
 
             testProject.PackageReferences.Add(new TestPackageReference("Newtonsoft.Json", "12.0.1"));
             testProject.PackageReferences.Add(new TestPackageReference("Newtonsoft.Json", "12.0.1"));
-            
+
             testProject.SourceFiles["Test.cs"] = @"
 public class Class1
 {

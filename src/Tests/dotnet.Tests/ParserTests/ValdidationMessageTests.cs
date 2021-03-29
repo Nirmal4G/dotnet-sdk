@@ -16,7 +16,7 @@ namespace Microsoft.DotNet.Tests.ParserTests
         public void ValidationMessagesFormatCorrectly()
         {
             // Since not all validation messages that we provided to the command-line parser are triggered by our
-            // tests (and some may not be possible to trigger with our current usage), unit test  that we can 
+            // tests (and some may not be possible to trigger with our current usage), unit test  that we can
             // obtain validation messages through the same interface as the command-line parser.
             //
             // In English configuration, we check that the messages are exactly what we expect and otherwise we at

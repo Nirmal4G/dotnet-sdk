@@ -60,7 +60,7 @@ namespace Microsoft.NET.Build.Tasks
             _crossgen2Pack = Crossgen2Packs?.FirstOrDefault();
             _targetRuntimeIdentifier = _runtimePack?.GetMetadata(MetadataKeys.RuntimeIdentifier);
 
-            // Get the list of runtime identifiers that we support and can target 
+            // Get the list of runtime identifiers that we support and can target
             ITaskItem targetingPack = GetNETCoreAppTargetingPack();
             string supportedRuntimeIdentifiers = targetingPack?.GetMetadata(MetadataKeys.RuntimePackRuntimeIdentifiers);
 

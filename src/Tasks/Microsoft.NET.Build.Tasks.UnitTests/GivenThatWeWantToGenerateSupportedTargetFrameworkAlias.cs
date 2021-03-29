@@ -113,4 +113,3 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
         }
     }
 }
-

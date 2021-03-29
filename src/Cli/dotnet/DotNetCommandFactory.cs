@@ -20,9 +20,9 @@ namespace Microsoft.DotNet.Cli
         }
 
         public ICommand Create(
-        	string commandName, 
-        	IEnumerable<string> args, 
-        	NuGetFramework framework = null, 
+        	string commandName,
+        	IEnumerable<string> args,
+        	NuGetFramework framework = null,
         	string configuration = Constants.DefaultConfiguration)
         {
             BuiltInCommandMetadata builtInCommand;

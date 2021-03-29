@@ -157,7 +157,7 @@ namespace Microsoft.NET.Build.Tests
         {
             MainSelfContained = false;
             ReferencedSelfContained = false;
-            
+
             CreateProjects();
 
             ReferencedProject.TargetFrameworks = "netcoreapp3.1";
@@ -232,7 +232,7 @@ namespace Microsoft.NET.Build.Tests
             ReferencedSelfContained = selfContained;
 
             TestWithPublish = true;
-            
+
             CreateProjects();
 
             RunTest();

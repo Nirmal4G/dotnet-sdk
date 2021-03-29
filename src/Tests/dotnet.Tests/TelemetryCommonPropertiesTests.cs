@@ -47,7 +47,7 @@ namespace Microsoft.DotNet.Tests
 
             Guid.TryParse(assignedMachineId, out var _).Should().BeTrue("it should be a guid");
         }
-        
+
         [Fact]
         public void TelemetryCommonPropertiesShouldReturnHashedMachineIdOld()
         {

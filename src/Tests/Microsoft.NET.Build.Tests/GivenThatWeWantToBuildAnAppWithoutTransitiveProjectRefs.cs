@@ -35,7 +35,7 @@ namespace Microsoft.NET.Build.Tests
         {
             BuildAppWithTransitiveDependenciesAndTransitiveCompileReference(new []{"/graph", "/isolate"});
         }
-        
+
         [Fact(Skip = "https://github.com/dotnet/sdk/issues/13081")]
         public void It_cleans_the_project_successfully_with_static_graph_and_isolation()
         {
@@ -230,7 +230,7 @@ namespace _{0}
                     ["Program.cs"] = string.Format(SourceFile, "4", string.Empty)
                 }
             };
-            
+
             var project3 = new TestProject
             {
                 Name = "3",
@@ -241,7 +241,7 @@ namespace _{0}
                     ["Program.cs"] = string.Format(SourceFile, "3", string.Empty)
                 }
             };
-            
+
             var project2 = new TestProject
             {
                 Name = "2",
@@ -252,7 +252,7 @@ namespace _{0}
                     ["Program.cs"] = string.Format(SourceFile, "2", string.Empty)
                 }
             };
-            
+
             var project1 = new TestProject
             {
                 Name = "1",
@@ -279,7 +279,7 @@ namespace _{0}
                     ["Program.cs"] = string.Format(SourceFile, "5", string.Empty)
                 }
             };
-            
+
             var project4 = new TestProject
             {
                 Name = "4",
@@ -290,7 +290,7 @@ namespace _{0}
                     ["Program.cs"] = string.Format(SourceFile, "4", "_5.Class1.Message();")
                 }
             };
-            
+
             var project3 = new TestProject
             {
                 Name = "3",
@@ -301,7 +301,7 @@ namespace _{0}
                     ["Program.cs"] = string.Format(SourceFile, "3", "_4.Class1.Message();")
                 }
             };
-            
+
             var project2 = new TestProject
             {
                 Name = "2",
@@ -312,7 +312,7 @@ namespace _{0}
                     ["Program.cs"] = string.Format(SourceFile, "2", "_4.Class1.Message();")
                 }
             };
-            
+
             var project1 = new TestProject
             {
                 Name = "1",

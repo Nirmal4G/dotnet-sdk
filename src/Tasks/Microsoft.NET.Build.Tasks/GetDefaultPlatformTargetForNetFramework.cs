@@ -23,7 +23,7 @@ namespace Microsoft.NET.Build.Tasks
             //  For .NET Framework projects, the SDK will select a default RuntimeIdentifier and PlatformTarget.  If no
             //  native assets are found from NuGet packages, then the PlatformTarget will be reset to AnyCPU.  See the
             //  comments in Microsoft.NET.RuntimeIdentifierInference.targets for details.
-            //  
+            //
             //  Prior to the .NET Core 3.0 SDK, .NET Framework projects would only have a RuntimeIdentifier graph if the
             //  Microsoft.NETCore.Platforms package was (transitively) referenced.  This meant that native assets would
             //  only be selected if the platforms package was referenced or if the RuntimeIdentifier matched exactly.

@@ -14,7 +14,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
         [Fact]
         public void ItShouldCombineSdkReferencesWithImplicitPackageReferences()
         {
-            // Arrange 
+            // Arrange
             var sdkReference1 = new MockTaskItem(
                 itemSpec: "SdkReference1",
                 metadata: new Dictionary<string, string>

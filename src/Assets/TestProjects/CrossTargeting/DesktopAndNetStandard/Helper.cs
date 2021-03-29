@@ -15,9 +15,9 @@ namespace TestLibrary
         {
 #if DESKTOP
             MessageBox.Show("Hello there!");
-#else            
+#else
             Console.WriteLine("Hello there!");
-#endif        
+#endif
         }
     }
 }

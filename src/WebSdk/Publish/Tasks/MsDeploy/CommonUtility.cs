@@ -180,7 +180,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
     };
 
 
-    
+
 
     internal class ParameterInfo
     {
@@ -247,7 +247,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         {
             WebServerDirectory, WebServerManifest, WebServerAppHostConfigDirectory
         }
-        
+
         public static bool IsInternalMsdeployWellKnownItemMetadata(string name)
         {
             IISExpressMetadata iisExpressMetadata;
@@ -267,7 +267,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         {
             if (m_wellKnownNamesDict == null)
             {
-                string[] wellKnownNames = 
+                string[] wellKnownNames =
                 {
                     "FullPath",
                     "RootDir",
@@ -289,7 +289,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                     "DefiningProjectName"
                 };
                 m_wellKnownNamesDict = new System.Collections.Generic.Dictionary<string, string>(wellKnownNames.GetLength(0), System.StringComparer.OrdinalIgnoreCase);
-                
+
                 foreach (string wellKnownName in wellKnownNames)
                 {
                     m_wellKnownNamesDict.Add(wellKnownName, null);
@@ -302,15 +302,15 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         {
             if (m_wellKnownNamesMsdeployDict == null)
             {
-                string[] wellKnownNames = 
+                string[] wellKnownNames =
                 {
-                   "computerName", 
-                   "wmsvc", 
-                   "userName", 
-                   "password", 
-                   "includeAcls", 
-                   "encryptPassword", 
-                   "authType", 
+                   "computerName",
+                   "wmsvc",
+                   "userName",
+                   "password",
+                   "includeAcls",
+                   "encryptPassword",
+                   "authType",
                    "prefetchPayload",
                 };
                 m_wellKnownNamesMsdeployDict = new System.Collections.Generic.Dictionary<string, string>(wellKnownNames.GetLength(0), System.StringComparer.OrdinalIgnoreCase);
@@ -517,7 +517,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                     }
                     else
                     {
-                        s_strMinimumVersion = currentMinVersion.ToString();  
+                        s_strMinimumVersion = currentMinVersion.ToString();
                     }
                 }
             }
@@ -653,7 +653,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                         quote = AlternativeQuote(quote);
                     }
                 }
-                
+
             }
             return string.Concat(quote, value, quote);
         }
@@ -676,7 +676,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
         /// <summary>
         /// Utiilty function to prompt commom end of Execution message for msdeploy.exe
-        /// 
+        ///
         /// </summary>
         /// <param name="bSuccess"></param>
         /// <param name="destType"></param>
@@ -738,7 +738,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                 Log.LogMessage(Framework.MessageImportance.High, Resources.VSMSDEPLOY_WebPackageHelpLink);
             }
         }
-      
+
         /// <summary>
         /// Utiilty function to prompt commom end of Execution message
         /// </summary>
@@ -789,7 +789,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                     strSucceedFailMsg = Resources.VSMSDEPLOY_SucceedDeploy;
                 }
 
-                 
+
             }
             else
             {
@@ -839,9 +839,9 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                     string scopeAttributeValue = item.GetMetadata(MsDeploy.ReplaceRuleMetadata.ScopeAttributeValue.ToString());
                     string targetAttributeName = item.GetMetadata(MsDeploy.ReplaceRuleMetadata.TargetAttributeName.ToString());
 
-                    
+
                     ///*Deployment.DeploymentReplaceRule*/ dynamic replaceRule =
-                    //    new Deployment.DeploymentReplaceRule(ruleName, objectName, scopeAttributeName, 
+                    //    new Deployment.DeploymentReplaceRule(ruleName, objectName, scopeAttributeName,
                     //        scopeAttributeValue, targetAttributeName, matchRegularExpression, replaceWith);
 
 
@@ -887,7 +887,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         }
 
         // utility function to add the skip rule for the option
-        static public void AddSkipDirectiveToBaseOptions(/*Deployment.DeploymentBaseOptions*/ dynamic baseOptions , 
+        static public void AddSkipDirectiveToBaseOptions(/*Deployment.DeploymentBaseOptions*/ dynamic baseOptions ,
             Framework.ITaskItem[] skipRuleItems,
             Generic.List<string> enableSkipDirectiveList,
             Generic.List<string> disableSkipDirectiveList,
@@ -916,7 +916,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             }
         }
 
-    
+
         /// <summary>
         /// Utility to add single DeclareParameter to the list
         /// </summary>
@@ -944,7 +944,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
                 if (deploymentSyncParameter == null)
                 {
-                    deploymentSyncParameter = 
+                    deploymentSyncParameter =
                        MSWebDeploymentAssembly.DynamicAssembly.CreateObject("Microsoft.Web.Deployment.DeploymentSyncParameter", new object[]{name, description, defaultValue, tags});
                     vSMSDeploySyncOption.DeclaredParameters.Add(deploymentSyncParameter);
                 }
@@ -994,7 +994,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                         {
                             // due to the reflection the we can't
                             // $exception	{"Cannot implicitly convert type 'object' to 'Microsoft.Web.Deployment.DeploymentSyncParameterValidation'. An explicit conversion exists (are you missing a cast?)"}	System.Exception {Microsoft.CSharp.RuntimeBinder.RuntimeBinderException}
-                            object parameterValidation = 
+                            object parameterValidation =
                                 MSWebDeploymentAssembly.DynamicAssembly.CreateObject("Microsoft.Web.Deployment.DeploymentSyncParameterValidation", new object[] {validationKind, validationString});
                             SetDynamicProperty(deploymentSyncParameter, "Validation", parameterValidation);
                         }
@@ -1145,7 +1145,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                     {
                         value = item.Value;
                     }
-                    
+
                     dynamic parameter = null;
                     // deploymentObject.SyncParameters.TryGetValue(name, out parameter);
                     MSWebDeploymentAssembly.DeploymentTryGetValueContains(deploymentObject.SyncParameters, name, out parameter);
@@ -1190,7 +1190,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             {
                 Generic.Dictionary<string, string> nameValueDictionary = new System.Collections.Generic.Dictionary<string, string>(parameters.Count, System.StringComparer.OrdinalIgnoreCase);
                 Generic.Dictionary<string, string> entryIdentityDictionary = new System.Collections.Generic.Dictionary<string, string>(parameters.Count);
-                
+
                 foreach (ParameterInfoWithEntry item in parameters)
                 {
                     try
@@ -1331,7 +1331,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                     }
 
                     srcVsMsDeployobject.SyncParameter(name, value, kind, scope, matchRegularExpression, description, defaultValue, tags, element, validationString);
-                    
+
                 }
             }
         }
@@ -1430,7 +1430,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
                     {
                         log.LogMessage(Microsoft.Build.Framework.MessageImportance.Normal, string.Format(System.Globalization.CultureInfo.CurrentCulture,Resources.BUILDTASK_RemoveEmptyDirectories_Deleting, dirinfo.FullName));
                     }
-                    
+
                 }
             }
         }
@@ -1524,7 +1524,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         static internal string strMsdeployInstallationFwdLink = @"http://go.microsoft.com/?linkid=9278654";
 
         static string[] strMsdeployFwlinks = { strMsdeployFwlink1, strMsdeployFwlink2, strMsdeployFwlink3, strMsdeployFwlink4, strMsdeployFwlink5 };
-        
+
         static int ContainMsdeployFwlink(string errorMessage, out string provider)
         {
             int index = -1;
@@ -1558,7 +1558,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
         internal static bool IsType(System.Type type, System.Type checkType)
         {
 #if NET472
-            if (checkType!=null && 
+            if (checkType!=null &&
                 (type == checkType || type.IsSubclassOf(checkType)))
             {
                 return true;
@@ -1584,7 +1584,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             return str;
         }
 
-        // Utility to log VsMsdeploy Exception 
+        // Utility to log VsMsdeploy Exception
         internal static void LogVsMsDeployException( Utilities.TaskLoggingHelper Log, System.Exception e)
         {
             if (e is System.Reflection.TargetInvocationException)
@@ -1768,7 +1768,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             {
                 while (str.EndsWith("\\", System.StringComparison.Ordinal) || str.EndsWith("/", System.StringComparison.Ordinal))
                     str = str.Substring(0, str.Length - 1);
-             
+
             }
             return str;
         }
@@ -1792,7 +1792,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 
         /// <summary>
         /// Utility to generate the Ipv6 string address to match with the ServerBinding string
-        /// Ipv6 need the have 
+        /// Ipv6 need the have
         /// </summary>
         /// <param name="iPAddress"></param>
         /// <returns></returns>
@@ -1850,7 +1850,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
             }
 
             const string MSDeploymentDllFallback = "9.0";
-            versionsList[MSDeploymentDllFallback] = MSDeploymentDllFallback; 
+            versionsList[MSDeploymentDllFallback] = MSDeploymentDllFallback;
 
             System.Version[] versionArray = versionsList.Values.Select(p => new System.Version(p)).ToArray();
             System.Array.Sort(versionArray);
@@ -1941,7 +1941,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.MsDeploy
 #if NET472
             if(string.IsNullOrEmpty(userAgent))
                 return null;
-            try 
+            try
             {
                 object[] o = typeof(Utility).Assembly.GetCustomAttributes(typeof(AssemblyFileVersionAttribute), false);
                 if (o.Length > 0 && o[0] is AssemblyFileVersionAttribute)

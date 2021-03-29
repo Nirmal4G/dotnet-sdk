@@ -29,7 +29,7 @@ namespace Microsoft.DotNet.Cli
         {
             if (parseResult.AppliedCommand().IsHelpRequested())
             {
-                // NOTE: this is a temporary stage in refactoring toward the ClicCommandLineParser being used at the CLI entry point. 
+                // NOTE: this is a temporary stage in refactoring toward the ClicCommandLineParser being used at the CLI entry point.
                 throw new HelpException(parseResult.Command().HelpView().TrimEnd());
             }
         }

@@ -84,7 +84,7 @@ namespace Microsoft.DotNet.Tests.ParserTests
                 new object[] { @"sometest.dll -s:testsettings -t -a:c:\path -f:net451 -d:log.txt --results-directory:c:\temp\", @"sometest.dll --settings:testsettings --listtests --testadapterpath:c:\path --framework:net451 --diag:log.txt --resultsdirectory:c:\temp\" },
                 new object[] { @"sometest.dll --settings testsettings -t --test-adapter-path c:\path --framework net451 --diag log.txt --results-directory c:\temp\", @"sometest.dll --settings:testsettings --listtests --testadapterpath:c:\path --framework:net451 --diag:log.txt --resultsdirectory:c:\temp\" },
                 new object[] { @"sometest.dll --blame", @"sometest.dll --blame" },
-                new object[] { @"sometest.dll --blame-crash", @"sometest.dll --blame:CollectDump" },                
+                new object[] { @"sometest.dll --blame-crash", @"sometest.dll --blame:CollectDump" },
                 new object[] { @"sometest.dll --blame-crash-dump-type full", @"sometest.dll --blame:CollectDump;DumpType=full" },
                 new object[] { @"sometest.dll --blame-crash-collect-always", @"sometest.dll --blame:CollectDump;CollectAlways=true" },
                 new object[] { @"sometest.dll --blame --blame-crash-dump-type full --blame-crash-collect-always", @"sometest.dll --blame:CollectDump;CollectAlways=true;DumpType=full" },

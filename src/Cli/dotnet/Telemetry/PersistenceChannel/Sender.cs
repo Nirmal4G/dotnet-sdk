@@ -97,7 +97,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
             if (startSending)
             {
                 // It is currently possible for the long - running task to be executed(and thereby block during WaitOne) on the UI thread when
-                // called by a task scheduled on the UI thread. Explicitly specifying TaskScheduler.Default 
+                // called by a task scheduled on the UI thread. Explicitly specifying TaskScheduler.Default
                 // when calling StartNew guarantees that Sender never blocks the main thread.
                 Task.Factory.StartNew(SendLoop, CancellationToken.None, TaskCreationOptions.LongRunning,
                         TaskScheduler.Default)
@@ -142,13 +142,13 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
         /// </summary>
         internal Task StopAsync()
         {
-            // After delayHandler is set, a sending iteration will immediately start. 
-            // Setting <c>stopped</c> to true, will cause the iteration to skip the actual sending and stop immediately. 
+            // After delayHandler is set, a sending iteration will immediately start.
+            // Setting <c>stopped</c> to true, will cause the iteration to skip the actual sending and stop immediately.
             _stopped = true;
             DelayHandler.Set();
 
             // if delayHandler was set while a transmission was being sent, the return task will wait for it to finish, for an additional second,
-            // before it will mark the task as completed. 
+            // before it will mark the task as completed.
             return Task.Run(() =>
             {
                 try
@@ -176,13 +176,13 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
                     {
                         if (_stopped)
                         {
-                            // This second verification is required for cases where 'stopped' was set while peek was happening. 
-                            // Once the actual sending starts the design is to wait until it finishes and deletes the transmission. 
+                            // This second verification is required for cases where 'stopped' was set while peek was happening.
+                            // Once the actual sending starts the design is to wait until it finishes and deletes the transmission.
                             // So no extra validation is required.
                             break;
                         }
 
-                        // If there is a transmission to send - send it. 
+                        // If there is a transmission to send - send it.
                         if (transmission != null)
                         {
                             bool shouldRetry = Send(transmission, ref sendingInterval);
@@ -237,7 +237,7 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
 
                     transmission.SendAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
-                    // After a successful sending, try immediately to send another transmission. 
+                    // After a successful sending, try immediately to send another transmission.
                     nextSendInterval = SendingInterval;
                 }
             }
@@ -303,10 +303,10 @@ namespace Microsoft.DotNet.Cli.Telemetry.PersistenceChannel
 
             switch (httpStatusCode.Value)
             {
-                case 503: // Server in maintenance. 
+                case 503: // Server in maintenance.
                 case 408: // invalid request
-                case 500: // Internal Server Error                                                
-                case 502: // Bad Gateway, can be common when there is no network. 
+                case 500: // Internal Server Error
+                case 502: // Bad Gateway, can be common when there is no network.
                 case 511: // Network Authentication Required
                     return true;
             }

@@ -66,7 +66,7 @@ namespace Microsoft.NET.Build.Tasks
                 }
 
                 int attempts = 0;
-                
+
                 while (true)
                 {
                     try

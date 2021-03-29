@@ -10,8 +10,8 @@
 
 namespace Microsoft.DotNet.Cli.commands.search {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace Microsoft.DotNet.Cli.commands.search {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class LocalizableStrings {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal LocalizableStrings() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Authors.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("Authors", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Search dotnet tools in nuget.org.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("CommandDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Commands.
         /// </summary>
@@ -86,7 +86,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("CommandsColumn", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("Description", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Detail.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("DetailArgumentName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Show detail result of the query..
         /// </summary>
@@ -113,7 +113,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("DetailDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Downloads.
         /// </summary>
@@ -122,7 +122,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("Downloads", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} should be an integer.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("InvalidInputTypeInteger", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Latest Version.
         /// </summary>
@@ -140,7 +140,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("LatestVersion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Could not find any results..
         /// </summary>
@@ -149,7 +149,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("NoResult", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Package ID.
         /// </summary>
@@ -158,7 +158,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("PackageId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to determining whether to include pre-release packages..
         /// </summary>
@@ -167,7 +167,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("PrereleaseDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Search Term.
         /// </summary>
@@ -176,7 +176,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("SearchTermArgumentName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Search term from package id or package description. Require at least one character..
         /// </summary>
@@ -185,7 +185,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("SearchTermDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SemVer Level.
         /// </summary>
@@ -194,7 +194,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("SemVerLevelArgumentName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A SemVer 1.0.0 version string..
         /// </summary>
@@ -203,7 +203,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("SemVerLevelDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Skip.
         /// </summary>
@@ -212,7 +212,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("SkipArgumentName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The number of results to skip, for pagination..
         /// </summary>
@@ -221,7 +221,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("SkipDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Summary.
         /// </summary>
@@ -230,7 +230,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("Summary", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tags.
         /// </summary>
@@ -239,7 +239,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("Tags", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Take.
         /// </summary>
@@ -248,7 +248,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("TakeArgumentName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The number of results to return, for pagination..
         /// </summary>
@@ -257,7 +257,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("TakeDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Verified.
         /// </summary>
@@ -266,7 +266,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("Verified", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
@@ -275,7 +275,7 @@ namespace Microsoft.DotNet.Cli.commands.search {
                 return ResourceManager.GetString("Version", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Versions.
         /// </summary>

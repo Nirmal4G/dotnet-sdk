@@ -155,7 +155,7 @@ namespace Microsoft.DotNet.Restore.Test
         }
 
         private static string[] HandleStaticGraphEvaluation(bool useStaticGraphEvaluation, string[] args) =>
-            useStaticGraphEvaluation ? 
+            useStaticGraphEvaluation ?
                 args.Append("/p:RestoreUseStaticGraphEvaluation=true").ToArray() :
                 args;
     }

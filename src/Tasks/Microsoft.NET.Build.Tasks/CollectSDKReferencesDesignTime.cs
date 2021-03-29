@@ -13,7 +13,7 @@ namespace Microsoft.NET.Build.Tasks
     /// Aggregates the sdk specified as project items and implicit packages references.
     /// Note: this task is not used temporarily as a hack for RTM to be able to get all
     /// implicit SDKs across all TFMs. In U1 we will switch back to this task when multiple
-    /// TFM support is added to Dependencies logic. 
+    /// TFM support is added to Dependencies logic.
     /// Tracking issue https://github.com/dotnet/roslyn-project-system/issues/587
     /// </summary>
     public class CollectSDKReferencesDesignTime : TaskBase
@@ -34,9 +34,9 @@ namespace Microsoft.NET.Build.Tasks
 
         protected override void ExecuteCore()
         {
-            ImplicitPackageReferences = 
+            ImplicitPackageReferences =
                 PreprocessPackageDependenciesDesignTime.GetImplicitPackageReferences(DefaultImplicitPackages);
-            
+
             var sdkDesignTimeList = new List<ITaskItem>(SdkReferences);
             sdkDesignTimeList.AddRange(GetImplicitPackageReferences());
 

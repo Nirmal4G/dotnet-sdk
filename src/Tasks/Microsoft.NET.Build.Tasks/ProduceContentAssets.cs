@@ -13,7 +13,7 @@ namespace Microsoft.NET.Build.Tasks
     /// <summary>
     /// Read raised lock file items for content assets and process them to handle
     /// preprocessing tokens, identify items that should be copied to output, and
-    /// other filtering on content assets, including whether they match the active 
+    /// other filtering on content assets, including whether they match the active
     /// project language.
     /// </summary>
     public sealed class ProduceContentAssets : TaskBase
@@ -54,9 +54,9 @@ namespace Microsoft.NET.Build.Tasks
         public ITaskItem[] ContentFileDependencies { get; set; }
 
         /// <summary>
-        /// Items specifying the tokens that can be substituted into preprocessed 
-        /// content files. The ItemSpec of each item is the name of the token, 
-        /// without the surrounding $$, and the Value metadata should specify the 
+        /// Items specifying the tokens that can be substituted into preprocessed
+        /// content files. The ItemSpec of each item is the name of the token,
+        /// without the surrounding $$, and the Value metadata should specify the
         /// replacement value.
         /// </summary>
         public ITaskItem[] ContentPreprocessorValues

@@ -26,7 +26,7 @@ namespace Microsoft.DotNet.MSBuildSdkResolver
     {
         public override string Name => "Microsoft.DotNet.MSBuildSdkResolver";
 
-        // Default resolver has priority 10000 and we want to go before it and leave room on either side of us. 
+        // Default resolver has priority 10000 and we want to go before it and leave room on either side of us.
         public override int Priority => 5000;
 
         private readonly Func<string, string> _getEnvironmentVariable;
@@ -34,7 +34,7 @@ namespace Microsoft.DotNet.MSBuildSdkResolver
 
         private static CachingWorkloadResolver _staticWorkloadResolver = new CachingWorkloadResolver();
 
-        public DotNetMSBuildSdkResolver() 
+        public DotNetMSBuildSdkResolver()
             : this(Environment.GetEnvironmentVariable, VSSettings.Ambient)
         {
         }

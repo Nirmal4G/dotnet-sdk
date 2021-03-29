@@ -145,7 +145,7 @@ class Program
 
 
             string currentToolsetSdksPath = TestContext.Current.ToolsetUnderTest.SdksPath;
-            
+
             string generateDepsProjectDirectoryPath = Path.Combine(currentToolsetSdksPath, "Microsoft.NET.Sdk", "targets", "GenerateDeps");
             string generateDepsProjectFileName = "GenerateDeps.proj";
 

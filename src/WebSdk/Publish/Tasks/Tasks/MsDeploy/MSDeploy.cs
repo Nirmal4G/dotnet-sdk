@@ -12,7 +12,7 @@
     /// </summary>
     public class MSDeploy : Utilities.ToolTask
     {
-        /* 
+        /*
          *Microsoft (R) Web Deployment Command Line Tool (MSDeploy.exe)
             Version 7.1.495.0
             Copyright (c) Microsoft Corporation. All rights reserved.
@@ -20,71 +20,71 @@
             MSDeploy.exe <-verb:<name>> <-source:<object>> [-dest:<object>] [args ...]
 
               -verb:<name>                   Action to perform (required).
-              -source:<object>               The source object for the operation 
+              -source:<object>               The source object for the operation
                                              (required).
-              -dest:<object>                 The destination object for the operation. 
+              -dest:<object>                 The destination object for the operation.
               -declareParam:<parms>          Declares a parameter for synchronization.
               -setParam:<parms>              Sets a parameter for synchronization.
               -disableLink:<name>            Disables the specified link extension(s).
               -enableLink:<name>             Enables the specified link extension(s).
-              -disableRule:<name>            Disables the specified synchronization 
+              -disableRule:<name>            Disables the specified synchronization
                                              rule(s).
               -enableRule:<name>             Enables the specified synchronization rule(s).
               -replace:<arg settings>        Specifies an attribute replacement rule.
-              -retryAttempts                 The number of times a provider will retry 
-                                             after a failed action (not all providers 
+              -retryAttempts                 The number of times a provider will retry
+                                             after a failed action (not all providers
                                              support retrying). Defaults to 5.
-              -retryInterval                 Interval in milliseconds between retry 
-                                             attempts (-retryAttempts). The default is 
+              -retryInterval                 Interval in milliseconds between retry
+                                             attempts (-retryAttempts). The default is
                                              1000.
-              -skip:<arg settings>           Specifies an object to skip during 
+              -skip:<arg settings>           Specifies an object to skip during
                                              synchronization.
               -disableSkipDirective:<name>   Disables the specified skip directive.
               -enableSkipDirective:<name>    Enables the specified skip directive.
-              -useAdminShares                When possible, use UNC admin shares for file 
+              -useAdminShares                When possible, use UNC admin shares for file
                                              synchronization.
               -verbose                       Enables more verbose output.
-              -whatif                        Displays what would have happened without 
+              -whatif                        Displays what would have happened without
                                              actually performing any operations.
               -xpath:<path>                  An XPath expression to apply to XML output.
               -xml                           Return results in XML format.
-              -allowUntrusted                Allow untrusted server certificate when using 
+              -allowUntrusted                Allow untrusted server certificate when using
                                              SSL.
-              -showSecure                    Show secure attributes in XML output instead 
+              -showSecure                    Show secure attributes in XML output instead
                                              of hiding them.^
-              -preSync:<command>             A command to execute before the 
-                                             synchronization on the destination.  For 
+              -preSync:<command>             A command to execute before the
+                                             synchronization on the destination.  For
                                              instance, net stop a service.
-              -postSync:<command>            A command to execute after the 
-                                             synchronization on the destination.  For 
+              -postSync:<command>            A command to execute after the
+                                             synchronization on the destination.  For
                                              instance, net start a service.
-         * 
-         * 
+         *
+         *
          *         // not documented, part of IISExpress
               public const string AppHostConfigDirectory = "-appHostConfigDir";
          *    public const string WebServerDirectory = "-webServerDir";
               public const string WebServerManifest = "-webServerManifest";
 
 
-              
+
             Supported Verbs:
 
-              dump                           Displays the details of the specified source 
+              dump                           Displays the details of the specified source
                                              object.
-              migrate                        Migrates the source object to the destination 
+              migrate                        Migrates the source object to the destination
                                              object.
-              sync                           Synchronizes the destination object with the 
+              sync                           Synchronizes the destination object with the
                                              source object.
               delete                         Deletes specified destination object.
               getDependencies                Retrieve dependencies for given object
               getParameters                  Return parameters supported by object
-              getSystemInfo                  Retrieve system information associated with 
+              getSystemInfo                  Retrieve system information associated with
                                              given object
 
             <object> format:
 
               provider-type=[provider-path],[provider settings],...
-              
+
             Supported provider-types (and sample paths, if applicable):
 
               appHostConfig                  IIS 7+ configuration
@@ -98,9 +98,9 @@
               contentPath                    File System Content
               dbFullSql                      Deploy SQL database
               dbMySql                        Deploy MySql database
-              delete                         Special source-only provider used to delete a 
+              delete                         Special source-only provider used to delete a
                                              given destination.
-              fcgiExtConfig                  FcgiExt.ini settings or fastCgi section 
+              fcgiExtConfig                  FcgiExt.ini settings or fastCgi section
                                              configuration
               gacAssembly                    GAC assembly
               iisApp                         Web Application
@@ -113,10 +113,10 @@
               regValue                       Registry value
               rootWebConfig32                .NET 32-bit root Web configuration
               rootWebConfig64                .NET 64-bit root Web configuration
-              runCommand                     Runs a command on the destination when sync 
+              runCommand                     Runs a command on the destination when sync
                                              is called.
               setAcl                         Grant permissions
-              urlScanConfig                  UrlScan.ini settings or requestFiltering 
+              urlScanConfig                  UrlScan.ini settings or requestFiltering
                                              section configuration
               webServer                      Full IIS 7+ Web server
               webServer60                    Full IIS 6.0 Web server
@@ -125,27 +125,27 @@
             Common settings (can be used with all providers):
 
                 computerName=<name>       Name of remote computer or proxy-URL
-                wmsvc=<name>              Name of remote computer or proxy-URL for the Web 
-                                          Management Service (WMSvc). Assumes that the 
+                wmsvc=<name>              Name of remote computer or proxy-URL for the Web
+                                          Management Service (WMSvc). Assumes that the
                                           service is listening on port 8172.
-                authtype=<name>           Authentication scheme to use. NTLM is the 
-                                          default setting. If the wmsvc option is 
+                authtype=<name>           Authentication scheme to use. NTLM is the
+                                          default setting. If the wmsvc option is
                                           specified, then Basic is the default setting.
-                userName=<name>           User name to authenticate for remote connections 
+                userName=<name>           User name to authenticate for remote connections
                                           (required if using Basic authentication).
-                password=<password>       Password of the user for remote connections 
+                password=<password>       Password of the user for remote connections
                                           (required if using Basic authentication).
-                encryptPassword=<pwd>     Password to use for encrypting/decrypting any 
+                encryptPassword=<pwd>     Password to use for encrypting/decrypting any
                                           secure data.
-                includeAcls=<bool>        If true, include ACLs in the operation (applies 
+                includeAcls=<bool>        If true, include ACLs in the operation (applies
                                           to the file system, registry, and metabase).
-                useStatusRequest=<bool>   Controls whether remote destination 
-                                          synchronization status should appear 
+                useStatusRequest=<bool>   Controls whether remote destination
+                                          synchronization status should appear
                                           immediately. The default setting is true.
-                tempAgent=<bool>          Temporarily install the remote agent for the 
+                tempAgent=<bool>          Temporarily install the remote agent for the
                                           duration of a remote operation
-                
-    
+
+
         */
 
         private string m_exePath;
@@ -188,10 +188,10 @@
         private Framework.ITaskItem[] m_declareParameterItems = null;
         private Framework.ITaskItem[] m_importDeclareParametersItems = null;
         private Framework.ITaskItem[] m_simpleSetParamterItems = null;
-        private Framework.ITaskItem[] m_importSetParametersItems = null; 
+        private Framework.ITaskItem[] m_importSetParametersItems = null;
         private Framework.ITaskItem[] m_setParamterItems = null;
-        
-        
+
+
         private bool m_previewOnly = false;
 
         public class Provider
@@ -273,7 +273,7 @@
                     }
                 }
 #endif
-                return m_exePath; 
+                return m_exePath;
             }
             set { m_exePath = value; }
         }
@@ -310,7 +310,7 @@
         }
 
         public bool OptimisticParameterDefaultValue { get; set;}
-        
+
         public bool UseChecksum
         {
             get { return m_useChecksum; }
@@ -369,7 +369,7 @@
             get { return this.m_enableLink; }
             set { this.m_enableLink = value; }
         }
-        
+
         public bool EnableTransaction
         {
             get { return this.m_enableTransaction; }
@@ -449,7 +449,7 @@
             get { return m_setParamterItems; }
             set { this.m_setParamterItems = value; }
         }
-        
+
         public Framework.ITaskItem[] AdditionalDestinationProviderOptions {get;set;}
 
         string _userAgent;
@@ -542,7 +542,7 @@
             }
 
             try
-            {               
+            {
                 Log.LogMessage( Framework.MessageImportance.Normal, Resources.MSDEPLOY_EXE_Start);
                 bSuccess = base.Execute();
                 if (bSuccess)
@@ -588,7 +588,7 @@
                 && replaceRuleItems != null)// Dev10 bug 496639 foreach will throw the exception if the replaceRuleItem is null
             {
                 System.Collections.Generic.List<string> arguments = new System.Collections.Generic.List<string>(6);
-                    
+
                 foreach (Framework.ITaskItem item in replaceRuleItems)
                 {
                     arguments.Clear();
@@ -617,7 +617,7 @@
 
         static public void AddDeclareParameterToCommandArgument(System.Collections.Generic.List<string> arguments,
                                                                 Framework.ITaskItem item,
-                                                                string valueQuote, 
+                                                                string valueQuote,
                                                                 System.Collections.Generic.Dictionary<string, string> lookupDictionary)
         {
             if (arguments != null && item != null && lookupDictionary != null)
@@ -698,7 +698,7 @@
                 && !string.IsNullOrEmpty(parameterFlag)
                 && items != null)// Dev10 bug 496639 foreach will throw the exception if the replaceRuleItem is null
             {
-                
+
                 foreach (Framework.ITaskItem item in items)
                 {
                     string fileName = item.ItemSpec;
@@ -820,8 +820,8 @@
         }
 
 
-        
-        static public void AddDestinationProviderSettingToObject(Utilities.CommandLineBuilder commandLineBuilder, string dest, Framework.ITaskItem[] items, string valueQuoteChar, 
+
+        static public void AddDestinationProviderSettingToObject(Utilities.CommandLineBuilder commandLineBuilder, string dest, Framework.ITaskItem[] items, string valueQuoteChar,
                                                                 Framework.ITaskItem[] additionalProviderItems, MSDeploy msdeploy)
         {
             //commandLineBuilder.AppendSwitchUnquotedIfNotNull("-source:", m_source);
@@ -885,7 +885,7 @@
                     }
                 }
             }
-            // If additional parameters are specified, we add these too. the itemSpec will be something like iisApp, contentPath, etc and 
+            // If additional parameters are specified, we add these too. the itemSpec will be something like iisApp, contentPath, etc and
             // each item should have a name\value pair defined as metadata. Each provider will be written as itemSpec.Name=Value
             if (additionalProviderItems != null)
             {
@@ -969,12 +969,12 @@
         /// Generates command line arguments for msdeploy.exe
         /// </summary>
         protected override string GenerateCommandLineCommands()
-        {           
+        {
             Utilities.CommandLineBuilder commandLine = new Utilities.CommandLineBuilder();
             IncorporateSettingsFromHostObject(ref m_skipRuleItemsITaskItem, this.Destination, HostObject as System.Collections.Generic.IEnumerable<Framework.ITaskItem>);
             AddDestinationProviderSettingToObject(commandLine, "-source:", this.Source, m_strValueQuote, null, this );
             AddDestinationProviderSettingToObject(commandLine, "-dest:", this.Destination, m_strValueQuote, AdditionalDestinationProviderOptions, this);
-            
+
             commandLine.AppendSwitchUnquotedIfNotNull("-verb:", m_verb);
             commandLine.AppendSwitchUnquotedIfNotNull("-failureLevel:", m_failureLevel);
             commandLine.AppendSwitchUnquotedIfNotNull("-xpath:", m_xpath);
@@ -991,13 +991,13 @@
             // this allow multiple replace rule to happen, we should consider do the same thing for skip:
             AddReplaceRulesToOptions(commandLine, m_replaceRuleItemsITaskItem, m_strValueQuote);
             AddSkipDirectiveToBaseOptions(commandLine, m_skipRuleItemsITaskItem, m_strValueQuote);
-            AddImportDeclareParametersFilesOptions(commandLine, m_importDeclareParametersItems); 
+            AddImportDeclareParametersFilesOptions(commandLine, m_importDeclareParametersItems);
             AddDeclareParametersOptions(commandLine, m_declareParameterItems, m_strValueQuote, OptimisticParameterDefaultValue);
 
             AddImportSetParametersFilesOptions(commandLine, m_importSetParametersItems);
             AddSimpleSetParametersToObject(commandLine, m_simpleSetParamterItems, m_strValueQuote, OptimisticParameterDefaultValue);
             AddSetParametersToObject(commandLine, m_setParamterItems, m_strValueQuote, OptimisticParameterDefaultValue);
-            
+
             if (m_xml) commandLine.AppendSwitch("-xml");
             if (m_whatif) commandLine.AppendSwitch("-whatif");
             if (m_verbose) commandLine.AppendSwitch("-verbose");
@@ -1007,7 +1007,7 @@
             if (m_enableTransaction) commandLine.AppendSwitch("-enableTransaction");
             if (m_retryAttempts > 0) commandLine.AppendSwitchUnquotedIfNotNull("-retryAttempts=", m_retryAttempts.ToString(CultureInfo.InvariantCulture));
             if (m_retryInterval > 0) commandLine.AppendSwitchUnquotedIfNotNull("-retryInterval=", m_retryInterval.ToString(CultureInfo.InvariantCulture));
-            
+
             if(!string.IsNullOrEmpty(UserAgent))
             {
                 commandLine.AppendSwitchUnquotedIfNotNull("-userAgent=", string.Concat("\"", UserAgent, "\""));
@@ -1024,7 +1024,7 @@
 
             m_lastCommandLine =  commandLine.ToString();
 
-            // show arguments in the output 
+            // show arguments in the output
             Log.LogMessage(Framework.MessageImportance.Low, string.Concat("\"", GenerateFullPathToTool(), "\" ",  m_lastCommandLine));
             return m_lastCommandLine;
         }
@@ -1046,7 +1046,7 @@
             string result = IO.Path.Combine(ExePath, ToolName);
 
             if (string.Compare(ExePath, "%MSDeployPath%", System.StringComparison.OrdinalIgnoreCase) == 0) {
-                // if it comes in as %msdeploypath% don't use Path.Combine because it will add a \ which is 
+                // if it comes in as %msdeploypath% don't use Path.Combine because it will add a \ which is
                 // not necessary since reg key for MSDeployPath already contains it
                 result = string.Format("{0}{1}",ExePath,ToolName);
             }
@@ -1065,20 +1065,20 @@
                 Log.LogError(string.Format(System.Globalization.CultureInfo.CurrentCulture, Resources.MSDEPLOY_InvalidSourceCount, Source.GetLength(0)), null);
                 return false;
             }
-            
+
             if (this.Destination != null &&  this.Destination.GetLength(0) > 1)
             {
                 Log.LogError(string.Format(System.Globalization.CultureInfo.CurrentCulture, Resources.MSDEPLOY_InvalidDestinationCount, Destination.GetLength(0)), null);
                 return false;
             }
-            else 
+            else
             {
                 string[] validVerbs = null;
                 bool fNullDestination = false;
                 if (this.Destination == null || this.Destination.GetLength(0) == 0)
                 {
-                    fNullDestination = true;    
-                    validVerbs = new string[] {  
+                    fNullDestination = true;
+                    validVerbs = new string[] {
                         "dump",
                         "getDependencies",
                         "getParameters",

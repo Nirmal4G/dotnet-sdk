@@ -48,7 +48,7 @@ namespace Microsoft.NET.Build.Tests
                 EmbeddedResources =
                 {
                     ["Program.resx"] = @"
-                        <root>                          
+                        <root>
                             <data name=""SomeString"" xml:space=""preserve"">
                                 <value>Hello world from a resource!</value>
                             </data>

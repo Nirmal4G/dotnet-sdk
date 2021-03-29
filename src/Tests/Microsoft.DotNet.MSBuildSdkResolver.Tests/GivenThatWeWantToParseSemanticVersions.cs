@@ -155,7 +155,7 @@ namespace Microsoft.DotNet.Cli.Utils.Tests
         public void ReturnsFXVersionWhenMajorMinorPatchAndPreAndBuildIsFound()
         {
             FXVersion fxVersion;
-            
+
             var result = FXVersion.TryParse("1.2.3-pre+build", out fxVersion);
 
             result.Should().BeTrue();

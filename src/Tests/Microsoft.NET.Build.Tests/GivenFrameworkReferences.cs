@@ -489,7 +489,7 @@ namespace FrameworkReferenceTest
                 TargetFrameworks = "netcoreapp3.0",
                 IsExe = true,
             };
-            
+
             //  Use a test-specific packages folder
             testProject.AdditionalProperties["RestorePackagesPath"] = @"$(MSBuildProjectDirectory)\packages";
 

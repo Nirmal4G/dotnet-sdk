@@ -48,8 +48,8 @@ namespace Microsoft.DotNet.Cli
                 catch (CultureNotFoundException) { }
             }
 
-            // VSLANG=<lcid> is set by VS and we respect that as well so that we will respect the VS 
-            // language preference if we're invoked by VS. 
+            // VSLANG=<lcid> is set by VS and we respect that as well so that we will respect the VS
+            // language preference if we're invoked by VS.
             string vsLang = Environment.GetEnvironmentVariable(VSLANG);
             if (vsLang != null && int.TryParse(vsLang, out int vsLcid))
             {

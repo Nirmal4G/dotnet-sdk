@@ -119,7 +119,7 @@ namespace Microsoft.NET.Publish.Tests
                 .Pass();
 
             string outputDirectory = publishCommand.GetOutputDirectory(
-                targetFramework: TargetFramework, 
+                targetFramework: TargetFramework,
                 runtimeIdentifier: runtimeIdentifier).FullName;
             byte[] fileContent = File.ReadAllBytes(Path.Combine(outputDirectory, TestProjectName + ".exe"));
             UInt32 peHeaderOffset = BitConverter.ToUInt32(fileContent, PEHeaderPointerOffset);

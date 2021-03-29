@@ -63,7 +63,7 @@ namespace Microsoft.NET.Build.Tasks
 
             foreach (var item in FilesToBundle)
             {
-                fileSpec.Add(new FileSpec(sourcePath: item.ItemSpec, 
+                fileSpec.Add(new FileSpec(sourcePath: item.ItemSpec,
                                           bundleRelativePath:item.GetMetadata(MetadataKeys.RelativePath)));
             }
 

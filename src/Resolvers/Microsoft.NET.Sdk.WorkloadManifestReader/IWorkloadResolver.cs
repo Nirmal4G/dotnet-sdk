@@ -10,7 +10,7 @@ namespace Microsoft.NET.Sdk.WorkloadManifestReader
         IEnumerable<WorkloadResolver.PackInfo> GetInstalledWorkloadPacksOfKind(WorkloadPackKind kind);
         IEnumerable<string> GetPacksInWorkload(string workloadId);
         ISet<WorkloadResolver.WorkloadInfo> GetWorkloadSuggestionForMissingPacks(IList<string> packId);
-        
+
         /// <summary>
         /// Resolve the pack for this resolver's SDK band.
         /// </summary>

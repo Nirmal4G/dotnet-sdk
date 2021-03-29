@@ -527,7 +527,7 @@ namespace Microsoft.Extensions.DependencyModel.Tests
                 {
                         PathModel pathModel = new PathModel(path);
 
-                    return current.Subs.TryGetValue(pathModel.FileOrDirectoryName(), out var node) 
+                    return current.Subs.TryGetValue(pathModel.FileOrDirectoryName(), out var node)
                            && node is DirectoryNode;
                 }
 

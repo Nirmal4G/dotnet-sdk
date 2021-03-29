@@ -19,7 +19,7 @@ namespace Microsoft.DotNet.Tests.Commands.Tool
         {
             var result = Parser.Instance.Parse($"dotnet tool list -g --tool-path /test/path");
             var appliedCommand = result["dotnet"]["tool"]["list"];
-            
+
             var toolInstallCommand = new ToolListCommand(
                 appliedCommand,
                 result);

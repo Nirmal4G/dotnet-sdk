@@ -55,7 +55,7 @@ namespace Microsoft.NET.Build.Tests
                 .CreateTestProject(project, identifier: targetFramework);
 
             var command = new GetValuesCommand(
-                Log, 
+                Log,
                 Path.Combine(asset.Path, project.Name),
                 targetFramework,
                 "DesignerRuntimeImplementationProjectOutputGroupOutput",
@@ -67,7 +67,7 @@ namespace Microsoft.NET.Build.Tests
 
             command.Execute().Should().Pass();
 
-            var items = 
+            var items =
                 from item in command.GetValuesWithMetadata()
                 select new
                 {
@@ -104,7 +104,7 @@ namespace Microsoft.NET.Build.Tests
                 case "net5.0-windows":
                     var depsFileLibraries = GetRuntimeLibraryFileNames(depsFile);
                     depsFileLibraries.Should().BeEquivalentTo(new[] { "Newtonsoft.Json.dll" });
-                    
+
                     var options = GetRuntimeOptions(runtimeConfig);
                     options["configProperties"]["Microsoft.NETCore.DotNetHostPolicy.SetAppPaths"].Value<bool>().Should().BeTrue();
                     // runtimeconfiguration should not have platform.
@@ -132,7 +132,7 @@ namespace Microsoft.NET.Build.Tests
         private static IEnumerable<string> GetRuntimeLibraryFileNames(string depsFilePath)
         {
             var deps = ParseDepsFile(depsFilePath);
-  
+
             return deps.RuntimeLibraries
                        .SelectMany(r => r.RuntimeAssemblyGroups)
                        .SelectMany(a => a.AssetPaths)
@@ -152,7 +152,7 @@ namespace Microsoft.NET.Build.Tests
         {
             using (var stream = File.OpenRead(path))
             using (var reader = new DependencyContextJsonReader())
-            { 
+            {
                 return reader.Read(stream);
             }
         }

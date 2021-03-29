@@ -294,7 +294,7 @@ namespace Microsoft.DotNet.Cli
                 PerformanceLogEventSource.Log.ExtensibleCommandStart();
                 CommandResult result = resolvedCommand.Execute();
                 PerformanceLogEventSource.Log.ExtensibleCommandStop();
-                
+
                 exitCode = result.ExitCode;
             }
 

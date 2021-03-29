@@ -17,7 +17,7 @@ namespace Microsoft.NET.Build.Tasks
     /// those only brought in transitively).
     ///
     /// Only package references applicable to <see cref="TargetFramework"/> are retained.
-    /// 
+    ///
     /// Changes to the implementation of this class must be coordinated with <c>PackageRuleHandler</c>
     /// in the dotnet/project-system repo.
     /// </remarks>
@@ -105,7 +105,7 @@ namespace Microsoft.NET.Build.Tasks
                 }
 
                 var dependencyType = GetDependencyType(packageDef.GetMetadata(MetadataKeys.Type));
-                
+
                 if (dependencyType == DependencyType.Package ||
                     dependencyType == DependencyType.Unresolved)
                 {

@@ -39,7 +39,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests.Tasks
             // Arrange
             GenerateEnvTransform env = new GenerateEnvTransform();
 
-            // Act 
+            // Act
             var envVariables = env.GetEnvironmentVariables(value);
 
             // Assert
@@ -52,7 +52,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests.Tasks
             // Arrange
             GenerateEnvTransform env = new GenerateEnvTransform();
 
-            // Act 
+            // Act
             XDocument transformDoc = env.GenerateEnvTransformDocument(null, null);
 
             // Assert
@@ -70,7 +70,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests.Tasks
                 WebConfigEnvironmentVariables = envVariable
             };
 
-            // Act 
+            // Act
             bool isSuccess = env.Execute();
 
             // Assert
@@ -93,7 +93,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Tests.Tasks
             // Arrange
             GenerateEnvTransform env = new GenerateEnvTransform();
 
-            // Act 
+            // Act
             var envVariables = env.GetEnvironmentVariables(value);
 
             // Assert

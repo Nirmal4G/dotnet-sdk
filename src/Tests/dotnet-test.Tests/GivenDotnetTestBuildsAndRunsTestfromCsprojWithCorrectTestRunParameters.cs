@@ -37,8 +37,8 @@ namespace Microsoft.DotNet.Cli.Test.Tests
                                             "TestRunParameters.Parameter(name=\"myParam\",",
                                             "value=\"value\")",
                                             "TestRunParameters.Parameter(name=\"myParam2\",",
-                                            "value=\"value", 
-                                            "with", 
+                                            "value=\"value",
+                                            "with",
                                             "space\")"
                                         }));
 

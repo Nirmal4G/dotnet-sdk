@@ -38,9 +38,9 @@ namespace Microsoft.DotNet.SdkCustomHelix.Sdk
     {
         /// <summary>
         /// This is a test class inserted into assemblies to guard against a .NET desktop bug.  The tests
-        /// inside of it counteract the underlying issue.  If this test is included in any assembly it 
+        /// inside of it counteract the underlying issue.  If this test is included in any assembly it
         /// must be added to every partition to ensure the work around is present
-        /// 
+        ///
         /// https://github.com/dotnet/corefx/issues/3793
         /// https://github.com/dotnet/roslyn/issues/8936
         /// </summary>
@@ -140,9 +140,9 @@ namespace Microsoft.DotNet.SdkCustomHelix.Sdk
                     return;
                 }
 
-                // One item we have to consider here is the maximum command line length in 
+                // One item we have to consider here is the maximum command line length in
                 // Windows which is 32767 characters (XP is smaller but don't care).  Once
-                // we get close then create a partition and move on. 
+                // we get close then create a partition and move on.
                 if (_currentTypeInfoList.Sum(x => x.MethodCount) >= _methodLimit ||
                     _builder.Length > 25000)
                 {
@@ -277,7 +277,7 @@ namespace Microsoft.DotNet.SdkCustomHelix.Sdk
                 return true;
             }
 
-            // The case we still have to consider at this point is a class with 0 defined methods, 
+            // The case we still have to consider at this point is a class with 0 defined methods,
             // inheritting from a class with > 0 defined test methods.  That is a completely valid
             // xunit scenario.  For now we're just going to exclude types that inherit from object
             // because they clearly don't fit that category.

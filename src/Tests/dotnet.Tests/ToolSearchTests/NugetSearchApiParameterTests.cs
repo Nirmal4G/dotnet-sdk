@@ -23,7 +23,7 @@ namespace dotnet.Tests.ToolSearchTests
             Action a = () => new NugetSearchApiParameter(appliedOptions);
             a.ShouldThrow<GracefulException>();
         }
-        
+
         [Fact]
         public void ItShouldValidateTakeType()
         {
@@ -33,7 +33,7 @@ namespace dotnet.Tests.ToolSearchTests
             Action a = () => new NugetSearchApiParameter(appliedOptions);
             a.ShouldThrow<GracefulException>();
         }
-        
+
         [Fact]
         public void ItShouldNotThrowWhenInputIsValid()
         {

@@ -64,10 +64,10 @@ namespace Microsoft.NET.Build.Tasks
         }
 
         private void ProcessInputFileList(
-            ITaskItem[] inputFiles, 
+            ITaskItem[] inputFiles,
             List<ITaskItem> imageCompilationList,
             List<ITaskItem> symbolsCompilationList,
-            List<ITaskItem> r2rFilesPublishList, 
+            List<ITaskItem> r2rFilesPublishList,
             List<ITaskItem> r2rReferenceList,
             bool hasValidDiaSymReaderLib)
         {
@@ -215,7 +215,7 @@ namespace Microsoft.NET.Build.Tasks
                         {
                             return Eligibility.None;
                         }
-                        
+
                         if (IsReferenceAssembly(mdReader))
                         {
                             // crossgen can only take implementation assemblies, even as references

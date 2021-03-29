@@ -196,7 +196,7 @@ namespace Microsoft.NET.Build.Tests
                "net462;net472",
                new Dictionary<string, string> { ["CopyLocalLockFileAssemblies"] = "true" });
 
-            
+
             var source = Path.Combine(testPackageReference.NupkgPath, testPackageReference.ID, "bin", "Debug");
             NuGetConfigWriter.Write(testProjectTestAsset.TestRoot, source);
 
@@ -232,10 +232,10 @@ namespace Microsoft.NET.Build.Tests
             {
                 foreach (var additionalProperty in additionalProperties)
                 {
-                    testProject.AdditionalProperties.Add(additionalProperty.Key, additionalProperty.Value);    
+                    testProject.AdditionalProperties.Add(additionalProperty.Key, additionalProperty.Value);
                 }
             }
-            
+
             testProject.PackageReferences.Add(testPackageReference);
 
             var testProjectTestAsset = _testAssetsManager.CreateTestProject(
@@ -248,7 +248,7 @@ namespace Microsoft.NET.Build.Tests
 
         private TestPackageReference CreateTestPackage(string targetFrameworks, string identifier, [CallerMemberName] string callingMethod = "")
         {
-            var project = 
+            var project =
                 new TestProject
                 {
                     Name = $"{targetFrameworks.Replace(';', '_')}_pkg",
@@ -263,7 +263,7 @@ namespace Microsoft.NET.Build.Tests
 
             if (!packageReference.NuGetPackageExists())
             {
-                var testAsset = 
+                var testAsset =
                     _testAssetsManager.CreateTestProject(
                         project,
                         callingMethod,

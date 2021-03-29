@@ -245,7 +245,7 @@ namespace Microsoft.NET.Publish.Tests
             // 4.0.0-rc2
             // 4.0.0-rc-2048
             //
-            // and the StarVersion.xml uses Version="4.0.0-*", 
+            // and the StarVersion.xml uses Version="4.0.0-*",
             // so we expect a version greater than 4.0.0-rc2, since there is
             // a higher version on the feed that meets the criteria
             nugetPackage.Version.Should().BeGreaterThan(NuGetVersion.Parse("4.0.0-rc2"));
@@ -265,7 +265,7 @@ namespace Microsoft.NET.Publish.Tests
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                // clear the PATH on windows to ensure creating .ni.pdbs works without 
+                // clear the PATH on windows to ensure creating .ni.pdbs works without
                 // being in a VS developer command prompt
                 composeStore.WithEnvironmentVariable("PATH", string.Empty);
             }

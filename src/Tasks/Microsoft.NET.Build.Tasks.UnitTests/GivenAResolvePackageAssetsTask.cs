@@ -29,7 +29,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
             catch (ArgumentNullException)
             {
                 Assert.True(
-                    false, 
+                    false,
                     "HashSettings is likely not correctly handling null value of one or more optional task parameters");
 
                 throw; // unreachable
@@ -58,7 +58,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
 
                 byte[] newHash = task.HashSettings();
                 newHash.Should().NotBeEquivalentTo(
-                    oldHash, 
+                    oldHash,
                     because: $"{property.Name} should be included in hash.");
 
                 oldHash = newHash;
@@ -110,4 +110,3 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
         }
     }
 }
-

@@ -103,10 +103,10 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Kudu
         }
 
         internal bool DeployFiles(KuduConnectionInfo connectionInfo)
-        {          
+        {
             KuduVfsDeploy fileDeploy = new KuduVfsDeploy(connectionInfo, Log);
 
-            bool success; 
+            bool success;
             if (!DeployIndividualFiles)
             {
                 success = DeployZipFile(connectionInfo);
@@ -138,7 +138,7 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Kudu
         {
             bool success;
             KuduZipDeploy zipDeploy = new KuduZipDeploy(connectionInfo, Log);
-            
+
             string zipFileFullPath = CreateZipFile(PublishIntermediateOutputPath);
             Task<bool> zipTask = zipDeploy.DeployAsync(zipFileFullPath);
             try

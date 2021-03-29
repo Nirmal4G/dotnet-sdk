@@ -11,7 +11,7 @@ namespace Microsoft.DotNet.DotNetSdkResolver
     internal static class NETCoreSdkResolverNativeWrapper
     {
         public static SdkResolutionResult ResolveSdk(
-            string dotnetExeDirectory, 
+            string dotnetExeDirectory,
             string globalJsonStartDirectory,
             bool disallowPrerelease = false)
         {

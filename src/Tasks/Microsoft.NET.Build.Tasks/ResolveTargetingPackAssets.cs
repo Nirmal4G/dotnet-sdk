@@ -290,7 +290,7 @@ namespace Microsoft.NET.Build.Tasks
 
             reference.SetMetadata("FrameworkReferenceName", targetingPack.ItemSpec);
             reference.SetMetadata("FrameworkReferenceVersion", targetingPack.GetMetadata(MetadataKeys.NuGetPackageVersion));
-            
+
             return reference;
         }
     }

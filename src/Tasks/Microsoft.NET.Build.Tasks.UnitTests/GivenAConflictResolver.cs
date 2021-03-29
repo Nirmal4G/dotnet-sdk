@@ -51,7 +51,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
             result.UnresolvedConflicts.Should().Equal(item1, item2);
         }
 
-        
+
         [Fact]
         public void WhenAnItemDoesntExistButDoesNotConflictWithAnythingItIsNotReported()
         {
@@ -203,7 +203,7 @@ namespace Microsoft.NET.Build.Tasks.UnitTests
             result.UnresolvedConflicts.Should().BeEmpty();
         }
 
-        
+
         [Fact]
         public void WhenItemsConflictThePackageRankIsUsedToResolveTheConflict()
         {

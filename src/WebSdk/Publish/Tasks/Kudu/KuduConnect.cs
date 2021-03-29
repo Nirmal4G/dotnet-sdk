@@ -36,6 +36,6 @@ namespace Microsoft.NET.Sdk.Publish.Tasks.Kudu
                     return Convert.ToBase64String(Encoding.UTF8.GetBytes(authInfo));
                 }
             }
-        } 
+        }
     }
 }
