@@ -8,5 +8,5 @@
 
   <ItemGroup>
     <Compile Include="..\dotnet-portable\Program.cs" />
-  </ItemGroup>  
+  </ItemGroup>
 </Project>

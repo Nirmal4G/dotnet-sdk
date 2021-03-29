@@ -366,7 +366,7 @@ namespace Microsoft.DotNet.Watcher.Tools
             return GetFileSet(new MsBuildFileSetFactory(options, DotNetHostPath, _reporter, projectPath, new OutputSink(), waitOnError: false, trace: false));
         }
 
-        private static DotNetWatchOptions GetWatchOptions() => 
+        private static DotNetWatchOptions GetWatchOptions() =>
             new DotNetWatchOptions(false, false, false, false, false);
 
         private static string GetTestProjectPath(TestAsset target) => Path.Combine(GetTestProjectDirectory(target), target.TestProject.Name + ".csproj");

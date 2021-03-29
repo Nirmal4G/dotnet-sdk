@@ -4,4 +4,4 @@
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AllowedReferenceRelatedFileExtensions>$(AllowedReferenceRelatedFileExtensions);.runtimeconfig.json;.deps.json</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
-</Project> 
+</Project>

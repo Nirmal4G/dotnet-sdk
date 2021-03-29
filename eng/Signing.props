@@ -16,7 +16,7 @@
     <!-- Third party DLLs used by tests -->
     <FileSignInfo Include="Castle.Core.dll" CertificateName="None" />
     <FileSignInfo Include="Moq.dll" CertificateName="None" />
-    
+
     <!-- Binary test asset -->
     <FileSignInfo Include="testwpf.dll" CertificateName="None" />
 
@@ -53,7 +53,7 @@
     <FileSignInfo Include="xunit.performance.execution.dll" CertificateName="3PartySHA2" />
     <FileSignInfo Include="xunit.performance.metrics.dll" CertificateName="3PartySHA2" />
   </ItemGroup>
-  
+
   <ItemGroup Condition="'$(PostBuildSign)' == 'true'">
     <ItemsToSignPostBuild Include="$(ArtifactsNonShippingPackagesDir)*.zip" />
   </ItemGroup>

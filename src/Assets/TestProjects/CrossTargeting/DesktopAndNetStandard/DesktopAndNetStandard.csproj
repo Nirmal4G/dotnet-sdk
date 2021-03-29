@@ -15,7 +15,7 @@
   <ItemGroup Condition="'$(TargetFramework)' != 'netstandard1.5'">
     <Reference Include="System.Windows.Forms" />
     <PackageReference Include="Newtonsoft.Json" Version="6.0.4" />
-  </ItemGroup>  
+  </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.5'">
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>

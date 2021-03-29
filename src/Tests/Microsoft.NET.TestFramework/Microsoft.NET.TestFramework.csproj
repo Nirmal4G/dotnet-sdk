@@ -16,7 +16,7 @@
          with the actual test projects that reference it.
     -->
     <IsTestProject>false</IsTestProject>
-    
+
     <TargetFrameworks>$(SdkTargetFramework);net472</TargetFrameworks>
   </PropertyGroup>
 

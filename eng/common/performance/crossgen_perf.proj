@@ -6,8 +6,8 @@
     </HelixCorrelationPayload>
   </ItemGroup>
 
-  <!-- 
-    Crossgen and Crossgen2 Scenario WorkItems 
+  <!--
+    Crossgen and Crossgen2 Scenario WorkItems
   -->
   <PropertyGroup Condition="'$(AGENT_OS)' == 'Windows_NT'">
     <Python>py -3</Python>
@@ -44,7 +44,7 @@
     </CrossgenWorkItem>
   </ItemGroup>
 
-  <ItemGroup> 
+  <ItemGroup>
     <Crossgen2WorkItem Include="@(SingleAssembly)">
       <PayloadDirectory>$(WorkItemDirectory)</PayloadDirectory>
       <Command>$(Python) $(Crossgen2Directory)test.py crossgen2 --core-root $(CoreRoot) --single %(Identity)</Command>
@@ -61,9 +61,9 @@
       <Timeout>4:00</Timeout>
     </HelixWorkItem>
     <HelixWorkItem Include="Crossgen2 Composite Framework R2R" Condition="'$(Architecture)' == 'x64'">
-      <PayloadDirectory>$(WorkItemDirectory)</PayloadDirectory>	
+      <PayloadDirectory>$(WorkItemDirectory)</PayloadDirectory>
       <Command>$(Python) $(Crossgen2Directory)test.py crossgen2 --core-root $(CoreRoot) --composite $(Crossgen2Directory)framework-r2r.dll.rsp</Command>
-      <Timeout>1:00</Timeout>  
+      <Timeout>1:00</Timeout>
     </HelixWorkItem>
   </ItemGroup>
 </Project>

@@ -85,7 +85,7 @@
       ManifestCommit="$(BUILD_SOURCEVERSION)"
       PublishFlatContainer="true"
       AssetManifestPath="$(SdkAssetsManifestFilePath)"
-      AssetsTemporaryDirectory="$(TempWorkingDirectory)" 
+      AssetsTemporaryDirectory="$(TempWorkingDirectory)"
       PublishingVersion="3"/>
 
     <Copy

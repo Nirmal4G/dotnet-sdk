@@ -8,7 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="../CrossTargeted/CrossTargeted.csproj" />
   </ItemGroup>
- 
+
   <!--
     Mimic enough of Microsoft.AppxPackage.targets to get regression coverage
     for the scenario without OS or VS workload dependencies. One important
@@ -17,7 +17,7 @@
     unit test to check for successful binding to GetPackagingOutputs as simply
     build pass vs. fail.
   -->
-  <Target Name="GetPackagingOutputsOfProjectReferences" 
+  <Target Name="GetPackagingOutputsOfProjectReferences"
           AfterTargets="Build"
           DependsOnTargets="AssignProjectConfiguration;_SplitProjectReferencesByFileExistence">
     <MSBuild
@@ -26,7 +26,7 @@
       BuildInParallel="$(BuildInParallel)"
       Properties="%(ProjectReferenceWithConfiguration.SetConfiguration); %(ProjectReferenceWithConfiguration.SetPlatform)"
       Condition="'@(ProjectReferenceWithConfiguration)' != ''
-                 and '%(ProjectReferenceWithConfiguration.BuildReference)' == 'true' 
+                 and '%(ProjectReferenceWithConfiguration.BuildReference)' == 'true'
                  and '%(ProjectReferenceWithConfiguration.ReferenceOutputAssembly)' == 'true'">
       <Output TaskParameter="TargetOutputs" ItemName="_PackagingOutputsFromOtherProjects" />
     </MSBuild>

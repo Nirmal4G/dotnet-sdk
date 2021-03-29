@@ -12,4 +12,3 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="$(XUnitVersion)" />
   </ItemGroup>
 </Project>
-

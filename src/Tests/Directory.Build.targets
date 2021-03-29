@@ -16,7 +16,7 @@
 
     <UserRuntimeConfig>$(MSBuildThisFileDirectory)Common\runtimeconfig.template.json</UserRuntimeConfig>
   </PropertyGroup>
-  
+
   <ItemGroup Condition="'$(IsTestProject)' == 'true' AND '$(OutputType)' == 'Exe' AND '$(TargetFrameworkIdentifier)' == '.NETCoreApp'">
     <Compile Include="$(MSBuildThisFileDirectory)Common\Program.cs" />
   </ItemGroup>
@@ -24,9 +24,9 @@
   <ItemGroup Condition="'$(IsTestProject)' == 'true' AND '$(OutputType)' == 'Exe'">
 
     <!-- Note: These items are showing up in solution explorer even though Visible is set to false -->
-    <None Include="$(MSBuildThisFileDirectory)..\Assets\**\*.*" CopyToPublishDirectory="PreserveNewest" 
+    <None Include="$(MSBuildThisFileDirectory)..\Assets\**\*.*" CopyToPublishDirectory="PreserveNewest"
           LinkBase="Assets" Visible="false" />
-    
+
   </ItemGroup>
 
   <Target Name="TestAsTool" DependsOnTargets="Pack;_InnerGetTestsToRun">
@@ -51,11 +51,11 @@
       IgnoreStandardErrorWarningFormat="true"
       WorkingDirectory="$(TestLocalToolFolder)"
       EnvironmentVariables="DOTNET_CLI_HOME=$(DOTNET_CLI_HOME)"/>
-    
+
     <Exec Command="dotnet tool install --local $(ToolCommandName) --version $(PackageVersion) --add-source $(ArtifactsNonShippingPackagesDir)"
       WorkingDirectory="$(TestLocalToolFolder)"
       EnvironmentVariables="DOTNET_CLI_HOME=$(DOTNET_CLI_HOME)"/>
-    
+
     <Exec Command="dotnet tool restore"
       WorkingDirectory="$(TestLocalToolFolder)"
       EnvironmentVariables="DOTNET_CLI_HOME=$(DOTNET_CLI_HOME)"/>

@@ -13,7 +13,7 @@
     <TargetFramework>$(SdkTargetFramework)</TargetFramework>
     <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="FluentAssertions.Json" Version="$(FluentAssertionsJsonVersion)" />
     <PackageReference Include="Microsoft.Build.Framework" Version="$(MicrosoftBuildFrameworkVersion)" />
@@ -40,5 +40,5 @@
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  
+
 </Project>

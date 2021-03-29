@@ -17,8 +17,8 @@
           Condition="'$(TargetFramework)' == '$(SdkTargetFramework)'">
     <Copy SourceFiles="@(_CopyDirectoryBuildTestDependenciesInput)" DestinationFiles="@(_CopyDirectoryBuildTestDependenciesOutput)" />
   </Target>
-  
-  <Target Name="WriteNugetConfigFile" 
+
+  <Target Name="WriteNugetConfigFile"
           AfterTargets="Build"
           Inputs="$(RepoRoot)NuGet.config"
           Outputs="$(ArtifactsTmpDir)NuGet.config"

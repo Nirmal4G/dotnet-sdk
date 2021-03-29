@@ -17,7 +17,7 @@
   <PropertyGroup>
     <PackageId>testSdkPack</PackageId>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
   </ItemGroup>

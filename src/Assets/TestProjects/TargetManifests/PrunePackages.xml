@@ -3,7 +3,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
   </ItemGroup>
-    
+
   <Target Name="AddPackagesToPrune" AfterTargets="PrepforRestoreForComposeStore">
     <ItemGroup>
       <PackageToPrune Include="Microsoft.CSharp" />

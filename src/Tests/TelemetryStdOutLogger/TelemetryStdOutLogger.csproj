@@ -2,9 +2,9 @@
   <PropertyGroup>
     <OutDirName>Tests\$(MSBuildProjectName)</OutDirName>
   </PropertyGroup>
-  
+
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
-  
+
   <PropertyGroup>
     <TargetFrameworks>$(SdkTargetFramework);net472</TargetFrameworks>
   </PropertyGroup>
@@ -15,5 +15,5 @@
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  
+
 </Project>

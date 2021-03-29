@@ -16,7 +16,7 @@
   <PropertyGroup>
     <PackageId>testSdkClean</PackageId>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
   </ItemGroup>

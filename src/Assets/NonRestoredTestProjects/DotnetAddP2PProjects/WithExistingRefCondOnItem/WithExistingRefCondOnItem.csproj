@@ -5,7 +5,7 @@
     <OutputType>Library</OutputType>
     <TargetFrameworks>net451;netcoreapp1.0</TargetFrameworks>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Condition=" '$(TargetFramework)' == 'net451' " Include="..\Lib\Lib.csproj" />
   </ItemGroup>

@@ -8,9 +8,9 @@
     <WarningsAsErrors>true</WarningsAsErrors>
     <StrongNameKeyId>MicrosoftAspNetCore</StrongNameKeyId>
     <IsPackable>true</IsPackable>
-    
+
     <Nullable>Enable</Nullable>
-    
+
     <UseSystemTextJson Condition="'$(TargetFramework)'!='netstandard2.0' And '$(TargetFramework)'!='net472'">True</UseSystemTextJson>
     <DefineConstants Condition="'$(UseSystemTextJson)'=='True'">$(DefineConstants);USE_SYSTEM_TEXT_JSON</DefineConstants>
 
@@ -27,7 +27,7 @@
       <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('NuGetPackageId', 'Newtonsoft.Json'))" />
     </ItemGroup>
   </Target>
-  
+
   <ItemGroup>
     <EmbeddedResource Include="..\Microsoft.NET.Sdk.WorkloadManifestReader\Strings.resx" LinkBase="Resources" GenerateSource="True" Namespace="Microsoft.NET.Sdk.Localization"/>
   </ItemGroup>
@@ -48,7 +48,7 @@
 
     <WriteLinesToFile File="$(_ResolverManifestDir)$(AssemblyName).xml" Lines="@(ManifestLines)" Overwrite="true" WriteOnlyWhenDifferent="true" />
   </Target>
-  
+
   <ItemGroup>
     <EmbeddedResource Update="**\*.resx" GenerateSource="true" />
   </ItemGroup>
@@ -75,11 +75,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Setup.Configuration.Interop" Version="1.16.30" PrivateAssets="All" ExcludeAssets="Runtime" />
     <PackageReference Include="System.Collections.Immutable" Version="5.0.0" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="4.7.2" Condition="'$(UseSystemTextJson)'=='True'"/>
     <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonPackageVersion)" Condition="'$(UseSystemTextJson)'!='True'"/>
-    
+
     <!-- Reference this package to avoid package downgrade errors.  See https://github.com/dotnet/sdk/issues/3044 for details -->
     <PackageReference Include="Microsoft.NETCore.Targets" Version="2.1.0" ExcludeAssets="all" PrivateAssets="all" />
   </ItemGroup>

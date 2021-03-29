@@ -8,7 +8,7 @@
 
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <Import Project="$(RepoRoot)\src\WebSdk\Package.props" />
-  
+
   <PropertyGroup>
     <TargetFrameworks>$(SdkTargetFramework);net472</TargetFrameworks>
     <TargetFrameworks Condition=" '$(DotNetBuildFromSource)' == 'true' ">$(SdkTargetFramework)</TargetFrameworks>
@@ -48,7 +48,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    
+
     <Content Include="$(PublishRoot)\Targets\**\*.*">
       <Pack>true</Pack>
       <PackagePath>targets</PackagePath>
@@ -64,7 +64,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  
+
   <Import Project="$(RepoRoot)\src\WebSdk\CopyPackageLayout.targets" />
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 

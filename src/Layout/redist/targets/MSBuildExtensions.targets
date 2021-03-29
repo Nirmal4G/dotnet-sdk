@@ -9,11 +9,11 @@
   <Target Name="GenerateMSBuildExtensions">
 
     <ItemGroup>
-      
+
       <!-- Include MSBuild imports that are checked into repo -->
       <MSBuildExtensionsContent Include="$(MSBuildProjectDirectory)/MSBuildImports/**/*" />
 
-      
+
       <MSBuildExtensionsContent Include="$(MSBuildExtensionsSourceRoot)\msbuildExtensions\**\*.*" />
 
       <!-- Don't include .NET Framework MS.NET.Build.Extensions tasks in CLI layout -->

@@ -15,9 +15,9 @@
     <!-- Don't warn about long filenames in packages, we bundle test assets that have long paths
          (ie HelloWorldWithSubDirs) -->
     <NoWarn>$(NoWarn);NU5123</NoWarn>
-    
+
     <GenerateProgramFile>false</GenerateProgramFile>
-    
+
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 

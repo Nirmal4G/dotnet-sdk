@@ -5,5 +5,5 @@
     <OutputType>Library</OutputType>
     <TargetFrameworks>net452;netcoreapp2.1</TargetFrameworks>
   </PropertyGroup>
-  
+
 </Project>

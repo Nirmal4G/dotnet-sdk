@@ -17,7 +17,7 @@
   <PropertyGroup>
     <PackageId>testSdkRestore</PackageId>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
     <PackageReference Include="NuGet.Packaging" Version="$(NuGetPackagingVersion)" />
